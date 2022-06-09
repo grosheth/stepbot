@@ -29,6 +29,7 @@ class Games(commands.Cog):
             await ctx.send(games[4])
         if arg == "random game":
             await ctx.send(games[randint(1, len(games))])
+
     
 
     @commands.command(brief="!coinflip <pile> <face>")
@@ -42,6 +43,7 @@ class Games(commands.Cog):
             1:"pile",
             2:"face"
         }
+
         guess = randint(1,2)
         await ctx.send("...")
         await asyncio.sleep(1)
@@ -60,46 +62,47 @@ class Games(commands.Cog):
             await ctx.send("Hélas, la maison l'emporte")
 
 
+    @commands.command("Used only by bot")
+    async def get_shot(self, player, channel= discord.VoiceChannel):
+        await player.move_to(channel)
+
     @commands.command(brief="!russianroulette")
     async def rr(self, ctx):
-        voice_channel = ctx.guild.voice_channels
-        # kick and send an invite
-        # ban and unban
-        # change voice channel
-
+        voice_channels = ctx.guild.voice_channels
         members = []
 
-        for member in voice_channel[0].members:
+        for member in voice_channels[0].members:
             members.append(member)
 
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Tu decide po.")
-        voice_channel = ctx.author.voice.channel
+        voice_channels = ctx.author.voice.channel
         if ctx.voice_client is None:
-            await voice_channel.connect()
+            await voice_channels.connect()
         else:
-            await ctx.voice_client.move_to(voice_channel)
+            await ctx.voice_client.move_to(voice_channels)
 
         await ctx.send("Roulette Russe")
         await asyncio.sleep(1)
         for i in range(len(members)):
-                
-            luck = 1 #randint(1,6)
+            
+            shot = 1 #randint(1,6)
             await ctx.send(f"{members[i]} prend le pioupiou")
             await asyncio.sleep(1)
             await ctx.send(f"...")
             await asyncio.sleep(1)
             await ctx.send(f"...")
-            await asyncio.sleep(1)
-            if luck == 1:
+            await asyncio.sleep(2)
+            if shot == 1:
                 await ctx.send(f"PLAKEKEKEKEKETTTE SKIDIDIPOPOP ZOOPZOOP DIDISKIDIKETTKETT")
                 await asyncio.sleep(1)
-                await ctx.voice_client.guild.change_voice_state()
-                await ctx.voice_client.disconnect()
-                await ctx.send(f"Fin du jeu")
+                await ctx.send(f"!get_shot {members[i]} StidePardant ")
+                await ctx.send(f"Feni les poussi pour lui")
                 return
             else:
                 await ctx.send(f"click...")
+                await asyncio.sleep(1)
+                await ctx.send(f"Woopidoo")
                 await asyncio.sleep(1)
                 await ctx.send(f"...")
 
