@@ -63,6 +63,10 @@ class Games(commands.Cog):
     @commands.command(brief="!russianroulette")
     async def rr(self, ctx):
         voice_channel = ctx.guild.voice_channels
+        # kick and send an invite
+        # ban and unban
+        # change voice channel
+
         members = []
 
         for member in voice_channel[0].members:
