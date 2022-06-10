@@ -30,7 +30,6 @@ class Games(commands.Cog):
         if arg == "random game":
             await ctx.send(games[randint(1, len(games))])
 
-    
 
     @commands.command(brief="!coinflip <pile> <face>")
     async def coinflip(self, ctx, arg):
@@ -43,7 +42,6 @@ class Games(commands.Cog):
             1:"pile",
             2:"face"
         }
-
         guess = randint(1,2)
         await ctx.send("...")
         await asyncio.sleep(1)
@@ -61,10 +59,6 @@ class Games(commands.Cog):
             await asyncio.sleep(1)
             await ctx.send("Hélas, la maison l'emporte")
 
-
-    @commands.command("Used only by bot")
-    async def get_shot(self, player, channel= discord.VoiceChannel):
-        await player.move_to(channel)
 
     @commands.command(brief="!russianroulette")
     async def rr(self, ctx):
@@ -96,7 +90,7 @@ class Games(commands.Cog):
             if shot == 1:
                 await ctx.send(f"PLAKEKEKEKEKETTTE SKIDIDIPOPOP ZOOPZOOP DIDISKIDIKETTKETT")
                 await asyncio.sleep(1)
-                await ctx.send(f"!get_shot {members[i]} StidePardant ")
+                await members[i].move_to(voice_channels[1])
                 await ctx.send(f"Feni les poussi pour lui")
                 return
             else:
