@@ -13,7 +13,8 @@ class Memes(commands.Cog):
                 1:"https://www.pornhub.com/categories/hentai",
                 2:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
                 3:"https://www.youtube.com/watch?v=jDwVkXVHIqg",
-                4:"https://www.youtube.com/watch?v=N6hVmn9FM7o"
+                4:"https://www.youtube.com/watch?v=N6hVmn9FM7o",
+                5: "https://www.youtube.com/watch?v=zNtr0RahRqM"
             }
         
         await ctx.send(memes[randint(1, len(memes))])
@@ -32,7 +33,7 @@ class Memes(commands.Cog):
                     embed = discord.Embed(title=quote)
                     embed.set_image(url=r._real_url)
                     await ctx.send(embed=embed)
-
+                    
 
 def setup(bot):
     bot.add_cog(Memes(bot))
