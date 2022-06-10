@@ -2,6 +2,9 @@ import json, os, random
 from unicodedata import category
 from settings import *
 
+
+
+
 async def get_mom_joke():
     with open(os.path.join(WORDBANK_DIR, "mama.json")) as f:
         jokes = json.load(f)

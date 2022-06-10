@@ -19,12 +19,12 @@ class Memes(commands.Cog):
         
         await ctx.send(memes[randint(1, len(memes))])
 
-    @commands.command(brief="!insult get fuckt")
+    @commands.command(brief="!insult @<user>")
     async def insult(self, ctx, member: discord.Member = None):
         insult = await get_mom_joke()
         await ctx.send(f"{member.display_name} {insult}")
 
-    @commands.command(brief="!quote")
+    @commands.command(brief="!quote sends a beer quote with image")
     async def quote(self, ctx):
         quote = await get_quote()
         async with ctx.channel.typing():

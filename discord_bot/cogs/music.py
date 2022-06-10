@@ -5,7 +5,7 @@ class Music(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(brief="!play get fuckt")
+    @commands.command(brief="!play play music from spotify (notdone)")
     async def play():
         
         return
