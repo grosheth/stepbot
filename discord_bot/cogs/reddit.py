@@ -1,5 +1,5 @@
 from discord.ext import commands
-import praw, random, discord
+import praw, random, discord, asyncio
 from settings import REDDIT_ID, REDDIT_SECRET
 
 class Reddit(commands.Cog):
@@ -18,6 +18,7 @@ class Reddit(commands.Cog):
                 rnd = random.randint(1,99)
                 for i in range(0, rnd):
                     submission = next(x for x in submissions if not x.stickied)
+                await ctx.send(submission.title)
                 await ctx.send(submission.url)
 
     @commands.command(brief="!fiftyfifty Send a reddit post from r/fiftyfifty")
@@ -29,6 +30,8 @@ class Reddit(commands.Cog):
                 rnd = random.randint(1,99)
                 for i in range(0, rnd):
                     submission = next(x for x in submissions if not x.stickied)
+                await ctx.send(submission.title)
+                await asyncio.sleep(5)
                 await ctx.send(submission.url)
 
 

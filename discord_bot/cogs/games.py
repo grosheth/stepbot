@@ -1,9 +1,7 @@
-from ast import alias
-import asyncio, os, discord
-from ntpath import join
+import asyncio
 from discord.ext import commands
 from random import randint
-
+from utils import get_channel_by_name, open_file, create_voice_channel
 
 class Games(commands.Cog):
     def __init__(self, bot):
@@ -60,41 +58,42 @@ class Games(commands.Cog):
 
     @commands.command(brief="!russianroulette")
     async def rr(self, ctx):
-        voice_channels = ctx.guild.voice_channels
-        members = []
-
-        for member in voice_channels[0].members:
-            members.append(member)
 
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Tu decide po.")
-        voice_channels = ctx.author.voice.channel
+        voice_channel = ctx.author.voice.channel
+
         if ctx.voice_client is None:
-            await voice_channels.connect()
+            await voice_channel.connect()
         else:
-            await ctx.voice_client.move_to(voice_channels)
+            await ctx.voice_client.move_to(voice_channel)
 
         await ctx.send("Roulette Russe")
         await asyncio.sleep(1)
-        for i in range(len(members)):
-            
-            shot = 1 #randint(1,6)
-            await ctx.send(f"{members[i]} prend le pioupiou")
+        for member in voice_channel.members:
+            opening = await open_file("russianroulette.json","opening")
+            dead = await open_file("russianroulette.json","dead")
+            alive = await open_file("russianroulette.json","alive")
+            shot = randint(1,6)
+            if member.bot:
+                shot = 0
+
+            await ctx.send(f"{member.name} {opening}")
             await asyncio.sleep(1)
             await ctx.send(f"...")
             await asyncio.sleep(1)
             await ctx.send(f"...")
             await asyncio.sleep(2)
             if shot == 1:
-                await ctx.send(f"PLAKEKEKEKEKETTTE SKIDIDIPOPOP ZOOPZOOP DIDISKIDIKETTKETT")
+                await ctx.send(f'{member.name} {dead}')
+                #await create_voice_channel(member.guild, f"{member.name}-sti-dpardant")
                 await asyncio.sleep(1)
-                await members[i].move_to(voice_channels[1])
-                await ctx.send(f"Feni les poussi pour lui")
+                await member.move_to(None)
                 return
             else:
                 await ctx.send(f"click...")
                 await asyncio.sleep(1)
-                await ctx.send(f"Woopidoo")
+                await ctx.send(f'{alive}')
                 await asyncio.sleep(1)
                 await ctx.send(f"...")
 

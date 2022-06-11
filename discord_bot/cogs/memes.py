@@ -1,7 +1,7 @@
 from discord.ext import commands
 from random import randint
 import discord, aiohttp
-from utils import get_mom_joke, get_quote
+from utils import get_mom_joke, open_file
 
 class Memes(commands.Cog):
     def __init__(self, bot):
@@ -26,10 +26,10 @@ class Memes(commands.Cog):
 
     @commands.command(brief="!quote sends a beer quote with image")
     async def quote(self, ctx):
-        quote = await get_quote()
+        quote = await open_file("beer.json", "beer")
         async with ctx.channel.typing():
             async with aiohttp.ClientSession() as session:
-                async with session.get("https://picsum.photos/750/500") as r:
+                async with session.get("https://picsum.photos/900/750") as r:
                     embed = discord.Embed(title=quote)
                     embed.set_image(url=r._real_url)
                     await ctx.send(embed=embed)

@@ -9,3 +9,6 @@ TOKEN = os.getenv("TOKEN")
 
 REDDIT_ID = os.getenv("REDDIT_ID")
 REDDIT_SECRET = os.getenv("REDDIT_SECRET")
+
+FILOU = os.getenv("FILOU")
+RURU = os.getenv("RURU")

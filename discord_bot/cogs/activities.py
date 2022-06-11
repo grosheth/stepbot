@@ -1,4 +1,6 @@
 from discord.ext import commands
+from utils import *
+from settings import FILOU,RURU
 
 class Activities(commands.Cog):
     def __init__(self, bot):
@@ -15,10 +17,19 @@ class Activities(commands.Cog):
     async def on_voice_state_update(self,member,before,after):
         if member.bot:
             if not before.channel:
+                print(f'Bot {member.name} joined {after.channel.name}')
+
+        else:
+            if not before.channel:
                 print(f'{member.name} joined {after.channel.name}')
 
-            if before.channel and not after.channel:
-                print(f'bot left channel')
+            if after.channel is not None:
+                if after.channel.name == "Pernis":
+                    channel = await create_voice_channel(after.channel.guild, f"{member.name}-sti-dpardant".lower, category_name="PARDANT")
+                    
+                    if channel is not None:
+                        await member.move_to(channel)
+                    return
 
             if before.channel and after.channel:
                 if before.channel.id != after.channel.id:
@@ -26,9 +37,9 @@ class Activities(commands.Cog):
                 else:
                     print("somethin else happened")
                     if member.voice.self_stream:
-                        print("User started streaming")
+                        print(f"{member.name} started streaming")
                     if member.voice.self_deaf:
                         print("User deafened")
-
+                        
 def setup(bot):
     bot.add_cog(Activities(bot))
