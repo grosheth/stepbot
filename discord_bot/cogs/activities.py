@@ -23,14 +23,6 @@ class Activities(commands.Cog):
             if not before.channel:
                 print(f'{member.name} joined {after.channel.name}')
 
-            if after.channel is not None:
-                if after.channel.name == "Pernis":
-                    channel = await create_voice_channel(after.channel.guild, f"{member.name}-sti-dpardant".lower, category_name="PARDANT")
-                    
-                    if channel is not None:
-                        await member.move_to(channel)
-                    return
-
             if before.channel and after.channel:
                 if before.channel.id != after.channel.id:
                     print("bot switched channel")

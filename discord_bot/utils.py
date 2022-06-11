@@ -24,7 +24,6 @@ async def get_channel_by_name(guild, channel_name):
 
 
 async def open_file(file, category):
-    print(file, type(file), category, type(category), WORDBANK_DIR, type(WORDBANK_DIR))
     with open(os.path.join(WORDBANK_DIR, file)) as f:
         jokes = json.load(f)
     opening = random.choice(list(jokes[category]))
