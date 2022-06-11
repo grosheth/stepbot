@@ -1,30 +1,14 @@
 import asyncio
 from discord.ext import commands
 from random import randint
-from utils import get_channel_by_name, open_file, create_voice_channel
+from utils import open_file
+
+word = ""
+user_guesses = []
 
 class Games(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
-    @commands.command(brief="!online <game>")
-    async def online(self, ctx, arg):
-        games = {
-            1:"https://garticphone.com/lobby",
-            2:"https://songtrivia2.io/",
-            3:"https://world-geography-games.com/en/flags_world.html",
-            4:"https://www.geoguessr.com/"
-        }
-        if arg == "gartic":
-            await ctx.send(games[1])
-        if arg == "songtrivia":
-            await ctx.send(games[2])
-        if arg == "flags":
-            await ctx.send(games[3])
-        if arg == "geo":
-            await ctx.send(games[4])
-        if arg == "random game":
-            await ctx.send(games[randint(1, len(games))])
 
 
     @commands.command(brief="!coinflip <pile> <face>")
@@ -56,7 +40,7 @@ class Games(commands.Cog):
             await ctx.send("Hélas, la maison l'emporte")
 
 
-    @commands.command(brief="!russianroulette")
+    @commands.command(brief="!rr Russian roulette")
     async def rr(self, ctx):
 
         if ctx.author.voice is None:
@@ -86,7 +70,6 @@ class Games(commands.Cog):
             await asyncio.sleep(2)
             if shot == 1:
                 await ctx.send(f'{member.name} {dead}')
-                #await create_voice_channel(member.guild, f"{member.name}-sti-dpardant")
                 await asyncio.sleep(1)
                 await member.move_to(None)
                 return
@@ -98,8 +81,12 @@ class Games(commands.Cog):
                 await ctx.send(f"...")
 
         await asyncio.sleep(1)
-        await ctx.send(f"Parsonne est mort")                
+        await ctx.send(f"Parsonne est mort")
         return
+
+
+
+
 
 def setup(bot):
     bot.add_cog(Games(bot))

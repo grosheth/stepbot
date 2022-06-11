@@ -29,7 +29,7 @@ class Memes(commands.Cog):
         quote = await open_file("beer.json", "beer")
         async with ctx.channel.typing():
             async with aiohttp.ClientSession() as session:
-                async with session.get("https://picsum.photos/900/750") as r:
+                async with session.get("https://picsum.photos/1000/1000") as r:
                     embed = discord.Embed(title=quote)
                     embed.set_image(url=r._real_url)
                     await ctx.send(embed=embed)
