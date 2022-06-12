@@ -58,13 +58,11 @@ class Games(commands.Cog):
             opening = await open_file("russianroulette.json","opening")
             dead = await open_file("russianroulette.json","dead")
             alive = await open_file("russianroulette.json","alive")
-            shot = randint(1,6)
+            shot = randint(1,4)
             if member.bot:
-                shot = 0
+                shot = 1
 
             await ctx.send(f"{member.name} {opening}")
-            await asyncio.sleep(1)
-            await ctx.send(f"...")
             await asyncio.sleep(1)
             await ctx.send(f"...")
             await asyncio.sleep(2)
@@ -83,9 +81,6 @@ class Games(commands.Cog):
         await asyncio.sleep(1)
         await ctx.send(f"Parsonne est mort")
         return
-
-
-
 
 
 def setup(bot):
