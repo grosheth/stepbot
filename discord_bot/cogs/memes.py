@@ -34,6 +34,13 @@ class Memes(commands.Cog):
                     embed.set_image(url=r._real_url)
                     await ctx.send(embed=embed)
                     
+    @commands.command(brief="!whoyou PoussySlayer se présente")
+    async def whoyou(self, ctx):
+        await ctx.send(embed=discord.Embed(title="Hello I am, P0u55i5l4y3r. Summon me using '!'",
+                                                    description=
+                                                    "Feet adorer, womanizer, Short longsword, can do the drapeau. Arch Ennemy: Nick Gingras. Pioussi is the quest, pioussi is the Graal.",
+                                                    color=0xeeafe6))
+
 
 def setup(bot):
     bot.add_cog(Memes(bot))
