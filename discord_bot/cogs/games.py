@@ -5,6 +5,7 @@ from utils import open_file
 
 word = ""
 user_guesses = []
+is_running = False
 
 class Games(commands.Cog):
     def __init__(self, bot):
@@ -43,6 +44,10 @@ class Games(commands.Cog):
     @commands.command(brief="!rr Russian roulette")
     async def rr(self, ctx):
 
+        if is_running:
+            return
+        is_running = True
+
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Tu decide po.")
         voice_channel = ctx.author.voice.channel
@@ -70,6 +75,7 @@ class Games(commands.Cog):
                 await ctx.send(f'{member.name} {dead}')
                 await asyncio.sleep(1)
                 await member.move_to(None)
+                is_running = False
                 return
             else:
                 await ctx.send(f"click...")
@@ -80,6 +86,7 @@ class Games(commands.Cog):
 
         await asyncio.sleep(1)
         await ctx.send(f"Parsonne est mort")
+        is_running = False
         return
 
 
