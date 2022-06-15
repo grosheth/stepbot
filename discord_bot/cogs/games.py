@@ -1,11 +1,7 @@
 import asyncio
 from discord.ext import commands
 from random import randint
-from utils import open_file
-
-word = ""
-user_guesses = []
-is_running = False
+from utils import open_file, FILOU, RUNNING
 
 class Games(commands.Cog):
     def __init__(self, bot):
@@ -27,7 +23,7 @@ class Games(commands.Cog):
         await ctx.send("...")
         await asyncio.sleep(1)
         await ctx.send("...La tension monte...")
-        if ctx.author.id == 388902413358071819:
+        if ctx.author.id == int(FILOU):
             await ctx.send("...")
             await asyncio.sleep(1)
             await ctx.send("...pas comme la molle a Filou...")
@@ -44,10 +40,10 @@ class Games(commands.Cog):
     @commands.command(brief="!rr Russian roulette")
     async def rr(self, ctx):
 
-        if is_running:
+        if RUNNING:
             print("already running")
             return
-        is_running = True
+        RUNNING = True
 
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Tu decide po.")
@@ -76,7 +72,7 @@ class Games(commands.Cog):
                 await ctx.send(f'{member.name} {dead}')
                 await asyncio.sleep(1)
                 await member.move_to(None)
-                is_running = False
+                RUNNING = False
                 return
             else:
                 await ctx.send(f"click...")
@@ -87,7 +83,7 @@ class Games(commands.Cog):
 
         await asyncio.sleep(1)
         await ctx.send(f"Parsonne est mort")
-        is_running = False
+        RUNNING = False
         return
 
 
