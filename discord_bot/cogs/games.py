@@ -45,6 +45,7 @@ class Games(commands.Cog):
     async def rr(self, ctx):
 
         if is_running:
+            print("already running")
             return
         is_running = True
 
