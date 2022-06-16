@@ -34,7 +34,7 @@ class Reddit(commands.Cog):
                 await asyncio.sleep(5)
                 await ctx.send(submission.url)
 
-                
+
     @commands.command(brief="!feet Send a reddit post from r/feetishh")
     async def feet(self, ctx):
         async with ctx.channel.typing():
@@ -44,7 +44,7 @@ class Reddit(commands.Cog):
                 for i in range(0, rnd):
                     submission = next(x for x in submissions if not x.stickied)
                 await ctx.send(submission.title)
-                await asyncio.sleep(5)
+                await asyncio.sleep(2)
                 await ctx.send(submission.url)
 
 
