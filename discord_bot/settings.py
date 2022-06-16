@@ -12,5 +12,3 @@ REDDIT_SECRET = os.getenv("REDDIT_SECRET")
 
 FILOU = os.getenv("FILOU")
 RURU = os.getenv("RURU")
-
-RUNNING = False
