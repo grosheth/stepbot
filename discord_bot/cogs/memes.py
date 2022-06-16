@@ -41,6 +41,11 @@ class Memes(commands.Cog):
                                                     "Feet adorer, womanizer, Short longsword, can do the drapeau. Arch Ennemy: Nick Gingras. Pioussi is the quest, pioussi is the Graal.",
                                                     color=0xeeafe6))
 
+    @commands.command(brief="!feet PoussySlayer se présente")
+    async def feet(self, ctx):
+        
+
+
 
 def setup(bot):
     bot.add_cog(Memes(bot))
