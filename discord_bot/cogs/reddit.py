@@ -48,5 +48,24 @@ class Reddit(commands.Cog):
                 await ctx.send(submission.url)
 
 
+    @commands.command(brief="!roast Send a reddit post from r/roastme")
+    async def roastme(self, ctx):
+        async with ctx.channel.typing():
+            if self.reddit:
+                submissions = self.reddit.subreddit("roastme").hot(limit=100)
+                rnd = random.randint(1,99)
+                for i in range(0, rnd):
+                    submission = next(x for x in submissions if not x.stickied)
+                await ctx.send(submission.title)
+                await asyncio.sleep(2)
+                await ctx.send(submission.url)
+                submission.comment_sort = 'best'
+                x = 0
+                for top_level_comment in submission.comments:
+                    x += 1
+                    if x > 10:
+                        return
+                    await ctx.send(f"{x}: {top_level_comment.body}")
+
 def setup(bot):
     bot.add_cog(Reddit(bot))
