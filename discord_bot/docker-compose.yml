@@ -16,7 +16,6 @@ services:
     image: mongo-express:latest
     environment:
       ME_CONFIG_MONGODB_URL: "mongodb://mongo:27017"
-      ME_CONFIG_MONGODB_SERVER: mongo
       ME_CONFIG_MONGODB_PORT: 27017
       ME_CONFIG_MONGODB_AUTH_USERNAME: "root"
       ME_CONFIG_MONGODB_AUTH_PASSWORD: "root"
