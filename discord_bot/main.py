@@ -1,9 +1,13 @@
 import os, discord, dotenv
+from sqlite3 import connect
 from discord.ext import commands
 from settings import *
+from mongoengine import *
 
 
 dotenv.load_dotenv()
+
+connect('')
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 

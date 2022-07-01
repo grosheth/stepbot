@@ -10,6 +10,18 @@ services:
       - 27017:27017
     volumes:
       - mongodb_data_container:/data/db
-    
+
+  mongo-express:
+    container_name: "mongo-express"
+    image: mongo-express:latest
+    environment:
+      ME_CONFIG_OPTIONS_EDITORTHEME: "ambiance"
+      ME_CONFIG_BASICAUTH_USERNAME: "root"
+      ME_CONFIG_MONGODB_URL: "mongodb://mongo:27017"
+    ports:
+      - 8080:8080
+    volumes:
+      - mongodb_data_container:/data/db 
+
 volumes:
   mongodb_data_container:
