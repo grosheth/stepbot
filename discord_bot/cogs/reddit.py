@@ -9,6 +9,7 @@ class Reddit(commands.Cog):
         if REDDIT_ID and REDDIT_SECRET:
             self.reddit = praw.Reddit(client_id=REDDIT_ID,client_secret=REDDIT_SECRET, user_agent="DISCORD_BOT:%s1.0" % REDDIT_ID)
 
+
     @commands.command(brief="!reddit then specify the subreddit")
     async def reddit(self, ctx, arg):
         channel = arg
@@ -20,6 +21,7 @@ class Reddit(commands.Cog):
                     submission = next(x for x in submissions if not x.stickied)
                 await ctx.send(submission.title)
                 await ctx.send(submission.url)
+
 
     @commands.command(brief="!fiftyfifty Send a reddit post from r/fiftyfifty")
     async def fiftyfifty(self, ctx):
