@@ -1,11 +1,10 @@
 from mongoengine import *
 
 class Wallet(Document):
-    user = 0
-    money = 0
-    wallets = {
-        user: money
-    }
-
     
-
+    
+    def wallet(user, money):
+        wallets = {
+            user: money
+        }
+        return wallets

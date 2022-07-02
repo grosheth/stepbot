@@ -1,5 +1,4 @@
 import os, dotenv, pathlib
-from pymongo import MongoClient
 
 dotenv.load_dotenv()
 
@@ -14,6 +13,8 @@ REDDIT_SECRET = os.getenv("REDDIT_SECRET")
 FILOU = os.getenv("FILOU")
 RURU = os.getenv("RURU")
 
-CLIENT = MongoClient('192.168.2.101', 30011)
-DB = client['discord']
-COLLECTION = db['wallet']
+DB = os.getenv("DB")
+HOST = os.getenv("HOST")
+PORT = os.getenv("PORT")
+DBUSER = os.getenv("DBUSER")
+DBPASS = os.getenv("DBPASS")

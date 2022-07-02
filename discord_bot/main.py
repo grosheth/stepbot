@@ -1,12 +1,13 @@
 import os, discord, dotenv
-from sqlite3 import connect
 from discord.ext import commands
 from settings import *
+from mongoengine import *
 
 
 dotenv.load_dotenv()
 
-# connect('discord', host='192.168.2.101', port=30011, username='admin', password='admin', authentication_source='admin')
+connect(DB, host=HOST, port=int(PORT), username=DBUSER, password=DBPASS)
+# , authentication_source='admin'
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
