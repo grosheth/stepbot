@@ -1,6 +1,7 @@
 from discord.ext import commands
 from random import randint
 import discord, aiohttp
+from wallet import Wallet
 from utils import get_mom_joke, open_file
 
 class Memes(commands.Cog):
@@ -17,6 +18,10 @@ class Memes(commands.Cog):
                 5: "https://www.youtube.com/watch?v=zNtr0RahRqM"
             }
         
+        wallet = Wallet()
+        wallet.user = 1
+        collection.insert(wallet.user)
+
         await ctx.send(memes[randint(1, len(memes))])
 
     @commands.command(brief="!insult @<user>")

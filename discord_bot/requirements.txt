@@ -8,9 +8,11 @@ discord==1.7.3
 discord.ext==0.8
 discord.py==1.7.3
 idna==3.3
+mongoengine==0.24.1
 multidict==6.0.2
 praw==7.6.0
 prawcore==2.3.0
+pymongo==4.1.1
 python-dotenv==0.20.0
 requests==2.28.1
 typing_extensions==4.3.0
