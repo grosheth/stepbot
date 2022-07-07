@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/home/pi/bots/discord_bot/main.py", line 11, in <module>
-    for filename in os.listdir("./cogs"):
-FileNotFoundError: [Errno 2] No such file or directory: './cogs'
