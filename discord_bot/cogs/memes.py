@@ -3,7 +3,8 @@ from random import randint
 import discord, aiohttp
 from wallet import Wallet
 from utils import get_mom_joke, open_file
-from mongoengine import *
+from pymongo import MongoClient
+from settings import CONN_STRING
 
 class Memes(commands.Cog):
     def __init__(self, bot):
@@ -16,13 +17,18 @@ class Memes(commands.Cog):
                 2:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
                 3:"https://www.youtube.com/watch?v=jDwVkXVHIqg",
                 4:"https://www.youtube.com/watch?v=N6hVmn9FM7o",
-                5: "https://www.youtube.com/watch?v=zNtr0RahRqM"
+                5:"https://www.youtube.com/watch?v=zNtr0RahRqM"
             }
-        
-        # cashflow = Wallet.wallet(ctx.author.id, 100)
-        # dictio = DictField(cashflow)
-        # dictio.save()
+        # connect = MongoClient(CONN_STRING)
+        # db = connect.discord
+        # collection = db.wallet
+        # for member in ctx.guild.members:
+        #     print(member.id)
+        #     cashflow = Wallet.wallet(member.id, 10000)
+        #     print(cashflow)
+        #     collection.insert_one(cashflow)
 
+        
         await ctx.send(memes[randint(1, len(memes))])
 
     @commands.command(brief="!insult @<user>")
