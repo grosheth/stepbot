@@ -28,13 +28,7 @@ class Memes(commands.Cog):
             if member.id == ctx.author.id:
                 current_cash = collection.find_one({'_id': member.id})['Nanane']
                 await ctx.send(f"T'es rendu à {current_cash - 1} Nanane")
-                collection.update_one({
-                '_id': 	member.id
-                },{
-                '$set': {
-                    'Nanane': current_cash - 1
-                }
-                }, upsert=False)
+                collection.update_one({'_id': member.id},{'$set': {'Nanane': current_cash - 1}}, upsert=False)
         
         await ctx.send(memes[randint(1, len(memes))])
 

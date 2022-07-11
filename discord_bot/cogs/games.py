@@ -45,10 +45,8 @@ class Games(commands.Cog):
         connect = MongoClient(CONN_STRING)
         db = connect.discord
         collection = db.wallet
-
         await ctx.send("Tu gagne 1 Nanane si tu meur pas. Tu perd 5 Nanane si tu tfa shot.")
-
-
+        
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Tu decide po.")
         voice_channel = ctx.author.voice.channel
@@ -75,27 +73,16 @@ class Games(commands.Cog):
             await ctx.send(f"...")
             await asyncio.sleep(2)
             if shot == 1:
-                collection.update_one({
-                '_id': 	member.id
-                },{
-                '$set': {
-                    'Nanane': current_cash - 5
-                }
-                }, upsert=False)
-                
+                collection.update_one({'_id': member.id},{'$set': {'Nanane': current_cash - 50}}, upsert=False)
                 await ctx.send(f'{member.name} {dead}')
                 await asyncio.sleep(1)
                 await member.move_to(None)
                 return
             else:
-                collection.update_one({
-                '_id': 	member.id
-                },{
-                '$set': {
-                    'Nanane': current_cash + 1
-                }
-                }, upsert=False)
-
+                if member.id != int(FILOU):
+                    collection.update_one({'_id': member.id},{'$set': {'Nanane': current_cash + 10}}, upsert=False)
+                else:
+                    collection.update_one({'_id': member.id},{'$set': {'Nanane': current_cash - 1}}, upsert=False)
                 await ctx.send(f"click...")
                 await asyncio.sleep(1)
                 await ctx.send(f'{alive}')
