@@ -8,16 +8,17 @@ class Wallet():
     #         cashflow = Wallet.wallet(member.id, 10000)
     #         print(cashflow)
 
-    def wallet(user, money):
-
-        # connect = MongoClient(CONN_STRING)
-        # db = connect.discord
-        # collection = db.wallet
-    
-        wallets = {
-            str(user): money
-        }
-        
-        # collection.insert_one(cashflow)
-
-        return wallets
+    def reset_wallet():
+        connect = MongoClient(CONN_STRING)
+        db = connect.discord
+        collection = db.wallet
+        for member in ctx.guild.members:
+            print(member.id)
+            money = 25000
+            collection.update_one({
+            '_id': 	member.id
+            },{
+            '$set': {
+                'Nanane': money
+            }
+            }, upsert=True)

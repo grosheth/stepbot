@@ -1,7 +1,6 @@
 from discord.ext import commands
 from random import randint
 import discord, aiohttp
-from wallet import Wallet
 from utils import get_mom_joke, open_file
 from pymongo import MongoClient
 from settings import CONN_STRING
@@ -12,6 +11,7 @@ class Memes(commands.Cog):
 
     @commands.command(brief="!memes get fuckt")
     async def memes(self, ctx):
+        await ctx.send(f"Ça coute 1 Nanane ça")
         memes = {
                 1:"https://www.pornhub.com/categories/hentai",
                 2:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
@@ -19,15 +19,22 @@ class Memes(commands.Cog):
                 4:"https://www.youtube.com/watch?v=N6hVmn9FM7o",
                 5:"https://www.youtube.com/watch?v=zNtr0RahRqM"
             }
-        # connect = MongoClient(CONN_STRING)
-        # db = connect.discord
-        # collection = db.wallet
-        # for member in ctx.guild.members:
-        #     print(member.id)
-        #     cashflow = Wallet.wallet(member.id, 10000)
-        #     print(cashflow)
-        #     collection.insert_one(cashflow)
 
+        connect = MongoClient(CONN_STRING)
+        db = connect.discord
+        collection = db.wallet
+
+        for member in ctx.guild.members:
+            if member.id == ctx.author.id:
+                current_cash = collection.find_one({'_id': member.id})['Nanane']
+                await ctx.send(f"T'es rendu à {current_cash - 1} Nanane")
+                collection.update_one({
+                '_id': 	member.id
+                },{
+                '$set': {
+                    'Nanane': current_cash - 1
+                }
+                }, upsert=False)
         
         await ctx.send(memes[randint(1, len(memes))])
 
