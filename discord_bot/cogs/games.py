@@ -3,7 +3,7 @@ from discord.ext import commands
 from random import randint
 from pymongo import MongoClient
 from settings import CONN_STRING
-from utils import open_file, FILOU
+from utils import *
 
 class Games(commands.Cog):
     def __init__(self, bot):
@@ -12,6 +12,11 @@ class Games(commands.Cog):
 
     @commands.command(brief="!coinflip <pile> <face>")
     async def coinflip(self, ctx, arg):
+
+        connect = MongoClient(CONN_STRING)
+        db = connect.discord
+        collection = db.wallet
+
         arg = arg.lower()
         if arg != "pile" and arg != "face":
             await ctx.send(f"{arg} n'est pas un choix à Pile ou face. Bravo")
@@ -41,10 +46,11 @@ class Games(commands.Cog):
 
     @commands.command(brief="!rr Russian roulette")
     async def rr(self, ctx):
-
+        
         connect = MongoClient(CONN_STRING)
         db = connect.discord
         collection = db.wallet
+
         await ctx.send("Tu gagne 1 Nanane si tu meur pas. Tu perd 5 Nanane si tu tfa shot.")
         
         if ctx.author.voice is None:
@@ -63,31 +69,26 @@ class Games(commands.Cog):
             dead = await open_file("russianroulette.json","dead")
             alive = await open_file("russianroulette.json","alive")
 
-            current_cash = collection.find_one({'_id': member.id})['Nanane']
-            shot = randint(1,4)
-            if member.bot:
-                shot = 1
+            current_cash = get_cash(member.id, collection)
+            shot = randint(1,6)
 
             await ctx.send(f"{member.name} {opening}")
             await asyncio.sleep(1)
-            await ctx.send(f"...")
-            await asyncio.sleep(2)
             if shot == 1:
-                collection.update_one({'_id': member.id},{'$set': {'Nanane': current_cash - 50}}, upsert=False)
+                lose_money(member.id, current_cash, 50, collection)
                 await ctx.send(f'{member.name} {dead}')
+                await ctx.send(f'{member.name} Ta pardu 50 Nanane sti de laid')
                 await asyncio.sleep(1)
                 await member.move_to(None)
                 return
             else:
                 if member.id != int(FILOU):
-                    collection.update_one({'_id': member.id},{'$set': {'Nanane': current_cash + 10}}, upsert=False)
+                    lose_money(member.id, current_cash, 50, collection)            
                 else:
-                    collection.update_one({'_id': member.id},{'$set': {'Nanane': current_cash - 1}}, upsert=False)
+                    win_money(member.id, current_cash, 10, collection)
                 await ctx.send(f"click...")
                 await asyncio.sleep(1)
                 await ctx.send(f'{alive}')
-                await asyncio.sleep(1)
-                await ctx.send(f"...")
 
         await asyncio.sleep(1)
         await ctx.send(f"Parsonne est mort")

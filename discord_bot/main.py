@@ -6,9 +6,6 @@ from pymongo import MongoClient
 
 dotenv.load_dotenv()
 
-# connect = MongoClient(host="192.168.2.101", port=30011, username="admin", password="admin")
-
-#connect(DB, host=HOST, port=int(PORT), username=DBUSER, password=DBPASS)
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 # load files in cogs folder

@@ -1,5 +1,19 @@
 import json, os, random
+from pymongo import MongoClient
 from settings import *
+
+
+def get_cash(member_id, collection):
+    current_cash = collection.find_one({'_id': member_id})['Nanane']
+    return current_cash
+
+
+def lose_money(member_id, current_cash, win, collection):
+    collection.update_one({'_id': member_id},{'$set': {'Nanane': current_cash + win}}, upsert=False)
+
+
+def win_money(member_id, current_cash, loss, collection):
+    collection.update_one({'_id': member_id},{'$set': {'Nanane': current_cash - loss}}, upsert=False)
 
 
 async def create_text_channel(guild, channel_name):
