@@ -9,29 +9,6 @@ class Memes(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(brief="!memes get fuckt")
-    async def memes(self, ctx):
-        await ctx.send(f"Ça coute 1 Nanane ça")
-        memes = {
-                1:"https://www.pornhub.com/categories/hentai",
-                2:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                3:"https://www.youtube.com/watch?v=jDwVkXVHIqg",
-                4:"https://www.youtube.com/watch?v=N6hVmn9FM7o",
-                5:"https://www.youtube.com/watch?v=zNtr0RahRqM"
-            }
-
-        connect = MongoClient(CONN_STRING)
-        db = connect.discord
-        collection = db.wallet
-
-        for member in ctx.guild.members:
-            if member.id == ctx.author.id:
-                current_cash = collection.find_one({'_id': member.id})['Nanane']
-                await ctx.send(f"T'es rendu à {current_cash - 1} Nanane")
-                collection.update_one({'_id': member.id},{'$set': {'Nanane': current_cash - 1}}, upsert=False)
-        
-        await ctx.send(memes[randint(1, len(memes))])
-
     @commands.command(brief="!insult @<user>")
     async def insult(self, ctx, member: discord.Member = None):
         insult = await get_mom_joke()

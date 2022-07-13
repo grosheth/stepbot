@@ -12,14 +12,9 @@ class Games(commands.Cog):
 
     @commands.command(brief="!coinflip <pile> <face>")
     async def coinflip(self, ctx, arg):
-
-        connect = MongoClient(CONN_STRING)
-        db = connect.discord
-        collection = db.wallet
-
         arg = arg.lower()
         if arg != "pile" and arg != "face":
-            await ctx.send(f"{arg} n'est pas un choix à Pile ou face. Bravo")
+            await ctx.send(f"{arg} n'est pas un choix à Pile ou face. Monsieur soleil")
             return
         
         guesses = {
@@ -27,31 +22,25 @@ class Games(commands.Cog):
             2:"face"
         }
         guess = randint(1,2)
-        await ctx.send("...")
         await asyncio.sleep(1)
         await ctx.send("...La tension monte...")
+        await asyncio.sleep(2)
+        
         if ctx.author.id == int(FILOU):
-            await ctx.send("...")
-            await asyncio.sleep(1)
             await ctx.send("...pas comme la molle a Filou...")
-        await asyncio.sleep(1)
         await ctx.send(guesses[guess])
+
         if guesses[guess] == arg:
             await asyncio.sleep(1)
             await ctx.send("Bravo, Pussi Conqueror")
         else:
             await asyncio.sleep(1)
-            await ctx.send("Hélas, la maison l'emporte")
+            await ctx.send("CACHING MUFAKA")
 
 
     @commands.command(brief="!rr Russian roulette")
-    async def rr(self, ctx):
-        
-        connect = MongoClient(CONN_STRING)
-        db = connect.discord
-        collection = db.wallet
-
-        await ctx.send("Tu gagne 1 Nanane si tu meur pas. Tu perd 5 Nanane si tu tfa shot.")
+    async def rr(self, ctx):       
+        await ctx.send("Tu gagne 1000 Nanane si tu meur pas. Tu perd 5000 Nanane si tu tfa shot.")
         
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Tu decide po.")
@@ -65,30 +54,27 @@ class Games(commands.Cog):
         await ctx.send("Roulette Russe")
         await asyncio.sleep(1)
         for member in voice_channel.members:
-            opening = await open_file("russianroulette.json","opening")
-            dead = await open_file("russianroulette.json","dead")
-            alive = await open_file("russianroulette.json","alive")
 
-            current_cash = get_cash(member.id, collection)
+            current_cash = get_cash(member.id)
             shot = randint(1,6)
 
-            await ctx.send(f"{member.name} {opening}")
+            await ctx.send(f'{member.name} {await open_file("russianroulette.json","opening")}')
             await asyncio.sleep(1)
             if shot == 1:
-                lose_money(member.id, current_cash, 50, collection)
-                await ctx.send(f'{member.name} {dead}')
-                await ctx.send(f'{member.name} Ta pardu 50 Nanane sti de laid')
+                lose_money(member.id, current_cash, 5000)
+                await ctx.send(f'{member.name} {await open_file("russianroulette.json","dead")}')
+                await ctx.send(f'{member.name} Ta pardu tes Nanane sti de laid')
                 await asyncio.sleep(1)
                 await member.move_to(None)
                 return
             else:
-                if member.id != int(FILOU):
-                    lose_money(member.id, current_cash, 50, collection)            
+                if member.id == int(FILOU):
+                    lose_money(member.id, current_cash, 500)            
                 else:
-                    win_money(member.id, current_cash, 10, collection)
+                    win_money(member.id, current_cash, 1000)
                 await ctx.send(f"click...")
                 await asyncio.sleep(1)
-                await ctx.send(f'{alive}')
+                await ctx.send(f'{await open_file("russianroulette.json","alive")}')
 
         await asyncio.sleep(1)
         await ctx.send(f"Parsonne est mort")

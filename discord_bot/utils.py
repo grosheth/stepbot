@@ -3,17 +3,26 @@ from pymongo import MongoClient
 from settings import *
 
 
-def get_cash(member_id, collection):
+def db_connection():
+    connect = MongoClient(CONN_STRING)
+    collection = connect.discord.wallet
+    return collection
+
+
+def get_cash(member_id):
+    collection = db_connection()
     current_cash = collection.find_one({'_id': member_id})['Nanane']
     return current_cash
 
 
-def lose_money(member_id, current_cash, win, collection):
-    collection.update_one({'_id': member_id},{'$set': {'Nanane': current_cash + win}}, upsert=False)
+def lose_money(member_id, current_cash, win):
+    collection = db_connection()
+    collection.update_one({'_id': member_id},{'$set': {'Nanane': current_cash - win}}, upsert=False)
 
 
-def win_money(member_id, current_cash, loss, collection):
-    collection.update_one({'_id': member_id},{'$set': {'Nanane': current_cash - loss}}, upsert=False)
+def win_money(member_id, current_cash, loss):
+    collection = db_connection()
+    collection.update_one({'_id': member_id},{'$set': {'Nanane': current_cash + loss}}, upsert=False)
 
 
 async def create_text_channel(guild, channel_name):
