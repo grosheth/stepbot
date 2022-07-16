@@ -11,18 +11,6 @@ class Activities(commands.Cog):
         print('---------')
         print(f" Chu pra")
         print('---------')
-        
-        bot.lava_nodes = [
-            {
-                'hosts': 'lava.link',
-                'port': 80,
-                'rest_uri': f'http://lava.link:80',
-                'identifier': 'MAIN',
-                'password': 'anything',
-                'region': 'Montreal'
-            }
-        ]
-
 
     @commands.Cog.listener()
     async def on_voice_state_update(self,member,before,after):
