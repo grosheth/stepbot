@@ -1,6 +1,5 @@
 from discord.ext import commands
 import discord, aiohttp
-from PIL import Image, ImageFont, ImageDraw
 from pymongo import MongoClient
 from settings import CONN_STRING
 from utils import *
