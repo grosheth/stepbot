@@ -9,17 +9,6 @@ class Spotify(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-        bot.lava_nodes = [
-            {
-                'hosts': 'lava.link',
-                'port': 80,
-                'rest_uri': f'http://lava.link:80',
-                'identifier': 'MAIN',
-                'password': 'anything',
-                'region': 'Toronto'
-            }
-        ]
-
 
     @commands.command(brief="!track")
     async def track(self, ctx, user: discord.Member = None):
