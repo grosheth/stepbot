@@ -32,6 +32,7 @@ class Spotify(commands.Cog):
                 'port': 80,
                 'rest_uri': f'http://lava.link:80',
                 'identifier': 'MAIN',
+                'password': 'anything'
                 'region': 'Toronto'
             }
         ]
