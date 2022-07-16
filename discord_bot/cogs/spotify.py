@@ -1,8 +1,11 @@
 from discord.ext import commands
-import discord, aiohttp
+import discord, aiohttp, requests
+import dateutil.parser
+from PIL import Image, ImageFont, ImageDraw
 from pymongo import MongoClient
 from settings import CONN_STRING
 from utils import *
+
 
 class Spotify(commands.Cog):
     def __init__(self, bot):
@@ -18,6 +21,21 @@ class Spotify(commands.Cog):
             await ctx.send(f"{user.name} is not listening to spotify.")
             return
         await ctx.send(f"https://open.spotify.com/track/{spotify_result.track_id}")
+    
+
+    @commands.command(brief="!track")
+    async def play(self, ctx):
+        
+        bot.lava_nodes = [
+            {
+                'hosts': 'lava.link',
+                'port': 80,
+                'rest_uri': f'http://lava.link:80',
+                'identifier': 'MAIN',
+                'region': 'Toronto'
+            }
+        ]
+    
 
 
 
