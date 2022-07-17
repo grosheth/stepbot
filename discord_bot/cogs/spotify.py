@@ -24,11 +24,12 @@ class Music(commands.Cog):
 
     @commands.command(brief="!join")
     async def join(self, ctx):
-        if ctx.author.vocie is None:
-            await ctx.send("T PO DANS VOICE CHANNEL")
-        voice_channel = ctx.author.voice_channel
+        if ctx.author.voice is None:
+            await ctx.send("T po dans l'channel, Tu decide po.")
+        voice_channel = ctx.author.voice.channel
+
         if ctx.voice_client is None:
-            await ctx.voice_client.connect()
+            await voice_channel.connect()
         else:
             await ctx.voice_client.move_to(voice_channel)
     
