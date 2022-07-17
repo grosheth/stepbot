@@ -11,15 +11,16 @@ class Music(commands.Cog):
         self.bot = bot
 
 
-    # @commands.command(brief="!track")
-    # async def track(self, ctx, user: discord.Member = None):
-    #     user = user or ctx.author
-    #     spotify_result = next((activity for activity in user.activities if isinstance(activity, discord.Spotify)), None)
-    #     print(spotify_result)
-    #     if spotify_result is None:
-    #         await ctx.send(f"{user.name} is not listening to spotify.")
-    #         return
-    #     await ctx.send(f"https://open.spotify.com/track/{spotify_result.track_id}")
+    @commands.command(brief="!track")
+    async def spotify_track(self, ctx, user: discord.Member = None):
+        user = user or ctx.author
+        spotify_result = next((activity for activity in user.activities if isinstance(activity, discord.Spotify)), None)
+        print(spotify_result)
+        if spotify_result is None:
+            await ctx.send(f"{user.name} is not listening to spotify.")
+            return
+        await ctx.send(f"https://open.spotify.com/track/{spotify_result.track_id}")
+
 
     @commands.command(brief="!join")
     async def join(self, ctx):
