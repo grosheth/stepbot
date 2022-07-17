@@ -20,18 +20,6 @@ class Music(commands.Cog):
             await ctx.send(f"{user.name} is not listening to spotify.")
             return
         await ctx.send(f"https://open.spotify.com/track/{spotify_result.track_id}")
-
-
-    @commands.command(brief="!join")
-    async def join(self, ctx):
-        if ctx.author.voice is None:
-            await ctx.send("T po dans l'channel, Tu decide po.")
-        voice_channel = ctx.author.voice.channel
-
-        if ctx.voice_client is None:
-            await voice_channel.connect()
-        else:
-            await ctx.voice_client.move_to(voice_channel)
     
     
     @commands.command(brief="!disconnect")
@@ -41,6 +29,16 @@ class Music(commands.Cog):
 
     @commands.command(brief="!play pour jouser de la music")
     async def play(self, ctx, url):
+
+        if ctx.author.voice is None:
+            await ctx.send("T po dans l'channel, Tu decide po.")
+        voice_channel = ctx.author.voice.channel
+
+        if ctx.voice_client is None:
+            await voice_channel.connect()
+        else:
+            await ctx.voice_client.move_to(voice_channel)
+
         ctx.voice_client.stop()
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
         YDL_OPTIONS = {'format':"bestaudio"}
