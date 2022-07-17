@@ -41,7 +41,7 @@ class Music(commands.Cog):
 
     @commands.command(brief="!play pour jouser de la music")
     async def play(self, ctx, url):
-        ctx.voice_client.stop()
+        await ctx.voice_client.stop()
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
         YDL_OPTIONS = {'format':"bestaudio"}
         vc = ctx.voice_client
