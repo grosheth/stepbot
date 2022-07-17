@@ -6,7 +6,7 @@ from settings import CONN_STRING
 from utils import *
 
 
-class Spotify(commands.Cog):
+class Music(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -25,7 +25,16 @@ class Spotify(commands.Cog):
     async def join(self, ctx):
         if ctx.author.vocie is None:
             await ctx.send("T PO DANS VOICE CHANNEL")
-        voice_channel = ctx.author
+        voice_channel = ctx.author.voice_channel
+        if ctx.voice_client is None:
+            await ctx.voice_client.connect()
+        else:
+            await ctx.voice_client.move_to(voice_channel)
+    
+    
+    @commands.command(brief="!disconnect")
+    async def disconnect(self, ctx):
+        await ctx.voice_client.disconnect()
 
 
     @commands.command(brief="!play pour jouser de la music")
@@ -43,4 +52,4 @@ class Spotify(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(Spotify(bot))
+    bot.add_cog(Music(bot))
