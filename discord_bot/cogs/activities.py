@@ -18,6 +18,7 @@ class Activities(commands.Cog):
 
     @commands.Cog.listener()
     async def on_voice_state_update(self,member,before,after):
+        await voice_channel.disconnect()
         if member.bot:
             if not before.channel:
                 print(f'Bot {member.name} joined {after.channel.name}')
