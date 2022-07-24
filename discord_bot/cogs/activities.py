@@ -18,6 +18,7 @@ class Activities(commands.Cog):
 
     @commands.Cog.listener()
     async def on_voice_state_update(self,member,before,after):
+        voice_channel = member.voice.channel
         await voice_channel.disconnect()
         if member.bot:
             if not before.channel:
@@ -57,8 +58,6 @@ class Activities(commands.Cog):
 
         else:
             url = ""
-
-        voice_channel = member.voice.channel
         await voice_channel.connect()
         vc = discord.utils.get(self.bot.voice_clients)
         vc.stop()
