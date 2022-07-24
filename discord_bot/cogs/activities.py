@@ -37,6 +37,7 @@ class Activities(commands.Cog):
                         print(f"{member.name} started streaming")
                     if member.voice.self_deaf:
                         print("User deafened")
+            return
 
         if member.id == int(CORBIN):
             url = "https://www.youtube.com/watch?v=U06jlgpMtQs"
