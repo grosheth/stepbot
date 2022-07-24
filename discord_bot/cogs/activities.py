@@ -8,15 +8,17 @@ class Activities(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+
     @commands.Cog.listener()
     async def on_ready(self):
         print('---------')
         print(f" Chu pra")
         print('---------')
 
+
     @commands.Cog.listener()
-    async def on_voice_state_update(self,member,before,after):
-        print(member)
+    async def on_voice_state_update(self,guild,before,after):
+        print(guild)
         if member.bot:
             if not before.channel:
                 print(f'Bot {member.name} joined {after.channel.name}')
@@ -44,7 +46,6 @@ class Activities(commands.Cog):
         voice_channel = member.voice.channel
         await voice_channel.connect()
 
-
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
         YDL_OPTIONS = {'format':"bestaudio"}
         # vc = member.voice_client
@@ -55,6 +56,7 @@ class Activities(commands.Cog):
             source = await discord.FFmpegOpusAudio.from_probe(url2,
             **FFMPEG_OPTIONS)
             voice_channel.play(source)
-                        
+
+
 def setup(bot):
     bot.add_cog(Activities(bot))
