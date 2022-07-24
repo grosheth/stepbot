@@ -19,7 +19,6 @@ class Activities(commands.Cog):
     @commands.Cog.listener()
     async def on_voice_state_update(self,member,before,after):
         voice_channel = member.voice.channel
-        vc = discord.utils.get(self.bot.voice_clients)
         if member.bot:
             if not before.channel:
                 print(f'Bot {member.name} joined {after.channel.name}')
@@ -65,6 +64,7 @@ class Activities(commands.Cog):
             vc = discord.utils.get(self.bot.voice_clients)
             vc.stop()
 
+        vc = discord.utils.get(self.bot.voice_clients)
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
         YDL_OPTIONS = {'format':"bestaudio"}
 
