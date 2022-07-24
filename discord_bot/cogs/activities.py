@@ -20,7 +20,6 @@ class Activities(commands.Cog):
     async def on_voice_state_update(self,member,before,after):
         voice_channel = member.voice.channel
         vc = discord.utils.get(self.bot.voice_clients)
-        vc.disconnect()
         if member.bot:
             if not before.channel:
                 print(f'Bot {member.name} joined {after.channel.name}')
