@@ -1,6 +1,6 @@
-from pymongo import MongoClient
+# from pymongo import MongoClient
 
-class Wallet():
+# class Wallet():
 
     # def create_wallet(user, money)
     #     for member in ctx.guild.members:
