@@ -5,6 +5,7 @@ from pymongo import MongoClient
 from settings import CONN_STRING
 from utils import *
 
+
 class Games(commands.Cog):
     def __init__(self, bot):
         self.bot = bot

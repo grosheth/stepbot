@@ -4,6 +4,7 @@ from settings import *
 import youtube_dl, discord
 from pymongo import MongoClient
 
+
 class Activities(commands.Cog):
     def __init__(self, bot):
         self.bot = bot

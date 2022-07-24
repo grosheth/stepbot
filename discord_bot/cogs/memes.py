@@ -5,14 +5,17 @@ from utils import get_mom_joke, open_file
 from pymongo import MongoClient
 from settings import CONN_STRING
 
+
 class Memes(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
 
     @commands.command(brief="!insult @<user>")
     async def insult(self, ctx, member: discord.Member = None):
         insult = await get_mom_joke()
         await ctx.send(f"{member.display_name} {insult}")
+
 
     @commands.command(brief="!quote sends a beer quote with image")
     async def quote(self, ctx):
@@ -23,6 +26,7 @@ class Memes(commands.Cog):
                     embed = discord.Embed(title=quote)
                     embed.set_image(url=r._real_url)
                     await ctx.send(embed=embed)
+
                     
     @commands.command(brief="!whoyou PoussySlayer se présente")
     async def whoyou(self, ctx):
