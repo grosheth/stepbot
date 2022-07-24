@@ -15,7 +15,7 @@ class Activities(commands.Cog):
         print('---------')
 
     @commands.Cog.listener()
-    async def on_voice_state_update(self,member,before,after,ctx):
+    async def on_voice_state_update(self,member,before,after):
         if member.bot:
             if not before.channel:
                 print(f'Bot {member.name} joined {after.channel.name}')
@@ -36,7 +36,7 @@ class Activities(commands.Cog):
 
         if member.id == int(ALESS):
             url = "https://www.youtube.com/watch?v=U06jlgpMtQs"
-            
+
         if not before.channel:
             print(f'Bot {member.name} joined {after.channel.name}')
 
