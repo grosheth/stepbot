@@ -20,24 +20,6 @@ class Activities(commands.Cog):
     async def on_voice_state_update(self,member,before,after):
         voice_channel = member.voice.channel
         vc = discord.utils.get(self.bot.voice_clients)
-        if member.bot:
-            if not before.channel:
-                print(f'Bot {member.name} joined {after.channel.name}')
-
-        else:
-            if not before.channel:
-                print(f'{member.name} joined {after.channel.name}')
-
-            if before.channel and after.channel:
-                if before.channel.id != after.channel.id:
-                    print("bot switched channel")
-                else:
-                    print("somethin else happened")
-                    if member.voice.self_stream:
-                        print(f"{member.name} started streaming")
-                    if member.voice.self_deaf:
-                        print("User deafened")
-            return
 
         if member.id == int(CORBIN):
             url = "https://www.youtube.com/watch?v=U06jlgpMtQs"
@@ -68,7 +50,6 @@ class Activities(commands.Cog):
 
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
         YDL_OPTIONS = {'format':"bestaudio"}
-
 
         with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
             info = ydl.extract_info(url, download=False)
