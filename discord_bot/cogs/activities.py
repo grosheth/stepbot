@@ -19,6 +19,27 @@ class Activities(commands.Cog):
     @commands.Cog.listener()
     async def on_voice_state_update(self,member,before,after):
         voice_channel = member.voice.channel
+        if member.bot:
+            if not before.channel:
+                print(f'Bot {member.name} joined {after.channel.name}')
+
+        else:
+            if not before.channel:
+                print(f'{member.name} joined {after.channel.name}')
+
+            if before.channel and after.channel:
+                if before.channel.id != after.channel.id:
+                    print("bot switched channel")
+                    return
+                else:
+                    print("somethin else happened")
+                    if member.voice.self_stream:
+                        print(f"{member.name} started streaming")
+                        return
+                    if member.voice.self_deaf:
+                        print("User deafened")
+                        return
+
         if member.id == int(CORBIN):
             url = "https://www.youtube.com/watch?v=U06jlgpMtQs"
 
