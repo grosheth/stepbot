@@ -22,6 +22,7 @@ class Activities(commands.Cog):
         if member.bot:
             if not before.channel:
                 print(f'Bot {member.name} joined {after.channel.name}')
+                print(member.bot.voice_clients)
 
         else:
             if not before.channel:
@@ -49,7 +50,8 @@ class Activities(commands.Cog):
 
             FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
             YDL_OPTIONS = {'format':"bestaudio"}
-            vc = member.voice.channel
+            vc = discord.utils.get(member.bot.voice_clients)
+            print(vc)
 
             with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(url, download=False)
