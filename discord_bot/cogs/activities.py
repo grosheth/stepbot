@@ -39,10 +39,10 @@ class Activities(commands.Cog):
         if member.id == int(CORBIN):
             url = "https://www.youtube.com/watch?v=U06jlgpMtQs"
 
-        elif member.id == int(ALESS):
+        elif member.id == int(RURU):
             url = "https://www.youtube.com/watch?v=aT5JaB5agSE"
             
-        elif member.id == int(RURU):
+        elif member.id == int(ALESS):
             url = "https://www.youtube.com/watch?v=wrdK57qgNqA"
         
         elif member.id == int(FILOU):
