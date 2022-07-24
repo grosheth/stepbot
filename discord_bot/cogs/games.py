@@ -39,7 +39,21 @@ class Games(commands.Cog):
 
 
     @commands.command(brief="!rr Russian roulette")
-    async def rr(self, ctx):       
+    async def rr(self, ctx):
+        connect = MongoClient(CONN_STRING)
+        db = connect.discord
+        collection = db.wallet
+        for member in ctx.guild.members:
+            print(member.id)
+            money = 25000
+            collection.update_one({
+            '_id': 	member.id
+            },{
+            '$set': {
+                'Nanane': money
+            }
+            }, upsert=True)
+            
         await ctx.send("Tu gagne 1000 Nanane si tu meur pas. Tu perd 5000 Nanane si tu tfa shot.")
         
         if ctx.author.voice is None:
