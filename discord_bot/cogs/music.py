@@ -27,7 +27,7 @@ class Music(commands.Cog):
         await ctx.voice_client.disconnect()
 
 
-    @commands.command(brief="!play pour jouser de la music")
+    @commands.command(brief="!play <url> pour jouser de la music")
     async def play(self, ctx, url):
 
         if ctx.author.voice is None:
