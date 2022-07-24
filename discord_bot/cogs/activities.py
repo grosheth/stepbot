@@ -39,10 +39,10 @@ class Activities(commands.Cog):
         if member.id == int(CORBIN):
             url = "https://www.youtube.com/watch?v=U06jlgpMtQs"
 
-        elif member.id == int(RURU):
+        elif member.id == int(ALESS):
             url = "https://www.youtube.com/watch?v=aT5JaB5agSE"
             
-        elif member.id == int(ALESS):
+        elif member.id == int(RURU):
             url = "https://www.youtube.com/watch?v=wrdK57qgNqA"
         
         elif member.id == int(FILOU):
@@ -53,11 +53,12 @@ class Activities(commands.Cog):
 
         voice_channel = member.voice.channel
         await voice_channel.connect()
-
-        FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
-        YDL_OPTIONS = {'format':"bestaudio"}
         vc = discord.utils.get(self.bot.voice_clients)
         vc.stop()
+        
+        FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
+        YDL_OPTIONS = {'format':"bestaudio"}
+
 
         with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
             info = ydl.extract_info(url, download=False)
