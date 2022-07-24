@@ -12,6 +12,12 @@ REDDIT_SECRET = os.getenv("REDDIT_SECRET")
 
 FILOU = os.getenv("FILOU")
 RURU = os.getenv("RURU")
+ALESS = os.getenv("ALESS")
+CORBIN = os.getenv("CORBIN")
+BRIDO = os.getenv("BRIDO")
+PEPI = os.getenv("PEPI")
+MARTIN = os.getenv("MARTIN")
+
 
 DB = os.getenv("DB")
 HOST = os.getenv("HOST")
