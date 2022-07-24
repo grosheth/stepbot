@@ -38,6 +38,7 @@ class Activities(commands.Cog):
                         print("User deafened")
 
         if member.id == int(ALESS):
+            print(f"get user {member} {ALESS} song")
             url = "https://www.youtube.com/watch?v=U06jlgpMtQs"
 
             if not before.channel:
