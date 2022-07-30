@@ -44,7 +44,7 @@ class Activities(commands.Cog):
 
         if member.id == int(CORBIN):
             url = "https://www.youtube.com/watch?v=U06jlgpMtQs"
-            
+
         elif member.id == int(ALESS):
             url = "intro/intro_ruel.mp3"
 
@@ -74,7 +74,7 @@ class Activities(commands.Cog):
 
         player = vc.create_ffmpeg_player(url, after=lambda: print('done'))
         player.start()
-        # vc = discord.utils.get(self.bot.voice_clients)
+        vc = discord.utils.get(self.bot.voice_clients)
         # FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
         # YDL_OPTIONS = {'format':"bestaudio"}
 
