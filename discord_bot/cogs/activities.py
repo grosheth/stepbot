@@ -51,8 +51,8 @@ class Activities(commands.Cog):
             time = 12
 
         elif member.id == int(RURU):
-            url = "https://www.youtube.com/watch?v=wrdK57qgNqA"
-            time = 30
+            url = "https://www.youtube.com/watch?v=6fILxnBH1Tg"
+            time = 35
 
         elif member.id == int(FILOU):
             url = "https://www.youtube.com/watch?v=9_o4_4fwbpU"
@@ -69,7 +69,7 @@ class Activities(commands.Cog):
         elif member.id == int(BRIDO):
             url = "https://www.youtube.com/watch?v=aT5JaB5agSE"
             time = 15
-            
+
         else:
             url = ""
 
