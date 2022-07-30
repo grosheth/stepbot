@@ -1,3 +1,4 @@
+import asyncio
 from discord.ext import commands
 from utils import *
 from settings import *
@@ -82,6 +83,8 @@ class Activities(commands.Cog):
             source = await discord.FFmpegOpusAudio.from_probe(url2,
             **FFMPEG_OPTIONS)
             vc.play(source)
-
+            await asyncio.sleep(10)
+            vc.stop
+            
 def setup(bot):
     bot.add_cog(Activities(bot))
