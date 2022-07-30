@@ -4,7 +4,7 @@ from random import randint
 from pymongo import MongoClient
 from settings import CONN_STRING
 from utils import *
-
+import youtube_dl
 
 class Games(commands.Cog):
     def __init__(self, bot):
