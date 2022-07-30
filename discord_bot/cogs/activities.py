@@ -44,25 +44,32 @@ class Activities(commands.Cog):
 
         if member.id == int(CORBIN):
             url = "https://www.youtube.com/watch?v=U06jlgpMtQs"
+            time = 15
 
         elif member.id == int(ALESS):
             url = "https://www.youtube.com/watch?v=_p2ymy8481Q"
-            
+            time = 12
+
         elif member.id == int(RURU):
             url = "https://www.youtube.com/watch?v=wrdK57qgNqA"
-        
+            time = 30
+
         elif member.id == int(FILOU):
             url = "https://www.youtube.com/watch?v=9_o4_4fwbpU"
+            time = 20
 
         elif member.id == int(PEPI):
             url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
+            time = 15
 
         elif member.id == int(MARTIN):
             url = "https://www.youtube.com/watch?v=mtToc5EmSho"
+            time = 15
 
         elif member.id == int(BRIDO):
             url = "https://www.youtube.com/watch?v=aT5JaB5agSE"
-
+            time = 15
+            
         else:
             url = ""
 
@@ -83,7 +90,7 @@ class Activities(commands.Cog):
             source = await discord.FFmpegOpusAudio.from_probe(url2,
             **FFMPEG_OPTIONS)
             vc.play(source)
-            await asyncio.sleep(12)
+            await asyncio.sleep(time)
         vc.stop()
 
 def setup(bot):
