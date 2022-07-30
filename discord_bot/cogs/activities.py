@@ -44,8 +44,7 @@ class Activities(commands.Cog):
 
         if member.id == int(CORBIN):
             url = "https://www.youtube.com/watch?v=U06jlgpMtQs"
-            time = 15
-
+            
         elif member.id == int(ALESS):
             url = "intro/intro_ruel.mp3"
 
@@ -54,19 +53,15 @@ class Activities(commands.Cog):
 
         elif member.id == int(FILOU):
             url = "https://www.youtube.com/watch?v=9_o4_4fwbpU"
-            time = 20
 
         elif member.id == int(PEPI):
             url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
-            time = 15
 
         elif member.id == int(MARTIN):
             url = "https://www.youtube.com/watch?v=mtToc5EmSho"
-            time = 15
 
         elif member.id == int(BRIDO):
             url = "https://www.youtube.com/watch?v=aT5JaB5agSE"
-            time = 15
 
         else:
             url = ""
@@ -77,8 +72,8 @@ class Activities(commands.Cog):
             vc = discord.utils.get(self.bot.voice_clients)
             vc.stop()
 
-            player = vc.create_ffmpeg_player('vuvuzela.mp3', after=lambda: print('done'))
-            player.start()
+        player = vc.create_ffmpeg_player(url, after=lambda: print('done'))
+        player.start()
         # vc = discord.utils.get(self.bot.voice_clients)
         # FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
         # YDL_OPTIONS = {'format':"bestaudio"}
