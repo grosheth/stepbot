@@ -71,10 +71,11 @@ class Activities(commands.Cog):
         except:
             vc = discord.utils.get(self.bot.voice_clients)
             vc.stop()
-
+            
+        vc = discord.utils.get(self.bot.voice_clients)
         player = vc.create_ffmpeg_player(url, after=lambda: print('done'))
         player.start()
-        vc = discord.utils.get(self.bot.voice_clients)
+
         # FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
         # YDL_OPTIONS = {'format':"bestaudio"}
 
