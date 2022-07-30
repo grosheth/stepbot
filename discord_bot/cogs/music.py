@@ -5,6 +5,7 @@ from pymongo import MongoClient
 from settings import CONN_STRING
 from utils import *
 
+url_list = []
 
 class Music(commands.Cog):
     def __init__(self, bot):
@@ -30,6 +31,8 @@ class Music(commands.Cog):
     @commands.command(brief="!play <url> pour jouser de la music")
     async def play(self, ctx, url):
 
+        url_list.append(url)
+        print(url_list)
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Tu decide po.")
         voice_channel = ctx.author.voice.channel
@@ -39,7 +42,7 @@ class Music(commands.Cog):
         else:
             await ctx.voice_client.move_to(voice_channel)
 
-        ctx.voice_client.stop()
+        # ctx.voice_client.stop()
         
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
         YDL_OPTIONS = {'format':"bestaudio"}
