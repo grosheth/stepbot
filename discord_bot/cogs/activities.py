@@ -84,7 +84,7 @@ class Activities(commands.Cog):
             **FFMPEG_OPTIONS)
             vc.play(source)
             await asyncio.sleep(10)
-            vc.stop
-            
+            self.bot.voice_client.stop()
+
 def setup(bot):
     bot.add_cog(Activities(bot))
