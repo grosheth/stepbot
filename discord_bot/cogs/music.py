@@ -5,7 +5,6 @@ from pymongo import MongoClient
 from settings import CONN_STRING
 from utils import *
 
-url_list = []
 
 class Music(commands.Cog):
     def __init__(self, bot):
