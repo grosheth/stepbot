@@ -54,8 +54,8 @@ class Music(commands.Cog):
                 source = await discord.FFmpegOpusAudio.from_probe(url2,
                 **FFMPEG_OPTIONS)
                 vc.play(source)
-                #url_list.remove(x)
-                #ctx.voice_client.stop()
+            url_list.remove(x)
+            ctx.voice_client.stop()
 
 
 def setup(bot):
