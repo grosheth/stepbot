@@ -56,6 +56,7 @@ class Music(commands.Cog):
                 vc.play(source)
             url_list.remove(x)
             ctx.voice_client.stop()
+            print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
 
 def setup(bot):
