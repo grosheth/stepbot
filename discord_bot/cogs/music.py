@@ -32,7 +32,6 @@ class Music(commands.Cog):
     async def play(self, ctx, url):
 
         url_list.append(url)
-        print(url_list)
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Tu decide po.")
         voice_channel = ctx.author.voice.channel
@@ -41,8 +40,6 @@ class Music(commands.Cog):
             await voice_channel.connect()
         else:
             await ctx.voice_client.move_to(voice_channel)
-
-        # ctx.voice_client.stop()
         
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
         YDL_OPTIONS = {'format':"bestaudio"}
@@ -50,13 +47,14 @@ class Music(commands.Cog):
 
 
         for x in url_list:
-            print(x)
+            url_list.pop(x)
             with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(x, download=False)
                 url2 = info['formats'][0]['url']
                 source = await discord.FFmpegOpusAudio.from_probe(url2,
                 **FFMPEG_OPTIONS)
                 vc.play(source)
+                ctx.voice_client.stop()
 
 
 def setup(bot):
