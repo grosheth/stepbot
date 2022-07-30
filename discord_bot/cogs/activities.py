@@ -55,13 +55,13 @@ class Activities(commands.Cog):
             url = "https://www.youtube.com/watch?v=9_o4_4fwbpU"
 
         elif member.id == int(PEPI):
-            url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8" #https://www.youtube.com/watch?v=aT5JaB5agSE
+            url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8" #
 
         elif member.id == int(MARTIN):
             url = "https://www.youtube.com/watch?v=mtToc5EmSho"
 
         elif member.id == int(BRIDO):
-            url = ""
+            url = "https://www.youtube.com/watch?v=aT5JaB5agSE"
 
         else:
             url = ""

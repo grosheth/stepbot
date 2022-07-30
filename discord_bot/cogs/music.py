@@ -46,17 +46,13 @@ class Music(commands.Cog):
         vc = ctx.voice_client
 
 
-        for x in url_list:
-            print(url_list, x)
-            with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
-                info = ydl.extract_info(x, download=False)
-                url2 = info['formats'][0]['url']
-                source = await discord.FFmpegOpusAudio.from_probe(url2,
-                **FFMPEG_OPTIONS)
-                await vc.play(source)
-            url_list.remove(x)
-            ctx.voice_client.stop()
-            print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
+            info = ydl.extract_info(x, download=False)
+            url2 = info['formats'][0]['url']
+            source = await discord.FFmpegOpusAudio.from_probe(url2,
+            **FFMPEG_OPTIONS)
+            await vc.play(source)
+
 
 
 def setup(bot):
