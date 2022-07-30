@@ -47,7 +47,6 @@ class Music(commands.Cog):
 
 
         for x in url_list:
-            url_list.remove(x)
             print(url_list, x)
             with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(x, download=False)
@@ -55,6 +54,7 @@ class Music(commands.Cog):
                 source = await discord.FFmpegOpusAudio.from_probe(url2,
                 **FFMPEG_OPTIONS)
                 vc.play(source)
+                url_list.remove(x)
                 ctx.voice_client.stop()
 
 
