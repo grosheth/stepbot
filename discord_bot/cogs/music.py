@@ -55,7 +55,7 @@ class Music(commands.Cog):
                 **FFMPEG_OPTIONS)
                 vc.play(source)
                 url_list.remove(x)
-                ctx.voice_client.stop()
+                #ctx.voice_client.stop()
 
 
 def setup(bot):
