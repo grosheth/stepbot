@@ -47,7 +47,8 @@ class Music(commands.Cog):
 
 
         for x in url_list:
-            url_list.pop(x)
+            url_list.remove(x)
+            print(url_list, x)
             with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(x, download=False)
                 url2 = info['formats'][0]['url']
