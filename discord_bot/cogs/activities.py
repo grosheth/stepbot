@@ -83,8 +83,8 @@ class Activities(commands.Cog):
             source = await discord.FFmpegOpusAudio.from_probe(url2,
             **FFMPEG_OPTIONS)
             vc.play(source)
-            await asyncio.sleep(10)
-            self.bot.voice_client.stop()
+        await asyncio.sleep(10)
+        self.bot.voice_client.stop()
 
 def setup(bot):
     bot.add_cog(Activities(bot))
