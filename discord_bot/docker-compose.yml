@@ -1,0 +1,5 @@
+version: '3.3'
+services:
+    stepbot:
+        container_name: stepbot
+        image: stepbot/1.0.0:latest
