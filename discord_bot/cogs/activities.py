@@ -1,4 +1,3 @@
-import asyncio
 from discord.ext import commands
 from utils import *
 from settings import *
