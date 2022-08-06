@@ -24,8 +24,10 @@ spec:
         io.kompose.service: stepbot
     spec:
       containers:
-        - image: stepbot/1.0.0:latest
+        - image: 192.168.10.121:30000/stepbot:1.0.0
           name: stepbot
           resources: {}
       restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred  
 status: {}

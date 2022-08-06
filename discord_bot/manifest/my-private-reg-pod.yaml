@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: private-reg
+spec:
+  containers:
+  - name: private-reg-container
+    image: 192.168.10.121:30000/stepbot:1.0.0
+  imagePullSecrets:
+  - name: regcred
+
