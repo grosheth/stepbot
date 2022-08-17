@@ -1,10 +1,6 @@
 from discord.ext import commands
-from random import randint
 import discord, aiohttp
 from utils import get_mom_joke, open_file
-from pymongo import MongoClient
-from settings import CONN_STRING
-
 
 class Memes(commands.Cog):
     def __init__(self, bot):
@@ -28,11 +24,11 @@ class Memes(commands.Cog):
                     await ctx.send(embed=embed)
 
                     
-    @commands.command(brief="!whoyou PoussySlayer se présente")
+    @commands.command(brief="!whoyou Stepbot se présente")
     async def whoyou(self, ctx):
-        await ctx.send(embed=discord.Embed(title="Hello I am, P0u55i5l4y3r. Summon me using '!'",
+        await ctx.send(embed=discord.Embed(title="What are you doing stepbot?? UwU",
                                                     description=
-                                                    "Feet adorer, womanizer, Short longsword, can do the drapeau. Arch Ennemy: Nick Gingras. Pioussi is the quest, pioussi is the Graal.",
+                                                    "Feet adorer, womanizer, Short longsword, can do the drapeau, gets stuck in washing machine and windows(I use Arch btw). Nemesis: Nick Gingras.",
                                                     color=0xeeafe6))
 
 def setup(bot):
