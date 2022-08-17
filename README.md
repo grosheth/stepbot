@@ -1,7 +1,7 @@
 # Discord Bot
 
 
-## Sum up
+
 So I made a discord bot for me and my friends. It's full of inside jokes(most of it of bad taste) and also has a few functionnalities.
 
 I was bad at coding when I began this project, still am. So expect bugs. I will eventually cleanup the code. 
