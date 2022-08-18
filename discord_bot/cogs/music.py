@@ -1,10 +1,7 @@
 from discord.ext import commands
 import youtube_dl
-import discord, aiohttp
-from pymongo import MongoClient
-from settings import CONN_STRING
+import discord
 from utils import *
-
 
 class Music(commands.Cog):
     def __init__(self, bot):

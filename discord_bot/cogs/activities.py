@@ -2,8 +2,6 @@ from discord.ext import commands
 from utils import *
 from settings import *
 import youtube_dl, discord
-from pymongo import MongoClient
-
 
 class Activities(commands.Cog):
     def __init__(self, bot):
@@ -80,8 +78,6 @@ class Activities(commands.Cog):
             url2 = info['formats'][0]['url']
             source = await discord.FFmpegOpusAudio.from_probe(url2,**FFMPEG_OPTIONS)
             vc = discord.utils.get(self.bot.voice_clients)
-            #player = vc.FFmpegOpusAudio(url, after=lambda: print('done'))
-            #vc.start()
             vc.play(source)
             await asyncio.sleep(time)
         vc.stop()

@@ -1,8 +1,6 @@
-import asyncio, youtube_dl, discord
+import asyncio
 from discord.ext import commands
 from random import randint
-from pymongo import MongoClient
-from settings import CONN_STRING
 from utils import *
 
 class Games(commands.Cog):

@@ -1,7 +1,7 @@
 from discord.ext import commands
 import discord
 from settings import FILOU
-from utils import create_voice_channel, open_file
+from utils import open_file
 
 class Moderator(commands.Cog):
 
@@ -23,6 +23,3 @@ class Moderator(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Moderator(bot))
-
-# await create_voice_channel(ctx.author.guild, f"{member.name}-PARDANT", user_limit=1)
-# await create_voice_channel(ctx.author.guild, f"{ctx.author.name}-PARDANT", user_limit=1)

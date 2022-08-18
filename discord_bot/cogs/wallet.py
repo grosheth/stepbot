@@ -1,7 +1,5 @@
 from discord.ext import commands
-import discord, aiohttp
-from pymongo import MongoClient
-from settings import CONN_STRING
+import discord
 from utils import *
 
 class Wallet(commands.Cog):
