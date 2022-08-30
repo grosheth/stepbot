@@ -80,10 +80,9 @@ class Activities(commands.Cog):
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
         YDL_OPTIONS = {'format':"bestaudio"}
 
-        player = vc.create_ffmpeg_player(intro, after=lambda: print('done'))
-        player.start()
+
         
-        # voice.play(discord.FFmpegPCMAudio(executable="C:/path/ffmpeg.exe", source="C:/songpath"))
+        vc.play(discord.FFmpegPCMAudio(source=intro))
 
         while not player.is_done():
             await asyncio.sleep(1)
