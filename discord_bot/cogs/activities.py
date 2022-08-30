@@ -46,6 +46,7 @@ class Activities(commands.Cog):
         elif member.id == int(ALESS):
             url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
             intro = "intros/intro_ruel.mp3"
+            print(intro)
             time = 10
 
         elif member.id == int(RURU):
