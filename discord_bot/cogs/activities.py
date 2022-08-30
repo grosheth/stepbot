@@ -46,7 +46,6 @@ class Activities(commands.Cog):
         elif member.id == int(ALESS):
             url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
             intro = "intros/intro_ruel.mp3"
-            print(intro)
             time = 10
 
         elif member.id == int(RURU):
@@ -78,22 +77,22 @@ class Activities(commands.Cog):
             vc = discord.utils.get(self.bot.voice_clients)
             vc.stop()
 
-            FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
-            YDL_OPTIONS = {'format':"bestaudio"}
+        FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
+        YDL_OPTIONS = {'format':"bestaudio"}
 
+        vc = discord.utils.get(self.bot.voice_clients)
+        vc.play(discord.FFmpegPCMAudio(intro , executable='ffmpeg'))
+        vc.stop()
 
-            vc.play(discord.FFmpegPCMAudio(intro , executable='ffmpeg'))
-            vc.stop()
+        # with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
+        #     info = ydl.extract_info(url, download=False)
+        #     url2 = info['formats'][0]['url']
 
-            # with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
-            #     info = ydl.extract_info(url, download=False)
-            #     url2 = info['formats'][0]['url']
-
-            #     source = await discord.FFmpegOpusAudio.from_probe(url2,**FFMPEG_OPTIONS)
-            #     vc = discord.utils.get(self.bot.voice_clients)
-            #     vc.play(source)
-            #     await asyncio.sleep(time)
-            # vc.stop()
+        #     source = await discord.FFmpegOpusAudio.from_probe(url2,**FFMPEG_OPTIONS)
+        #     vc = discord.utils.get(self.bot.voice_clients)
+        #     vc.play(source)
+        #     await asyncio.sleep(time)
+        # vc.stop()
 
 def setup(bot):
     bot.add_cog(Activities(bot))
