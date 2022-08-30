@@ -81,14 +81,9 @@ class Activities(commands.Cog):
         YDL_OPTIONS = {'format':"bestaudio"}
 
 
-        
-        vc.play(discord.FFmpegPCMAudio(source=intro))
-
-        while not player.is_done():
-            await asyncio.sleep(1)
-            
-        player.stop()
-        await vc.disconnect()
+        if intro:
+            vc.play(discord.FFmpegPCMAudio(source=intro))
+            vc.stop()
 
         # with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
         #     info = ydl.extract_info(url, download=False)
