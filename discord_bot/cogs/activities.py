@@ -41,24 +41,32 @@ class Activities(commands.Cog):
 
         if member.id == int(CORBIN):
             url = "https://www.youtube.com/watch?v=U06jlgpMtQs"
+            time = 10
 
         elif member.id == int(ALESS):
             url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
+            intro = "intros/intro_ruel.mp3"
+            time = 10
 
         elif member.id == int(RURU):
-            url = ""
+            url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
+            time = 10
 
         elif member.id == int(FILOU):
             url = "https://www.youtube.com/watch?v=9_o4_4fwbpU"
+            time = 10
 
         elif member.id == int(PEPI):
             url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
+            time = 10
 
         elif member.id == int(MARTIN):
             url = "https://www.youtube.com/watch?v=mtToc5EmSho"
+            time = 10
 
         elif member.id == int(BRIDO):
             url = "https://www.youtube.com/watch?v=aT5JaB5agSE"
+            time = 10
 
         else:
             url = ""
@@ -72,15 +80,26 @@ class Activities(commands.Cog):
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
         YDL_OPTIONS = {'format':"bestaudio"}
 
+        player = vc.create_ffmpeg_player(intro, after=lambda: print('done'))
+        player.start()
+        
+        # voice.play(discord.FFmpegPCMAudio(executable="C:/path/ffmpeg.exe", source="C:/songpath"))
 
-        with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
-            info = ydl.extract_info(url, download=False)
-            url2 = info['formats'][0]['url']
-            source = await discord.FFmpegOpusAudio.from_probe(url2,**FFMPEG_OPTIONS)
-            vc = discord.utils.get(self.bot.voice_clients)
-            vc.play(source)
-            await asyncio.sleep(time)
-        vc.stop()
+        while not player.is_done():
+            await asyncio.sleep(1)
+            
+        player.stop()
+        await vc.disconnect()
+
+        # with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
+        #     info = ydl.extract_info(url, download=False)
+        #     url2 = info['formats'][0]['url']
+
+        #     source = await discord.FFmpegOpusAudio.from_probe(url2,**FFMPEG_OPTIONS)
+        #     vc = discord.utils.get(self.bot.voice_clients)
+        #     vc.play(source)
+        #     await asyncio.sleep(time)
+        # vc.stop()
 
 def setup(bot):
     bot.add_cog(Activities(bot))
