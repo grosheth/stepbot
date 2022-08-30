@@ -82,9 +82,8 @@ class Activities(commands.Cog):
         YDL_OPTIONS = {'format':"bestaudio"}
 
 
-        if intro:
-            vc.play(discord.FFmpegPCMAudio(source=intro))
-            vc.stop()
+        vc.play(discord.FFmpegPCMAudio(source=intro))
+        vc.stop()
 
         # with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
         #     info = ydl.extract_info(url, download=False)
