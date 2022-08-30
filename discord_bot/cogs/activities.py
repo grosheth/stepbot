@@ -85,15 +85,15 @@ class Activities(commands.Cog):
             vc.play(discord.FFmpegPCMAudio(source=intro))
             vc.stop()
 
-            # with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
-            #     info = ydl.extract_info(url, download=False)
-            #     url2 = info['formats'][0]['url']
+            with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
+                info = ydl.extract_info(url, download=False)
+                url2 = info['formats'][0]['url']
 
-            #     source = await discord.FFmpegOpusAudio.from_probe(url2,**FFMPEG_OPTIONS)
-            #     vc = discord.utils.get(self.bot.voice_clients)
-            #     vc.play(source)
-            #     await asyncio.sleep(time)
-            # vc.stop()
+                source = await discord.FFmpegOpusAudio.from_probe(url2,**FFMPEG_OPTIONS)
+                vc = discord.utils.get(self.bot.voice_clients)
+                vc.play(source)
+                await asyncio.sleep(time)
+            vc.stop()
 
 def setup(bot):
     bot.add_cog(Activities(bot))
