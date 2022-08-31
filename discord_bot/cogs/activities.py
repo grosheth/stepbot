@@ -54,7 +54,7 @@ class Activities(commands.Cog):
 
         elif member.id == int(ALESS):
             url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
-            intro = "intro_ruel.mp3"
+            intro = "intros/intro_ruel.mp3"
             time = 10
             vc = discord.utils.get(self.bot.voice_clients)
             print(vc)
