@@ -81,6 +81,7 @@ class Activities(commands.Cog):
         YDL_OPTIONS = {'format':"bestaudio"}
 
         vc = discord.utils.get(self.bot.voice_clients)
+        print(intro)
         vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable='ffmpeg'))
         vc.stop()
 
