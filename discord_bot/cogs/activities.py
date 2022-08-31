@@ -82,7 +82,7 @@ class Activities(commands.Cog):
         YDL_OPTIONS = {'format':"bestaudio"}
 
         vc = discord.utils.get(self.bot.voice_clients)
-        await asyncio.sleep(2)
+        await asyncio.sleep(5)
         print(intro)
         vc.play(await discord.FFmpegOpusAudio.from_probe(intro ,**FFMPEG_OPTIONS))
         vc.stop()
