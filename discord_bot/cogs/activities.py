@@ -39,7 +39,15 @@ class Activities(commands.Cog):
                     if member.voice.self_deaf:
                         print("User deafened")
                         return
+        try:
+            await voice_channel.connect()
+        except:
+            vc = discord.utils.get(self.bot.voice_clients)
+            vc.stop()
 
+        FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
+        # YDL_OPTIONS = {'format':"bestaudio"}
+        
         if member.id == int(CORBIN):
             url = "https://www.youtube.com/watch?v=U06jlgpMtQs"
             time = 10
@@ -48,9 +56,7 @@ class Activities(commands.Cog):
             url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
             intro = "intros/intro_ruel.mp3"
             time = 10
-            print(intro)
             vc = discord.utils.get(self.bot.voice_clients)
-            await asyncio.sleep(5)
             vc.play(await discord.FFmpegOpusAudio.from_probe(intro ,**FFMPEG_OPTIONS))
             vc.stop()
 
@@ -73,19 +79,8 @@ class Activities(commands.Cog):
         elif member.id == int(BRIDO):
             url = "https://www.youtube.com/watch?v=aT5JaB5agSE"
             time = 10
-
         else:
             url = ""
-
-        try:
-            await voice_channel.connect()
-        except:
-            vc = discord.utils.get(self.bot.voice_clients)
-            vc.stop()
-
-        FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
-        # YDL_OPTIONS = {'format':"bestaudio"}
-
 
 
         # with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
