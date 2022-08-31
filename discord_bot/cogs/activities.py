@@ -48,6 +48,7 @@ class Activities(commands.Cog):
             url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
             intro = "intros/intro_ruel.mp3"
             time = 10
+            print(intro)
 
         elif member.id == int(RURU):
             url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
@@ -83,7 +84,6 @@ class Activities(commands.Cog):
 
         vc = discord.utils.get(self.bot.voice_clients)
         await asyncio.sleep(5)
-        print(intro)
         vc.play(await discord.FFmpegOpusAudio.from_probe(intro ,**FFMPEG_OPTIONS))
         vc.stop()
 
