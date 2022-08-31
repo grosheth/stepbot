@@ -47,7 +47,7 @@ class Activities(commands.Cog):
 
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
         # YDL_OPTIONS = {'format':"bestaudio"}
-        
+
         if member.id == int(CORBIN):
             url = "https://www.youtube.com/watch?v=U06jlgpMtQs"
             time = 10
@@ -57,6 +57,7 @@ class Activities(commands.Cog):
             intro = "intros/intro_ruel.mp3"
             time = 10
             vc = discord.utils.get(self.bot.voice_clients)
+            print(vc)
             vc.play(await discord.FFmpegOpusAudio.from_probe(intro ,**FFMPEG_OPTIONS))
             vc.stop()
 
