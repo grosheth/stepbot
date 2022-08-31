@@ -1,9 +1,9 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
     kompose.cmd: kompose convert -f docker-compose.yml
-    kompose.version: 1.26.1 (a9d05d509)
   creationTimestamp: null
   labels:
     io.kompose.service: stepbot
@@ -18,17 +18,15 @@ spec:
     metadata:
       annotations:
         kompose.cmd: kompose convert -f docker-compose.yml
-        kompose.version: 1.26.1 (a9d05d509)
       creationTimestamp: null
       labels:
         io.kompose.service: stepbot
     spec:
       containers:
-        - image: 182.168.10.121:30000/stepbot:1.0.18
+        - image: 192.168.10.121:30000/stepbot:1.0.22
           name: stepbot
           resources: {}
           imagePullPolicy: Always  
       restartPolicy: Always
       imagePullSecrets:
         - name: regcred  
-urrent_version/c \$build_number
