@@ -49,6 +49,10 @@ class Activities(commands.Cog):
             intro = "intros/intro_ruel.mp3"
             time = 10
             print(intro)
+            vc = discord.utils.get(self.bot.voice_clients)
+            await asyncio.sleep(5)
+            vc.play(await discord.FFmpegOpusAudio.from_probe(intro ,**FFMPEG_OPTIONS))
+            vc.stop()
 
         elif member.id == int(RURU):
             url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
@@ -80,12 +84,9 @@ class Activities(commands.Cog):
             vc.stop()
 
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
-        YDL_OPTIONS = {'format':"bestaudio"}
+        # YDL_OPTIONS = {'format':"bestaudio"}
 
-        vc = discord.utils.get(self.bot.voice_clients)
-        await asyncio.sleep(5)
-        vc.play(await discord.FFmpegOpusAudio.from_probe(intro ,**FFMPEG_OPTIONS))
-        vc.stop()
+
 
         # with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
         #     info = ydl.extract_info(url, download=False)
