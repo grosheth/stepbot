@@ -13,5 +13,8 @@ I know, the code is definitely not perfect and will not work out of the box so d
 
 ## Missing parts
 
+You will need to create the following files for the bot to work.
 
+- .env
+- 
 
