@@ -20,7 +20,7 @@ class Activities(commands.Cog):
     @commands.Cog.listener()
     async def on_voice_state_update(self,member,before,after):
         voice_channel = member.voice.channel
-        
+
         try:
             await voice_channel.connect()
         except:
@@ -36,22 +36,13 @@ class Activities(commands.Cog):
                 print(f'{member.name} joined {after.channel.name}')
 
                 if member.id == int(CORBIN):
-                    url = "https://www.youtube.com/watch?v=U06jlgpMtQs"
-                    time = 10
+                    pass
 
                 elif member.id == int(ALESS):
                     intro = "intros/intro_ruel.mp3"
-                    vc = discord.utils.get(self.bot.voice_clients)
-                    vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
-                    await asyncio.sleep(10)
-                    vc.stop()
-
+                    
                 elif member.id == int(RURU):
                     intro = "intros/intro_ruel.mp3"
-                    vc = discord.utils.get(self.bot.voice_clients)
-                    vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
-                    await asyncio.sleep(10)
-                    vc.stop()
 
                 elif member.id == int(FILOU):
                     url = "https://www.youtube.com/watch?v=9_o4_4fwbpU"
@@ -69,7 +60,12 @@ class Activities(commands.Cog):
                     url = "https://www.youtube.com/watch?v=aT5JaB5agSE"
                     time = 10
                 else:
-                    url = ""
+                    intro = ""
+
+                vc = discord.utils.get(self.bot.voice_clients)
+                vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
+                await asyncio.sleep(5)
+                vc.stop()
 
             if before.channel and after.channel:
                 if before.channel.id != after.channel.id:
