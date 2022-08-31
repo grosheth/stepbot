@@ -20,6 +20,13 @@ class Activities(commands.Cog):
     @commands.Cog.listener()
     async def on_voice_state_update(self,member,before,after):
         voice_channel = member.voice.channel
+        
+        try:
+            await voice_channel.connect()
+        except:
+            vc = discord.utils.get(self.bot.voice_clients)
+            vc.stop()
+        
         if member.bot:
             if not before.channel:
                 print(f'Bot {member.name} joined {after.channel.name}')
@@ -28,9 +35,45 @@ class Activities(commands.Cog):
             if not before.channel:
                 print(f'{member.name} joined {after.channel.name}')
 
+                if member.id == int(CORBIN):
+                    url = "https://www.youtube.com/watch?v=U06jlgpMtQs"
+                    time = 10
+
+                elif member.id == int(ALESS):
+                    intro = "intros/intro_ruel.mp3"
+                    vc = discord.utils.get(self.bot.voice_clients)
+                    vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
+                    await asyncio.sleep(10)
+                    vc.stop()
+
+                elif member.id == int(RURU):
+                    intro = "intros/intro_ruel.mp3"
+                    vc = discord.utils.get(self.bot.voice_clients)
+                    vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
+                    await asyncio.sleep(10)
+                    vc.stop()
+
+                elif member.id == int(FILOU):
+                    url = "https://www.youtube.com/watch?v=9_o4_4fwbpU"
+                    time = 10
+
+                elif member.id == int(PEPI):
+                    url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
+                    time = 10
+
+                elif member.id == int(MARTIN):
+                    url = "https://www.youtube.com/watch?v=mtToc5EmSho"
+                    time = 10
+
+                elif member.id == int(BRIDO):
+                    url = "https://www.youtube.com/watch?v=aT5JaB5agSE"
+                    time = 10
+                else:
+                    url = ""
+
             if before.channel and after.channel:
                 if before.channel.id != after.channel.id:
-                    print("bot switched channel")
+                    print("switched channel")
                     return
                 else:
                     print("somethin else happened")
@@ -40,50 +83,6 @@ class Activities(commands.Cog):
                     if member.voice.self_deaf:
                         print("User deafened")
                         return
-        try:
-            await voice_channel.connect()
-        except:
-            vc = discord.utils.get(self.bot.voice_clients)
-            vc.stop()
-
-        FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
-        # YDL_OPTIONS = {'format':"bestaudio"}
-
-        if member.id == int(CORBIN):
-            url = "https://www.youtube.com/watch?v=U06jlgpMtQs"
-            time = 10
-
-        elif member.id == int(ALESS):
-            intro = "intros/intro_ruel.mp3"
-            vc = discord.utils.get(self.bot.voice_clients)
-            vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
-            await asyncio.sleep(10)
-            vc.stop()
-
-        elif member.id == int(RURU):
-            intro = "intros/intro_ruel.mp3"
-            vc = discord.utils.get(self.bot.voice_clients)
-            vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
-            await asyncio.sleep(10)
-            vc.stop()
-
-        elif member.id == int(FILOU):
-            url = "https://www.youtube.com/watch?v=9_o4_4fwbpU"
-            time = 10
-
-        elif member.id == int(PEPI):
-            url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
-            time = 10
-
-        elif member.id == int(MARTIN):
-            url = "https://www.youtube.com/watch?v=mtToc5EmSho"
-            time = 10
-
-        elif member.id == int(BRIDO):
-            url = "https://www.youtube.com/watch?v=aT5JaB5agSE"
-            time = 10
-        else:
-            url = ""
 
 def setup(bot):
     bot.add_cog(Activities(bot))
