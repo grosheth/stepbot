@@ -1,4 +1,5 @@
 import asyncio
+from sys import executable
 from discord.ext import commands
 from utils import *
 from settings import *
@@ -58,7 +59,7 @@ class Activities(commands.Cog):
             time = 10
             vc = discord.utils.get(self.bot.voice_clients)
             print(vc)
-            vc.play(await discord.FFmpegOpusAudio.from_probe(intro ,**FFMPEG_OPTIONS))
+            vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg")
             await asyncio.sleep(10)
             vc.stop()
 
