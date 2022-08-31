@@ -54,18 +54,18 @@ class Activities(commands.Cog):
             time = 10
 
         elif member.id == int(ALESS):
-            url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
             intro = "intros/intro_ruel.mp3"
-            time = 10
             vc = discord.utils.get(self.bot.voice_clients)
-            print(vc)
             vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
             await asyncio.sleep(10)
             vc.stop()
 
         elif member.id == int(RURU):
-            url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
-            time = 10
+            intro = "intros/intro_ruel.mp3"
+            vc = discord.utils.get(self.bot.voice_clients)
+            vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
+            await asyncio.sleep(10)
+            vc.stop()
 
         elif member.id == int(FILOU):
             url = "https://www.youtube.com/watch?v=9_o4_4fwbpU"
