@@ -1,3 +1,4 @@
+import asyncio
 from discord.ext import commands
 from utils import *
 from settings import *
@@ -81,8 +82,9 @@ class Activities(commands.Cog):
         YDL_OPTIONS = {'format':"bestaudio"}
 
         vc = discord.utils.get(self.bot.voice_clients)
+        await asyncio.sleep(2)
         print(intro)
-        vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable='ffmpeg'))
+        vc.play(await discord.FFmpegOpusAudio.from_probe(intro ,**FFMPEG_OPTIONS))
         vc.stop()
 
         # with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
