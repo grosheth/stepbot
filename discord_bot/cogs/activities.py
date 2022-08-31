@@ -59,6 +59,7 @@ class Activities(commands.Cog):
             vc = discord.utils.get(self.bot.voice_clients)
             print(vc)
             vc.play(await discord.FFmpegOpusAudio.from_probe(intro ,**FFMPEG_OPTIONS))
+            await asyncio.sleep(10)
             vc.stop()
 
         elif member.id == int(RURU):
