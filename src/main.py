@@ -13,7 +13,7 @@ try:
 		if filename.endswith(".py") and filename != "__init__.py":
 			bot.load_extension(f'cogs.{filename[:-3]}')
 except:
-        for filename in os.listdir("./discord_bot/cogs"):
+        for filename in os.listdir("./src/cogs"):
                 if filename.endswith(".py") and filename != "__init__.py":
                         bot.load_extension(f'cogs.{filename[:-3]}')
 

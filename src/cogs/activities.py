@@ -36,16 +36,16 @@ class Activities(commands.Cog):
                 print(f'{member.name} joined {after.channel.name}')
 
                 if member.id == int(CORBIN):
-                    intro = "discord_bot/intros/intro_corbin.mp3"
+                    intro = "src/intros/intro_corbin.mp3"
 
                 elif member.id == int(ALESS):
-                    intro = "discord_bot/intros/intro_filou.mp3"
+                    intro = "src/intros/intro_filou.mp3"
                     
                 elif member.id == int(RURU):
-                    intro = "discord_bot/intros/intro_ruel.mp3"
+                    intro = "src/intros/intro_ruel.mp3"
 
                 elif member.id == int(FILOU):
-                    intro = "discord_bot/intros/intro_filou.mp3"
+                    intro = "src/intros/intro_filou.mp3"
 
                 elif member.id == int(PEPI):
                     url = "https://www.youtube.com/watch?v=Y4kNfv7cUA8"
