@@ -24,6 +24,7 @@ def win_money(member_id, current_cash, loss):
     collection = db_connection()
     collection.update_one({'_id': member_id},{'$set': {'Nanane': current_cash + loss}}, upsert=False)
 
+
 async def create_text_channel(guild, channel_name):
     await guild.create_text_channel(channel_name)
     channel = get_channel_by_name(guild, channel_name)
