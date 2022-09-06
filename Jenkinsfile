@@ -16,7 +16,7 @@ pipeline {
                     scp -i $KEY $SSH_USER@192.168.10.120:/home/pi/discord-bot/src/.env /var/jenkins_home/workspace/discord-bot/src/.env
                 }
             }
-
+        }
         stage('Build') {
             steps {
                 echo "Build..."
@@ -28,9 +28,8 @@ pipeline {
                     docker tag stepbot 192.168.10.121:30000/stepbot:1.0.$BUILD_NUMBER
                     docker push 192.168.10.121:30000/stepbot:1.0.$BUILD_NUMBER
                 }
-
             }
-
+        }
         stage('Deploy') {
             steps {
                 build_number=$BUILD_NUMBER
