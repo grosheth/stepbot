@@ -3,6 +3,7 @@ from pymongo import MongoClient
 from settings import *
 
 
+
 def db_connection():
     connect = MongoClient(CONN_STRING)
     collection = connect.discord.wallet
