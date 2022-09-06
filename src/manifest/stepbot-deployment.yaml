@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -23,10 +22,10 @@ spec:
         io.kompose.service: stepbot
     spec:
       containers:
-        - image: 192.168.10.121:30000/stepbot:1.0.22
+        - image: 192.168.10.121:30000/stepbot:1.0.0
           name: stepbot
           resources: {}
           imagePullPolicy: Always  
       restartPolicy: Always
       imagePullSecrets:
-        - name: regcred  
+        - name: regcred 
