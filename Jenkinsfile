@@ -5,9 +5,9 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
-                withCredentials([[
+                withCredentials([
                     sshUserPrivateKey(credentialsId:'62bdec20-80ac-4211-a5d3-1e4737781196', keyFileVariable: 'KEY', usernameVariable: 'SSH_USER')
-                ]])  {
+                ])  {
                     sh "scp -i $KEY $SSH_USER@192.168.10.120:/home/pi/discord-bot/src/.env /var/jenkins_home/workspace/discord-bot/src/.env"
                 }
             }
