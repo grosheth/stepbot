@@ -26,11 +26,19 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh "build_number=$BUILD_NUMBER"
-                sh 'current_version=$(cat /home/pi/discord-bot/src/manifest/version.txt)'
-                sh "sed -i s/1.0.$current_version/1.0.$build_number/ /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml"
-                sh "kubectl apply -f /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml"
-                sh "echo $build_number > /home/pi/discord-bot/src/manifest/version.txt"
+                withCredentials([
+                    sshUserPrivateKey(credentialsId:'62bdec20-80ac-4211-a5d3-1e4737781196', keyFileVariable: 'KEY', usernameVariable: 'SSH_USER')
+                ])  {
+                    sh '''
+                        ssh -i ${KEY} ${SSH_USER}@192.168.10.120
+                        build_number=$BUILD_NUMBER"
+                        current_version=$(cat /home/pi/discord-bot/src/manifest/version.txt)
+                        sed -i s/1.0.$current_version/1.0.$build_number/ /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
+                        kubectl apply -f /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
+                        echo $build_number > /home/pi/discord-bot/src/manifest/version.txt
+                    '''
+                }
+
             }
         }
     }
