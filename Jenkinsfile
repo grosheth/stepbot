@@ -2,8 +2,7 @@ pipeline {
 
     agent any
     environment {
-        VERSION = "1.0.0"
-        SSH_USER = credentials()
+        
     }
 
     stages {
