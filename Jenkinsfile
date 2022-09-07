@@ -32,8 +32,8 @@ pipeline {
                     sh '''
                         ssh -i ${KEY} ${SSH_USER}@192.168.10.120
                         build_number=$BUILD_NUMBER
-                        current_version=$(cat /home/pi/discord-bot/src/manifest/version.txt)
-                        sed -i s/1.0.$current_version/1.0.$build_number/ /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
+                        current_version=$(cat /var/jenkins_home/workspace/discord-bot/src/manifest/version.txt)
+                        sed -i s/1.0.$current_version/1.0.$build_number/ /var/jenkins_home/workspace/discord-bot/src/manifest/stepbot-deployment.yaml
                         kubectl apply -f /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
                         echo $build_number > /home/pi/discord-bot/src/manifest/version.txt
                     '''
