@@ -14,7 +14,7 @@ pipeline {
                         sshUserPrivateKey(credentialsId:'62bdec20-80ac-4211-a5d3-1e4737781196', usernameVariable: SSH_USER, keyFileVariable: KEY)
                     ]])  {
                         sh echo "Setup..."
-                        sh scp -i ${KEY} ${SSH_USER}@192.168.10.120:/home/pi/discord-bot/src/.env /var/jenkins_home/workspace/discord-bot/src/.env
+                        sh "scp -i ${KEY} ${SSH_USER}@192.168.10.120:/home/pi/discord-bot/src/.env /var/jenkins_home/workspace/discord-bot/src/.env"
                     }
                 }
             }
