@@ -33,18 +33,21 @@ pipeline {
                 ])  {
 
                     def remote = [:]
-                    remote.name = "stages"
+                    remote.name = "node"
                     remote.host = '192.168.10.120'
-                    remote.user = 'root'
+                    remote.user = ${SSH_USER}
                     remote.identity = ${KEY}
                     remote.allowAnyHosts = true
 
-                    sshCommand remote: remote, command: 'build_number=$BUILD_NUMBER'
-                    sshCommand remote: remote, command: 'current_version=$(cat /home/pi/discord-bot/src/manifest/version.txt)'
-                    sshCommand remote: remote, command: 'sed -i s/1.0.$current_version/1.0.$build_number/ /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml'
-                    sshCommand remote: remote, command: 'kubectl apply -f /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml'
-                    sshCommand remote: remote, command: 'echo $build_number > /home/pi/discord-bot/src/manifest/version.txt'
-                    sshCommand remote: remote, command: 'cd /home/pi/discord-bot && git add . && git commit -m "commit apres modif de version" && git push'
+                    node{
+                        sshCommand remote: remote, command: 'build_number=$BUILD_NUMBER'
+                        sshCommand remote: remote, command: 'current_version=$(cat /home/pi/discord-bot/src/manifest/version.txt)'
+                        sshCommand remote: remote, command: 'sed -i s/1.0.$current_version/1.0.$build_number/ /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml'
+                        sshCommand remote: remote, command: 'kubectl apply -f /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml'
+                        sshCommand remote: remote, command: 'echo $build_number > /home/pi/discord-bot/src/manifest/version.txt'
+                        sshCommand remote: remote, command: 'cd /home/pi/discord-bot && git add . && git commit -m "commit apres modif de version" && git push'
+                    }
+
                 }
 
             }
