@@ -3,4 +3,4 @@ WORKDIR /bot
 COPY . .
 RUN apt-get update && apt-get install ffmpeg -y
 RUN pip install -r requirements.txt
-ENTRYPOINT ["python", "discord_bot/main.py"]
+ENTRYPOINT ["python", "src/main.py"]
