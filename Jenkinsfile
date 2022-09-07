@@ -3,6 +3,7 @@ pipeline {
     agent any
 
     def remote = [:]
+    remote.name = "stages"
     remote.host = '192.168.10.120'
     remote.user = 'root'
     remote.allowAnyHosts = true
