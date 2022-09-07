@@ -34,8 +34,10 @@ pipeline {
                         echo '*** Executing remote commands ***'
                         sh '''
                             ssh -i $KEY $SSH_USER@192.168.10.120 << ENDSSH
+                            echo ${BUILD_NUMBER}
                             build_number=${BUILD_NUMBER}
                             current_version=$(cat /home/pi/discord-bot/src/manifest/version.txt)
+                            echo $current_version
                             sed -i s/1.0.$current_version/1.0.$build_number/ /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
                             kubectl apply -f /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
                             echo $build_number > /home/pi/discord-bot/src/manifest/version.txt
