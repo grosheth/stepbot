@@ -9,12 +9,15 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
-                echo "Setup..."
-                withCredentials([
-                    sshUserPrivateKey(credentialsId:'62bdec20-80ac-4211-a5d3-1e4737781196', usernameVariable: SSH_USER, keyFileVariable: KEY)
-                ])  {
-                    sh scp -i ${KEY} ${SSH_USER}@192.168.10.120:/home/pi/discord-bot/src/.env /var/jenkins_home/workspace/discord-bot/src/.env
+                script{
+                    withCredentials([[
+                        sshUserPrivateKey(credentialsId:'62bdec20-80ac-4211-a5d3-1e4737781196', usernameVariable: SSH_USER, keyFileVariable: KEY)
+                    ]])  {
+                        echo "Setup..."
+                        sh scp -i $KEY $SSH_USER@192.168.10.120:/home/pi/discord-bot/src/.env /var/jenkins_home/workspace/discord-bot/src/.env
+                    }
                 }
+
             }
         }
         stage('Build') {
