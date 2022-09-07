@@ -33,8 +33,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh "build_number=$BUILD_NUMBER"
-                sh "current_version=$(cat /home/pi/discord-bot/src/manifest/version.txt)"
-                sh "sed -i s/1.0.$current_version/1.0."$build_number"/ /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml"
+                sh 'current_version=$(cat /home/pi/discord-bot/src/manifest/version.txt)'
+                sh "sed -i s/1.0.$current_version/1.0.$build_number/ /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml"
                 sh "kubectl apply -f /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml"
                 sh "echo $build_number > /home/pi/discord-bot/src/manifest/version.txt"
             }
