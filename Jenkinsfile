@@ -45,8 +45,8 @@ pipeline {
                             git config --global user.email "salledelavager@gmail.com"
                             git config --global user.name "salledelavage"
                             cd /home/pi/discord-bot && git add . && git commit -m "commit apres modif de version" && git push
-                            ENDSSH
-                        '''
+ENDSSH
+'''
                 }
             }
         }
