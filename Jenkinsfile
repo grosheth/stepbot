@@ -31,25 +31,18 @@ pipeline {
                 withCredentials([
                     sshUserPrivateKey(credentialsId:'root-pi', keyFileVariable: 'KEY', usernameVariable: 'SSH_USER')
                 ])  {
-
-                    def remote = [:]
-                    remote.name = "node"
-                    remote.host = '192.168.10.120'
-                    remote.user = ${SSH_USER}
-                    remote.identity = ${KEY}
-                    remote.allowAnyHosts = true
-
-                    node{
-                        sshCommand remote: remote, command: 'build_number=$BUILD_NUMBER'
-                        sshCommand remote: remote, command: 'current_version=$(cat /home/pi/discord-bot/src/manifest/version.txt)'
-                        sshCommand remote: remote, command: 'sed -i s/1.0.$current_version/1.0.$build_number/ /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml'
-                        sshCommand remote: remote, command: 'kubectl apply -f /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml'
-                        sshCommand remote: remote, command: 'echo $build_number > /home/pi/discord-bot/src/manifest/version.txt'
-                        sshCommand remote: remote, command: 'cd /home/pi/discord-bot && git add . && git commit -m "commit apres modif de version" && git push'
-                    }
-
+                        echo '*** Executing remote commands ***'
+                        sh '''
+                            ssh -i $KEY $SSH_USER@hostname << ENDSSH
+                            build_number=$BUILD_NUMBER
+                            current_version=$(cat /home/pi/discord-bot/src/manifest/version.txt)
+                            sed -i s/1.0.$current_version/1.0.$build_number/ /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
+                            kubectl apply -f /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
+                            echo $build_number > /home/pi/discord-bot/src/manifest/version.txt
+                            cd /home/pi/discord-bot && git add . && git commit -m "commit apres modif de version" && git push
+                        ENDSSH
+                        '''
                 }
-
             }
         }
     }
