@@ -22,11 +22,7 @@ spec:
         io.kompose.service: stepbot
     spec:
       containers:
-<<<<<<< HEAD
-        - image: 192.168.10.121:30000/stepbot:1.0.17
-=======
         - image: 192.168.10.121:30000/stepbot:1.0.28
->>>>>>> 2e10105586aef355736a1d2b885a4d43c00c1f4e
           name: stepbot
           resources: {}
           imagePullPolicy: Always  
