@@ -40,7 +40,7 @@ class Activities(commands.Cog):
 
                 elif member.id == int(ALESS):
                     intro = "src/intros/intro_filou.mp3"
-                    
+
                 elif member.id == int(RURU):
                     intro = "src/intros/intro_ruel.mp3"
 
