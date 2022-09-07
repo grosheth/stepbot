@@ -2,12 +2,6 @@ pipeline {
 
     agent any
 
-    def remote = [:]
-    remote.name = "stages"
-    remote.host = '192.168.10.120'
-    remote.user = 'root'
-    remote.allowAnyHosts = true
-
     stages {
         stage('Setup') {
             steps {
@@ -34,12 +28,25 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sshCommand remote: remote, command: 'build_number=$BUILD_NUMBER'
-                sshCommand remote: remote, command: 'current_version=$(cat /home/pi/discord-bot/src/manifest/version.txt)'
-                sshCommand remote: remote, command: 'sed -i s/1.0.$current_version/1.0.$build_number/ /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml'
-                sshCommand remote: remote, command: 'kubectl apply -f /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml'
-                sshCommand remote: remote, command: 'echo $build_number > /home/pi/discord-bot/src/manifest/version.txt'
-                sshCommand remote: remote, command: 'cd /home/pi/discord-bot && git add . && git commit -m "commit apres modif de version" && git push'
+                withCredentials([
+                    sshUserPrivateKey(credentialsId:'root-pi', keyFileVariable: 'KEY', usernameVariable: 'SSH_USER')
+                ])  {
+
+                    def remote = [:]
+                    remote.name = "stages"
+                    remote.host = '192.168.10.120'
+                    remote.user = 'root'
+                    remote.identity = ${KEY}
+                    remote.allowAnyHosts = true
+
+                    sshCommand remote: remote, command: 'build_number=$BUILD_NUMBER'
+                    sshCommand remote: remote, command: 'current_version=$(cat /home/pi/discord-bot/src/manifest/version.txt)'
+                    sshCommand remote: remote, command: 'sed -i s/1.0.$current_version/1.0.$build_number/ /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml'
+                    sshCommand remote: remote, command: 'kubectl apply -f /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml'
+                    sshCommand remote: remote, command: 'echo $build_number > /home/pi/discord-bot/src/manifest/version.txt'
+                    sshCommand remote: remote, command: 'cd /home/pi/discord-bot && git add . && git commit -m "commit apres modif de version" && git push'
+                }
+
             }
         }
     }
