@@ -1,10 +1,7 @@
 pipeline {
 
     agent any
-    environment{
-        CURRENT_VERSION = $(cat /var/jenkins_home/workspace/discord-bot/src/manifest/version.txt)
-    }
-
+    
     stages {
         stage('Setup') {
             steps {
@@ -31,6 +28,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                environment { 
+                    CURRENT_VERSION= sh (returnStdout: true, script: 'cat /var/jenkins_home/workspace/discord-bot/src/manifest/version.txt').trim()
+                }
                 withCredentials([
                     sshUserPrivateKey(credentialsId:'root-pi', keyFileVariable: 'KEY', usernameVariable: 'SSH_USER')
                 ])  {
