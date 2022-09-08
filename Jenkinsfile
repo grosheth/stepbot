@@ -34,13 +34,11 @@ pipeline {
                         echo '*** Executing remote commands ***'
                         sh '''
                             ssh -i $KEY $SSH_USER@192.168.10.120 << EOF
-                            build_number=${BUILD_NUMBER}
-                            echo $build_number
                             current_version=$(cat /home/pi/discord-bot/src/manifest/version.txt)
                             echo $current_version
-                            sed -i s/1.0.$current_version/1.0.$build_number/ /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
+                            sed -i s/1.0.$current_version/1.0.${BUILD_NUMBER}/ /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
                             kubectl apply -f /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
-                            echo $build_number > /home/pi/discord-bot/src/manifest/version.txt
+                            echo ${BUILD_NUMBER} > /home/pi/discord-bot/src/manifest/version.txt
                             git config --global user.email "salledelavager@gmail.com"
                             git config --global user.name "salledelavage"
                             cd /home/pi/discord-bot && git add . && git commit -m "commit apres modif de version" && git push
