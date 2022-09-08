@@ -2,7 +2,7 @@ pipeline {
 
     agent any
     environment{
-        CURRENT_VERSION = $BUILD_NUMBER - 1
+        CURRENT_VERSION = $(cat /var/jenkins_home/workspace/discord-bot/src/manifest/version.txt)
     }
 
     stages {
