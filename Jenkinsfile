@@ -38,6 +38,9 @@ pipeline {
                             sed -i "s/1.0.$CURRENT_VERSION/1.0.${BUILD_NUMBER}/g" /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
                             kubectl apply -f /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
                             echo ${BUILD_NUMBER} > /home/pi/discord-bot/src/manifest/version.txt
+                            git config --global user.email "salledelavager@gmail.com"
+                            git config --global user.name "salledelavage"
+                            cd /home/pi/discord-bot && git add . && git commit -m "commit apres modif de version" && git push
                             exit
 EOF
 '''
