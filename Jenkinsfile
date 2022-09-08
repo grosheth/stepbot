@@ -36,7 +36,7 @@ pipeline {
                             ssh -i $KEY $SSH_USER@192.168.10.120 << EOF
                             . /etc/environment
                             cat /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
-                            sed -i "s/1.0.$CURRENT_VERSION/1.0.${BUILD_NUMBER}/g" /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
+                            echo sed -i "s/1.0.$CURRENT_VERSION/1.0.${BUILD_NUMBER}/g" /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
                             cat /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
                             kubectl apply -f /home/pi/discord-bot/src/manifest/stepbot-deployment.yaml
                             echo ${BUILD_NUMBER} > /home/pi/discord-bot/src/manifest/version.txt
