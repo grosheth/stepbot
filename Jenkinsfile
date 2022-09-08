@@ -1,6 +1,9 @@
 pipeline {
 
     agent any
+    environment{
+        CURRENT_VERSION = $BUILD_NUMBER - 1
+    }
 
     stages {
         stage('Setup') {
