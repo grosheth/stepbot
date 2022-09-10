@@ -35,7 +35,6 @@ pipeline {
                 withCredentials([
                     sshUserPrivateKey(credentialsId:'root-pi', keyFileVariable: 'KEY', usernameVariable: 'SSH_USER')
                 ])  {
-                        echo '*** Executing remote commands ***'
                         sh '''
                             ssh -i $KEY $SSH_USER@192.168.10.120 << EOF
                             . /etc/environment

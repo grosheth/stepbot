@@ -1,0 +1,499 @@
+time="2022-09-08T14:21:51-04:00" level=info msg="Starting k3s v1.24.3+k3s1 (990ba0e8)"
+time="2022-09-08T14:21:51-04:00" level=info msg="Configuring sqlite3 database connection pooling: maxIdleConns=2, maxOpenConns=0, connMaxLifetime=0s"
+time="2022-09-08T14:21:51-04:00" level=info msg="Configuring database table schema and indexes, this may take a moment..."
+time="2022-09-08T14:21:51-04:00" level=info msg="Database tables and indexes are up to date"
+time="2022-09-08T14:21:51-04:00" level=info msg="Kine available at unix://kine.sock"
+time="2022-09-08T14:21:51-04:00" level=info msg="Reconciling bootstrap data between datastore and disk"
+time="2022-09-08T14:21:51-04:00" level=info msg="Running kube-apiserver --advertise-port=6443 --allow-privileged=true --anonymous-auth=false --api-audiences=https://kubernetes.default.svc.cluster.local,k3s --authorization-mode=Node,RBAC --bind-address=127.0.0.1 --cert-dir=/var/lib/rancher/k3s/server/tls/temporary-certs --client-ca-file=/var/lib/rancher/k3s/server/tls/client-ca.crt --egress-selector-config-file=/var/lib/rancher/k3s/server/etc/egress-selector-config.yaml --enable-admission-plugins=NodeRestriction --enable-aggregator-routing=true --etcd-servers=unix://kine.sock --feature-gates=JobTrackingWithFinalizers=true --kubelet-certificate-authority=/var/lib/rancher/k3s/server/tls/server-ca.crt --kubelet-client-certificate=/var/lib/rancher/k3s/server/tls/client-kube-apiserver.crt --kubelet-client-key=/var/lib/rancher/k3s/server/tls/client-kube-apiserver.key --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname --profiling=false --proxy-client-cert-file=/var/lib/rancher/k3s/server/tls/client-auth-proxy.crt --proxy-client-key-file=/var/lib/rancher/k3s/server/tls/client-auth-proxy.key --requestheader-allowed-names=system:auth-proxy --requestheader-client-ca-file=/var/lib/rancher/k3s/server/tls/request-header-ca.crt --requestheader-extra-headers-prefix=X-Remote-Extra- --requestheader-group-headers=X-Remote-Group --requestheader-username-headers=X-Remote-User --secure-port=6444 --service-account-issuer=https://kubernetes.default.svc.cluster.local --service-account-key-file=/var/lib/rancher/k3s/server/tls/service.key --service-account-signing-key-file=/var/lib/rancher/k3s/server/tls/service.key --service-cluster-ip-range=10.43.0.0/16 --service-node-port-range=30000-32767 --storage-backend=etcd3 --tls-cert-file=/var/lib/rancher/k3s/server/tls/serving-kube-apiserver.crt --tls-private-key-file=/var/lib/rancher/k3s/server/tls/serving-kube-apiserver.key"
+time="2022-09-08T14:21:51-04:00" level=info msg="Running kube-scheduler --authentication-kubeconfig=/var/lib/rancher/k3s/server/cred/scheduler.kubeconfig --authorization-kubeconfig=/var/lib/rancher/k3s/server/cred/scheduler.kubeconfig --bind-address=127.0.0.1 --kubeconfig=/var/lib/rancher/k3s/server/cred/scheduler.kubeconfig --leader-elect=false --profiling=false --secure-port=10259"
+time="2022-09-08T14:21:51-04:00" level=info msg="Waiting for API server to become available"
+time="2022-09-08T14:21:51-04:00" level=info msg="Tunnel server egress proxy mode: agent"
+time="2022-09-08T14:21:51-04:00" level=info msg="Tunnel server egress proxy waiting for runtime core to become available"
+I0908 14:21:51.757213   57094 server.go:576] external host was not specified, using 192.168.10.120
+time="2022-09-08T14:21:51-04:00" level=info msg="Running kube-controller-manager --allocate-node-cidrs=true --authentication-kubeconfig=/var/lib/rancher/k3s/server/cred/controller.kubeconfig --authorization-kubeconfig=/var/lib/rancher/k3s/server/cred/controller.kubeconfig --bind-address=127.0.0.1 --cluster-cidr=10.42.0.0/16 --cluster-signing-kube-apiserver-client-cert-file=/var/lib/rancher/k3s/server/tls/client-ca.crt --cluster-signing-kube-apiserver-client-key-file=/var/lib/rancher/k3s/server/tls/client-ca.key --cluster-signing-kubelet-client-cert-file=/var/lib/rancher/k3s/server/tls/client-ca.crt --cluster-signing-kubelet-client-key-file=/var/lib/rancher/k3s/server/tls/client-ca.key --cluster-signing-kubelet-serving-cert-file=/var/lib/rancher/k3s/server/tls/server-ca.crt --cluster-signing-kubelet-serving-key-file=/var/lib/rancher/k3s/server/tls/server-ca.key --cluster-signing-legacy-unknown-cert-file=/var/lib/rancher/k3s/server/tls/server-ca.crt --cluster-signing-legacy-unknown-key-file=/var/lib/rancher/k3s/server/tls/server-ca.key --configure-cloud-routes=false --controllers=*,-service,-route,-cloud-node-lifecycle --feature-gates=JobTrackingWithFinalizers=true --kubeconfig=/var/lib/rancher/k3s/server/cred/controller.kubeconfig --leader-elect=false --profiling=false --root-ca-file=/var/lib/rancher/k3s/server/tls/server-ca.crt --secure-port=10257 --service-account-private-key-file=/var/lib/rancher/k3s/server/tls/service.key --use-service-account-credentials=true"
+I0908 14:21:51.758740   57094 server.go:168] Version: v1.24.3+k3s1
+I0908 14:21:51.758907   57094 server.go:170] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+time="2022-09-08T14:21:51-04:00" level=info msg="Running cloud-controller-manager --allocate-node-cidrs=true --authentication-kubeconfig=/var/lib/rancher/k3s/server/cred/cloud-controller.kubeconfig --authorization-kubeconfig=/var/lib/rancher/k3s/server/cred/cloud-controller.kubeconfig --bind-address=127.0.0.1 --cloud-provider=k3s --cluster-cidr=10.42.0.0/16 --configure-cloud-routes=false --kubeconfig=/var/lib/rancher/k3s/server/cred/cloud-controller.kubeconfig --leader-elect=false --node-status-update-frequency=1m0s --profiling=false"
+time="2022-09-08T14:21:51-04:00" level=info msg="Node token is available at /var/lib/rancher/k3s/server/token"
+time="2022-09-08T14:21:51-04:00" level=info msg="To join node to cluster: k3s agent -s https://192.168.10.120:6443 -t ${NODE_TOKEN}"
+time="2022-09-08T14:21:51-04:00" level=info msg="Wrote kubeconfig /etc/rancher/k3s/k3s.yaml"
+time="2022-09-08T14:21:51-04:00" level=info msg="Run: k3s kubectl"
+I0908 14:21:51.875327   57094 shared_informer.go:255] Waiting for caches to sync for node_authorizer
+I0908 14:21:51.878868   57094 plugins.go:158] Loaded 12 mutating admission controller(s) successfully in the following order: NamespaceLifecycle,LimitRanger,ServiceAccount,NodeRestriction,TaintNodesByCondition,Priority,DefaultTolerationSeconds,DefaultStorageClass,StorageObjectInUseProtection,RuntimeClass,DefaultIngressClass,MutatingAdmissionWebhook.
+I0908 14:21:51.879153   57094 plugins.go:161] Loaded 11 validating admission controller(s) successfully in the following order: LimitRanger,ServiceAccount,PodSecurity,Priority,PersistentVolumeClaimResize,RuntimeClass,CertificateApproval,CertificateSigning,CertificateSubjectRestriction,ValidatingAdmissionWebhook,ResourceQuota.
+I0908 14:21:51.882923   57094 plugins.go:158] Loaded 12 mutating admission controller(s) successfully in the following order: NamespaceLifecycle,LimitRanger,ServiceAccount,NodeRestriction,TaintNodesByCondition,Priority,DefaultTolerationSeconds,DefaultStorageClass,StorageObjectInUseProtection,RuntimeClass,DefaultIngressClass,MutatingAdmissionWebhook.
+I0908 14:21:51.883196   57094 plugins.go:161] Loaded 11 validating admission controller(s) successfully in the following order: LimitRanger,ServiceAccount,PodSecurity,Priority,PersistentVolumeClaimResize,RuntimeClass,CertificateApproval,CertificateSigning,CertificateSubjectRestriction,ValidatingAdmissionWebhook,ResourceQuota.
+time="2022-09-08T14:21:51-04:00" level=info msg="Waiting to retrieve agent configuration; server is not ready: --docker is no longer supported; to continue using docker, install cri-dockerd and set --container-runtime-endpoint"
+W0908 14:21:51.983000   57094 genericapiserver.go:557] Skipping API apiextensions.k8s.io/v1beta1 because it has no resources.
+I0908 14:21:51.985940   57094 instance.go:274] Using reconciler: lease
+I0908 14:21:52.420520   57094 instance.go:586] API group "internal.apiserver.k8s.io" is not enabled, skipping.
+W0908 14:21:53.113488   57094 genericapiserver.go:557] Skipping API authentication.k8s.io/v1beta1 because it has no resources.
+W0908 14:21:53.120604   57094 genericapiserver.go:557] Skipping API authorization.k8s.io/v1beta1 because it has no resources.
+W0908 14:21:53.184318   57094 genericapiserver.go:557] Skipping API certificates.k8s.io/v1beta1 because it has no resources.
+W0908 14:21:53.192383   57094 genericapiserver.go:557] Skipping API coordination.k8s.io/v1beta1 because it has no resources.
+W0908 14:21:53.224376   57094 genericapiserver.go:557] Skipping API networking.k8s.io/v1beta1 because it has no resources.
+W0908 14:21:53.239052   57094 genericapiserver.go:557] Skipping API node.k8s.io/v1alpha1 because it has no resources.
+W0908 14:21:53.269550   57094 genericapiserver.go:557] Skipping API rbac.authorization.k8s.io/v1beta1 because it has no resources.
+W0908 14:21:53.269873   57094 genericapiserver.go:557] Skipping API rbac.authorization.k8s.io/v1alpha1 because it has no resources.
+W0908 14:21:53.277252   57094 genericapiserver.go:557] Skipping API scheduling.k8s.io/v1beta1 because it has no resources.
+W0908 14:21:53.277553   57094 genericapiserver.go:557] Skipping API scheduling.k8s.io/v1alpha1 because it has no resources.
+W0908 14:21:53.298885   57094 genericapiserver.go:557] Skipping API storage.k8s.io/v1alpha1 because it has no resources.
+W0908 14:21:53.319409   57094 genericapiserver.go:557] Skipping API flowcontrol.apiserver.k8s.io/v1alpha1 because it has no resources.
+W0908 14:21:53.340039   57094 genericapiserver.go:557] Skipping API apps/v1beta2 because it has no resources.
+W0908 14:21:53.340350   57094 genericapiserver.go:557] Skipping API apps/v1beta1 because it has no resources.
+W0908 14:21:53.349699   57094 genericapiserver.go:557] Skipping API admissionregistration.k8s.io/v1beta1 because it has no resources.
+I0908 14:21:53.367864   57094 plugins.go:158] Loaded 12 mutating admission controller(s) successfully in the following order: NamespaceLifecycle,LimitRanger,ServiceAccount,NodeRestriction,TaintNodesByCondition,Priority,DefaultTolerationSeconds,DefaultStorageClass,StorageObjectInUseProtection,RuntimeClass,DefaultIngressClass,MutatingAdmissionWebhook.
+I0908 14:21:53.368154   57094 plugins.go:161] Loaded 11 validating admission controller(s) successfully in the following order: LimitRanger,ServiceAccount,PodSecurity,Priority,PersistentVolumeClaimResize,RuntimeClass,CertificateApproval,CertificateSigning,CertificateSubjectRestriction,ValidatingAdmissionWebhook,ResourceQuota.
+W0908 14:21:53.459889   57094 genericapiserver.go:557] Skipping API apiregistration.k8s.io/v1beta1 because it has no resources.
+time="2022-09-08T14:21:55-04:00" level=info msg="Handling backend connection request [raspberrypi-2]"
+time="2022-09-08T14:21:56-04:00" level=info msg="Tunnel server egress proxy waiting for runtime core to become available"
+time="2022-09-08T14:21:56-04:00" level=info msg="Waiting to retrieve agent configuration; server is not ready: --docker is no longer supported; to continue using docker, install cri-dockerd and set --container-runtime-endpoint"
+I0908 14:21:58.207576   57094 dynamic_cafile_content.go:157] "Starting controller" name="request-header::/var/lib/rancher/k3s/server/tls/request-header-ca.crt"
+I0908 14:21:58.207575   57094 dynamic_cafile_content.go:157] "Starting controller" name="client-ca-bundle::/var/lib/rancher/k3s/server/tls/client-ca.crt"
+I0908 14:21:58.208501   57094 dynamic_serving_content.go:132] "Starting controller" name="serving-cert::/var/lib/rancher/k3s/server/tls/serving-kube-apiserver.crt::/var/lib/rancher/k3s/server/tls/serving-kube-apiserver.key"
+I0908 14:21:58.208886   57094 secure_serving.go:210] Serving securely on 127.0.0.1:6444
+I0908 14:21:58.209126   57094 tlsconfig.go:240] "Starting DynamicServingCertificateController"
+I0908 14:21:58.220670   57094 apf_controller.go:317] Starting API Priority and Fairness config controller
+I0908 14:21:58.226792   57094 dynamic_serving_content.go:132] "Starting controller" name="aggregator-proxy-cert::/var/lib/rancher/k3s/server/tls/client-auth-proxy.crt::/var/lib/rancher/k3s/server/tls/client-auth-proxy.key"
+I0908 14:21:58.227528   57094 available_controller.go:491] Starting AvailableConditionController
+I0908 14:21:58.227582   57094 cache.go:32] Waiting for caches to sync for AvailableConditionController controller
+I0908 14:21:58.230173   57094 cluster_authentication_trust_controller.go:440] Starting cluster_authentication_trust_controller controller
+I0908 14:21:58.230272   57094 shared_informer.go:255] Waiting for caches to sync for cluster_authentication_trust_controller
+I0908 14:21:58.230365   57094 controller.go:83] Starting OpenAPI AggregationController
+I0908 14:21:58.230704   57094 controller.go:132] OpenAPI AggregationController: action for item k8s_internal_local_delegation_chain_0000000000: Nothing (removed from the queue).
+I0908 14:21:58.230905   57094 controller.go:80] Starting OpenAPI V3 AggregationController
+I0908 14:21:58.231183   57094 customresource_discovery_controller.go:209] Starting DiscoveryController
+I0908 14:21:58.234872   57094 apiservice_controller.go:97] Starting APIServiceRegistrationController
+I0908 14:21:58.234989   57094 cache.go:32] Waiting for caches to sync for APIServiceRegistrationController controller
+I0908 14:21:58.235086   57094 autoregister_controller.go:141] Starting autoregister controller
+I0908 14:21:58.235123   57094 cache.go:32] Waiting for caches to sync for autoregister controller
+I0908 14:21:58.243233   57094 dynamic_cafile_content.go:157] "Starting controller" name="client-ca-bundle::/var/lib/rancher/k3s/server/tls/client-ca.crt"
+I0908 14:21:58.243411   57094 dynamic_cafile_content.go:157] "Starting controller" name="request-header::/var/lib/rancher/k3s/server/tls/request-header-ca.crt"
+I0908 14:21:58.244024   57094 controller.go:85] Starting OpenAPI controller
+I0908 14:21:58.244078   57094 controller.go:85] Starting OpenAPI V3 controller
+I0908 14:21:58.244101   57094 naming_controller.go:291] Starting NamingConditionController
+I0908 14:21:58.244174   57094 establishing_controller.go:76] Starting EstablishingController
+I0908 14:21:58.244195   57094 nonstructuralschema_controller.go:192] Starting NonStructuralSchemaConditionController
+I0908 14:21:58.244354   57094 apiapproval_controller.go:186] Starting KubernetesAPIApprovalPolicyConformantConditionController
+I0908 14:21:58.244376   57094 crd_finalizer.go:266] Starting CRDFinalizer
+I0908 14:21:58.267859   57094 crdregistration_controller.go:111] Starting crd-autoregister controller
+I0908 14:21:58.267969   57094 shared_informer.go:255] Waiting for caches to sync for crd-autoregister
+I0908 14:21:58.320886   57094 apf_controller.go:322] Running API Priority and Fairness config worker
+I0908 14:21:58.328493   57094 cache.go:39] Caches are synced for AvailableConditionController controller
+I0908 14:21:58.330483   57094 shared_informer.go:262] Caches are synced for cluster_authentication_trust_controller
+I0908 14:21:58.339305   57094 cache.go:39] Caches are synced for autoregister controller
+I0908 14:21:58.339772   57094 cache.go:39] Caches are synced for APIServiceRegistrationController controller
+I0908 14:21:58.372497   57094 shared_informer.go:262] Caches are synced for crd-autoregister
+I0908 14:21:58.380339   57094 shared_informer.go:262] Caches are synced for node_authorizer
+I0908 14:21:58.410856   57094 controller.go:611] quota admission added evaluator for: leases.coordination.k8s.io
+I0908 14:21:58.453876   57094 trace.go:205] Trace[809012330]: "GuaranteedUpdate etcd3" type:*coordination.Lease (08-Sep-2022 14:21:53.538) (total time: 4915ms):
+Trace[809012330]: ---"Transaction prepared" 4873ms (14:21:58.411)
+Trace[809012330]: [4.915655773s] [4.915655773s] END
+I0908 14:21:58.454907   57094 trace.go:205] Trace[1018631288]: "Update" url:/apis/coordination.k8s.io/v1/namespaces/kube-node-lease/leases/raspberrypi-2,user-agent:k3s/v1.24.3+k3s1 (linux/arm64) kubernetes/990ba0e,audit-id:2f28c0e6-0bbb-49d7-9500-8cc7c20258bf,client:192.168.10.121,accept:application/vnd.kubernetes.protobuf,application/json,protocol:HTTP/2.0 (08-Sep-2022 14:21:53.537) (total time: 4917ms):
+Trace[1018631288]: ---"Object stored in database" 4916ms (14:21:58.454)
+Trace[1018631288]: [4.917121492s] [4.917121492s] END
+E0908 14:21:58.608362   57094 controller.go:173] Error removing old endpoints from kubernetes service: no master IPs were listed in storage, refusing to erase all endpoints for the kubernetes service
+I0908 14:21:59.242930   57094 storage_scheduling.go:111] all system priority classes are created successfully or already exist.
+W0908 14:21:59.525175   57094 handler_proxy.go:102] no RequestInfo found in the context
+E0908 14:21:59.525307   57094 controller.go:113] loading OpenAPI spec for "v1beta1.metrics.k8s.io" failed with: Error, could not get list of group versions for APIService
+I0908 14:21:59.525344   57094 controller.go:126] OpenAPI AggregationController: action for item v1beta1.metrics.k8s.io: Rate Limited Requeue.
+W0908 14:21:59.806474   57094 handler_proxy.go:102] no RequestInfo found in the context
+E0908 14:21:59.806732   57094 controller.go:116] loading OpenAPI spec for "v1beta1.metrics.k8s.io" failed with: failed to retrieve openAPI spec, http error: ResponseCode: 503, Body: service unavailable
+, Header: map[Content-Type:[text/plain; charset=utf-8] X-Content-Type-Options:[nosniff]]
+I0908 14:21:59.806785   57094 controller.go:129] OpenAPI AggregationController: action for item v1beta1.metrics.k8s.io: Rate Limited Requeue.
+time="2022-09-08T14:22:00-04:00" level=info msg="Waiting for cloud-controller-manager privileges to become available"
+time="2022-09-08T14:22:00-04:00" level=warning msg="Deploy controller node name is empty or too long, and will not be tracked via server side apply field management"
+time="2022-09-08T14:22:00-04:00" level=info msg="Kube API server is now running"
+time="2022-09-08T14:22:00-04:00" level=info msg="ETCD server is now running"
+time="2022-09-08T14:22:00-04:00" level=info msg="k3s is up and running"
+time="2022-09-08T14:22:00-04:00" level=info msg="Applying CRD addons.k3s.cattle.io"
+time="2022-09-08T14:22:00-04:00" level=info msg="Applying CRD helmcharts.helm.cattle.io"
+time="2022-09-08T14:22:00-04:00" level=info msg="Applying CRD helmchartconfigs.helm.cattle.io"
+time="2022-09-08T14:22:01-04:00" level=info msg="Writing static file: /var/lib/rancher/k3s/server/static/charts/traefik-10.19.300.tgz"
+time="2022-09-08T14:22:01-04:00" level=info msg="Writing static file: /var/lib/rancher/k3s/server/static/charts/traefik-crd-10.19.300.tgz"
+time="2022-09-08T14:22:01-04:00" level=info msg="Writing manifest: /var/lib/rancher/k3s/server/manifests/metrics-server/auth-delegator.yaml"
+time="2022-09-08T14:22:01-04:00" level=info msg="Writing manifest: /var/lib/rancher/k3s/server/manifests/metrics-server/auth-reader.yaml"
+time="2022-09-08T14:22:01-04:00" level=info msg="Writing manifest: /var/lib/rancher/k3s/server/manifests/metrics-server/metrics-apiservice.yaml"
+time="2022-09-08T14:22:01-04:00" level=info msg="Writing manifest: /var/lib/rancher/k3s/server/manifests/coredns.yaml"
+time="2022-09-08T14:22:01-04:00" level=info msg="Writing manifest: /var/lib/rancher/k3s/server/manifests/local-storage.yaml"
+time="2022-09-08T14:22:01-04:00" level=info msg="Writing manifest: /var/lib/rancher/k3s/server/manifests/metrics-server/aggregated-metrics-reader.yaml"
+time="2022-09-08T14:22:01-04:00" level=info msg="Writing manifest: /var/lib/rancher/k3s/server/manifests/metrics-server/resource-reader.yaml"
+time="2022-09-08T14:22:01-04:00" level=info msg="Writing manifest: /var/lib/rancher/k3s/server/manifests/rolebindings.yaml"
+time="2022-09-08T14:22:01-04:00" level=info msg="Writing manifest: /var/lib/rancher/k3s/server/manifests/traefik.yaml"
+time="2022-09-08T14:22:01-04:00" level=info msg="Writing manifest: /var/lib/rancher/k3s/server/manifests/ccm.yaml"
+time="2022-09-08T14:22:01-04:00" level=info msg="Writing manifest: /var/lib/rancher/k3s/server/manifests/metrics-server/metrics-server-deployment.yaml"
+time="2022-09-08T14:22:01-04:00" level=info msg="Writing manifest: /var/lib/rancher/k3s/server/manifests/metrics-server/metrics-server-service.yaml"
+E0908 14:22:01.434596   57094 memcache.go:206] couldn't get resource list for metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+E0908 14:22:01.494000   57094 memcache.go:104] couldn't get resource list for metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+time="2022-09-08T14:22:01-04:00" level=info msg="Starting k3s.cattle.io/v1, Kind=Addon controller"
+time="2022-09-08T14:22:01-04:00" level=info msg="Creating deploy event broadcaster"
+time="2022-09-08T14:22:01-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"ccm\", UID:\"5149c856-4855-4d6d-b7ee-8c38600f5fd6\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976386\", FieldPath:\"\"}): type: 'Normal' reason: 'ApplyingManifest' Applying manifest at \"/var/lib/rancher/k3s/server/manifests/ccm.yaml\""
+E0908 14:22:01.551265   57094 memcache.go:206] couldn't get resource list for metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+E0908 14:22:01.640447   57094 memcache.go:104] couldn't get resource list for metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+E0908 14:22:01.732051   57094 memcache.go:206] couldn't get resource list for metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+E0908 14:22:01.747365   57094 memcache.go:104] couldn't get resource list for metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+time="2022-09-08T14:22:01-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:01-04:00" level=info msg="Creating svccontroller event broadcaster"
+I0908 14:22:01.770157   57094 controller.go:611] quota admission added evaluator for: rolebindings.rbac.authorization.k8s.io
+time="2022-09-08T14:22:01-04:00" level=info msg="Cluster dns configmap already exists"
+time="2022-09-08T14:22:01-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"ccm\", UID:\"5149c856-4855-4d6d-b7ee-8c38600f5fd6\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976386\", FieldPath:\"\"}): type: 'Normal' reason: 'AppliedManifest' Applied manifest at \"/var/lib/rancher/k3s/server/manifests/ccm.yaml\""
+I0908 14:22:01.784040   57094 controller.go:611] quota admission added evaluator for: addons.k3s.cattle.io
+time="2022-09-08T14:22:01-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"coredns\", UID:\"b1d96bfd-2118-4d10-97bf-14308090f758\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976402\", FieldPath:\"\"}): type: 'Normal' reason: 'ApplyingManifest' Applying manifest at \"/var/lib/rancher/k3s/server/manifests/coredns.yaml\""
+time="2022-09-08T14:22:01-04:00" level=info msg="Waiting to retrieve agent configuration; server is not ready: --docker is no longer supported; to continue using docker, install cri-dockerd and set --container-runtime-endpoint"
+time="2022-09-08T14:22:01-04:00" level=info msg="Starting /v1, Kind=Secret controller"
+time="2022-09-08T14:22:01-04:00" level=info msg="Starting /v1, Kind=Node controller"
+time="2022-09-08T14:22:01-04:00" level=info msg="Starting /v1, Kind=ConfigMap controller"
+time="2022-09-08T14:22:01-04:00" level=info msg="Starting /v1, Kind=ServiceAccount controller"
+time="2022-09-08T14:22:01-04:00" level=info msg="Starting /v1, Kind=Pod controller"
+time="2022-09-08T14:22:01-04:00" level=info msg="Starting /v1, Kind=Service controller"
+time="2022-09-08T14:22:01-04:00" level=info msg="Starting /v1, Kind=Endpoints controller"
+time="2022-09-08T14:22:02-04:00" level=info msg="Updating TLS secret for kube-system/k3s-serving (count: 11): map[listener.cattle.io/cn-10.43.0.1:10.43.0.1 listener.cattle.io/cn-127.0.0.1:127.0.0.1 listener.cattle.io/cn-192.168.10.120:192.168.10.120 listener.cattle.io/cn-192.168.2.100:192.168.2.100 listener.cattle.io/cn-__1-f16284:::1 listener.cattle.io/cn-kubernetes:kubernetes listener.cattle.io/cn-kubernetes.default:kubernetes.default listener.cattle.io/cn-kubernetes.default.svc:kubernetes.default.svc listener.cattle.io/cn-kubernetes.default.svc.cluster.local:kubernetes.default.svc.cluster.local listener.cattle.io/cn-localhost:localhost listener.cattle.io/cn-raspberrypi-1:raspberrypi-1 listener.cattle.io/fingerprint:SHA1=77294BC37DEDB4E6E9F141CD26E51F49DE4B4BC2]"
+time="2022-09-08T14:22:02-04:00" level=info msg="Starting helm.cattle.io/v1, Kind=HelmChart controller"
+time="2022-09-08T14:22:02-04:00" level=info msg="Starting helm.cattle.io/v1, Kind=HelmChartConfig controller"
+time="2022-09-08T14:22:02-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"HelmChart\", Namespace:\"kube-system\", Name:\"traefik-crd\", UID:\"85bfab8c-b145-438f-ad28-cb4411dc2517\", APIVersion:\"helm.cattle.io/v1\", ResourceVersion:\"333\", FieldPath:\"\"}): type: 'Normal' reason: 'ApplyJob' Applying HelmChart using Job kube-system/helm-install-traefik-crd"
+time="2022-09-08T14:22:02-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"HelmChart\", Namespace:\"kube-system\", Name:\"traefik\", UID:\"bb827319-4da2-494a-962a-3ea415c8e104\", APIVersion:\"helm.cattle.io/v1\", ResourceVersion:\"976437\", FieldPath:\"\"}): type: 'Normal' reason: 'ApplyJob' Applying HelmChart using Job kube-system/helm-install-traefik"
+E0908 14:22:02.237042   57094 memcache.go:206] couldn't get resource list for metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+time="2022-09-08T14:22:02-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Service\", Namespace:\"kube-system\", Name:\"traefik\", UID:\"0c6d3bd7-f29b-4de1-abd0-4405923f6020\", APIVersion:\"v1\", ResourceVersion:\"1381246\", FieldPath:\"\"}): type: 'Normal' reason: 'AppliedDaemonSet' Applied LoadBalancer DaemonSet kube-system/svclb-traefik-0c6d3bd7"
+E0908 14:22:02.251679   57094 memcache.go:104] couldn't get resource list for metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+time="2022-09-08T14:22:02-04:00" level=info msg="Starting apps/v1, Kind=DaemonSet controller"
+time="2022-09-08T14:22:02-04:00" level=info msg="Starting apps/v1, Kind=Deployment controller"
+I0908 14:22:02.276696   57094 controller.go:611] quota admission added evaluator for: helmcharts.helm.cattle.io
+E0908 14:22:02.286321   57094 memcache.go:206] couldn't get resource list for metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+I0908 14:22:02.306939   57094 serving.go:355] Generated self-signed cert in-memory
+E0908 14:22:02.408165   57094 memcache.go:104] couldn't get resource list for metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+time="2022-09-08T14:22:02-04:00" level=info msg="Starting rbac.authorization.k8s.io/v1, Kind=ClusterRoleBinding controller"
+I0908 14:22:02.441224   57094 controller.go:611] quota admission added evaluator for: deployments.apps
+E0908 14:22:02.533297   57094 memcache.go:206] couldn't get resource list for metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+E0908 14:22:02.551570   57094 memcache.go:104] couldn't get resource list for metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+time="2022-09-08T14:22:02-04:00" level=info msg="Starting batch/v1, Kind=Job controller"
+time="2022-09-08T14:22:02-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"coredns\", UID:\"b1d96bfd-2118-4d10-97bf-14308090f758\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976402\", FieldPath:\"\"}): type: 'Normal' reason: 'AppliedManifest' Applied manifest at \"/var/lib/rancher/k3s/server/manifests/coredns.yaml\""
+time="2022-09-08T14:22:02-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"HelmChart\", Namespace:\"kube-system\", Name:\"traefik-crd\", UID:\"85bfab8c-b145-438f-ad28-cb4411dc2517\", APIVersion:\"helm.cattle.io/v1\", ResourceVersion:\"333\", FieldPath:\"\"}): type: 'Normal' reason: 'ApplyJob' Applying HelmChart using Job kube-system/helm-install-traefik-crd"
+time="2022-09-08T14:22:02-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"HelmChart\", Namespace:\"kube-system\", Name:\"traefik\", UID:\"bb827319-4da2-494a-962a-3ea415c8e104\", APIVersion:\"helm.cattle.io/v1\", ResourceVersion:\"976437\", FieldPath:\"\"}): type: 'Normal' reason: 'ApplyJob' Applying HelmChart using Job kube-system/helm-install-traefik"
+time="2022-09-08T14:22:02-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"local-storage\", UID:\"0f856579-9fca-43ed-9269-15df404fbabd\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976417\", FieldPath:\"\"}): type: 'Normal' reason: 'ApplyingManifest' Applying manifest at \"/var/lib/rancher/k3s/server/manifests/local-storage.yaml\""
+time="2022-09-08T14:22:02-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:02-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"local-storage\", UID:\"0f856579-9fca-43ed-9269-15df404fbabd\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976417\", FieldPath:\"\"}): type: 'Normal' reason: 'AppliedManifest' Applied manifest at \"/var/lib/rancher/k3s/server/manifests/local-storage.yaml\""
+time="2022-09-08T14:22:02-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"aggregated-metrics-reader\", UID:\"65c42cc9-8aa4-459b-85dc-0017789653b5\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976422\", FieldPath:\"\"}): type: 'Normal' reason: 'ApplyingManifest' Applying manifest at \"/var/lib/rancher/k3s/server/manifests/metrics-server/aggregated-metrics-reader.yaml\""
+I0908 14:22:02.832591   57094 serving.go:355] Generated self-signed cert in-memory
+time="2022-09-08T14:22:02-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"aggregated-metrics-reader\", UID:\"65c42cc9-8aa4-459b-85dc-0017789653b5\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976422\", FieldPath:\"\"}): type: 'Normal' reason: 'AppliedManifest' Applied manifest at \"/var/lib/rancher/k3s/server/manifests/metrics-server/aggregated-metrics-reader.yaml\""
+time="2022-09-08T14:22:02-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"auth-delegator\", UID:\"804f50f1-6439-4b47-9df4-fcbc1f88e76d\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976425\", FieldPath:\"\"}): type: 'Normal' reason: 'ApplyingManifest' Applying manifest at \"/var/lib/rancher/k3s/server/manifests/metrics-server/auth-delegator.yaml\""
+time="2022-09-08T14:22:02-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"auth-delegator\", UID:\"804f50f1-6439-4b47-9df4-fcbc1f88e76d\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976425\", FieldPath:\"\"}): type: 'Normal' reason: 'AppliedManifest' Applied manifest at \"/var/lib/rancher/k3s/server/manifests/metrics-server/auth-delegator.yaml\""
+time="2022-09-08T14:22:02-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"auth-reader\", UID:\"dfbd9a44-3879-4a8b-b3fd-dc7a2200e1a3\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976427\", FieldPath:\"\"}): type: 'Normal' reason: 'ApplyingManifest' Applying manifest at \"/var/lib/rancher/k3s/server/manifests/metrics-server/auth-reader.yaml\""
+time="2022-09-08T14:22:02-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"auth-reader\", UID:\"dfbd9a44-3879-4a8b-b3fd-dc7a2200e1a3\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976427\", FieldPath:\"\"}): type: 'Normal' reason: 'AppliedManifest' Applied manifest at \"/var/lib/rancher/k3s/server/manifests/metrics-server/auth-reader.yaml\""
+time="2022-09-08T14:22:03-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"metrics-apiservice\", UID:\"fa7c72ed-570a-4954-92bf-1594a88c3ec1\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976429\", FieldPath:\"\"}): type: 'Normal' reason: 'ApplyingManifest' Applying manifest at \"/var/lib/rancher/k3s/server/manifests/metrics-server/metrics-apiservice.yaml\""
+time="2022-09-08T14:22:03-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"metrics-apiservice\", UID:\"fa7c72ed-570a-4954-92bf-1594a88c3ec1\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976429\", FieldPath:\"\"}): type: 'Normal' reason: 'AppliedManifest' Applied manifest at \"/var/lib/rancher/k3s/server/manifests/metrics-server/metrics-apiservice.yaml\""
+time="2022-09-08T14:22:03-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"metrics-server-deployment\", UID:\"d66b3428-a97e-4b17-b371-d6fda0766e10\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976430\", FieldPath:\"\"}): type: 'Normal' reason: 'ApplyingManifest' Applying manifest at \"/var/lib/rancher/k3s/server/manifests/metrics-server/metrics-server-deployment.yaml\""
+time="2022-09-08T14:22:03-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"metrics-server-deployment\", UID:\"d66b3428-a97e-4b17-b371-d6fda0766e10\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976430\", FieldPath:\"\"}): type: 'Normal' reason: 'AppliedManifest' Applied manifest at \"/var/lib/rancher/k3s/server/manifests/metrics-server/metrics-server-deployment.yaml\""
+time="2022-09-08T14:22:03-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"metrics-server-service\", UID:\"b3ad15b5-6016-42a9-bba4-c1358f1a4977\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976431\", FieldPath:\"\"}): type: 'Normal' reason: 'ApplyingManifest' Applying manifest at \"/var/lib/rancher/k3s/server/manifests/metrics-server/metrics-server-service.yaml\""
+time="2022-09-08T14:22:03-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"metrics-server-service\", UID:\"b3ad15b5-6016-42a9-bba4-c1358f1a4977\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976431\", FieldPath:\"\"}): type: 'Normal' reason: 'AppliedManifest' Applied manifest at \"/var/lib/rancher/k3s/server/manifests/metrics-server/metrics-server-service.yaml\""
+time="2022-09-08T14:22:03-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"resource-reader\", UID:\"48d20e9a-df6b-4767-a84c-697c2f6c5484\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976432\", FieldPath:\"\"}): type: 'Normal' reason: 'ApplyingManifest' Applying manifest at \"/var/lib/rancher/k3s/server/manifests/metrics-server/resource-reader.yaml\""
+time="2022-09-08T14:22:03-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"resource-reader\", UID:\"48d20e9a-df6b-4767-a84c-697c2f6c5484\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976432\", FieldPath:\"\"}): type: 'Normal' reason: 'AppliedManifest' Applied manifest at \"/var/lib/rancher/k3s/server/manifests/metrics-server/resource-reader.yaml\""
+time="2022-09-08T14:22:03-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"rolebindings\", UID:\"0ddcd968-e87b-4580-83e4-b543d1d4dc6f\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976434\", FieldPath:\"\"}): type: 'Normal' reason: 'ApplyingManifest' Applying manifest at \"/var/lib/rancher/k3s/server/manifests/rolebindings.yaml\""
+time="2022-09-08T14:22:03-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"rolebindings\", UID:\"0ddcd968-e87b-4580-83e4-b543d1d4dc6f\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976434\", FieldPath:\"\"}): type: 'Normal' reason: 'AppliedManifest' Applied manifest at \"/var/lib/rancher/k3s/server/manifests/rolebindings.yaml\""
+time="2022-09-08T14:22:03-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"traefik\", UID:\"30d341d3-8fb0-4dae-8436-641364fd12e5\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976440\", FieldPath:\"\"}): type: 'Normal' reason: 'ApplyingManifest' Applying manifest at \"/var/lib/rancher/k3s/server/manifests/traefik.yaml\""
+time="2022-09-08T14:22:03-04:00" level=info msg="Event(v1.ObjectReference{Kind:\"Addon\", Namespace:\"kube-system\", Name:\"traefik\", UID:\"30d341d3-8fb0-4dae-8436-641364fd12e5\", APIVersion:\"k3s.cattle.io/v1\", ResourceVersion:\"976440\", FieldPath:\"\"}): type: 'Normal' reason: 'AppliedManifest' Applied manifest at \"/var/lib/rancher/k3s/server/manifests/traefik.yaml\""
+I0908 14:22:03.587926   57094 controllermanager.go:180] Version: v1.24.3+k3s1
+I0908 14:22:03.588202   57094 controllermanager.go:182] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+I0908 14:22:03.597393   57094 secure_serving.go:210] Serving securely on 127.0.0.1:10257
+I0908 14:22:03.598812   57094 requestheader_controller.go:169] Starting RequestHeaderAuthRequestController
+I0908 14:22:03.598908   57094 shared_informer.go:255] Waiting for caches to sync for RequestHeaderAuthRequestController
+I0908 14:22:03.598982   57094 tlsconfig.go:240] "Starting DynamicServingCertificateController"
+I0908 14:22:03.599174   57094 configmap_cafile_content.go:202] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::client-ca-file"
+I0908 14:22:03.599220   57094 shared_informer.go:255] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
+I0908 14:22:03.599283   57094 configmap_cafile_content.go:202] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file"
+I0908 14:22:03.599313   57094 shared_informer.go:255] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
+I0908 14:22:03.699138   57094 shared_informer.go:262] Caches are synced for RequestHeaderAuthRequestController
+I0908 14:22:03.699441   57094 shared_informer.go:262] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
+I0908 14:22:03.699447   57094 shared_informer.go:262] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
+time="2022-09-08T14:22:03-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:04-04:00" level=info msg="Waiting for control-plane node agent startup"
+I0908 14:22:05.038540   57094 controllermanager.go:143] Version: v1.24.3+k3s1
+I0908 14:22:05.047626   57094 secure_serving.go:210] Serving securely on 127.0.0.1:10258
+I0908 14:22:05.049042   57094 tlsconfig.go:240] "Starting DynamicServingCertificateController"
+I0908 14:22:05.049130   57094 configmap_cafile_content.go:202] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file"
+I0908 14:22:05.049176   57094 shared_informer.go:255] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
+I0908 14:22:05.049062   57094 requestheader_controller.go:169] Starting RequestHeaderAuthRequestController
+I0908 14:22:05.049519   57094 shared_informer.go:255] Waiting for caches to sync for RequestHeaderAuthRequestController
+I0908 14:22:05.049102   57094 configmap_cafile_content.go:202] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::client-ca-file"
+I0908 14:22:05.049765   57094 shared_informer.go:255] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
+I0908 14:22:05.074758   57094 request.go:601] Waited for 1.04461703s due to client-side throttling, not priority and fairness, request: GET:https://127.0.0.1:6444/apis/discovery.k8s.io/v1
+I0908 14:22:05.150029   57094 shared_informer.go:262] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
+I0908 14:22:05.150030   57094 shared_informer.go:262] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
+I0908 14:22:05.150067   57094 shared_informer.go:262] Caches are synced for RequestHeaderAuthRequestController
+E0908 14:22:05.728711   57094 controllermanager.go:467] unable to get all supported resources from server: unable to retrieve the complete list of server APIs: metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+I0908 14:22:05.730366   57094 shared_informer.go:255] Waiting for caches to sync for tokens
+time="2022-09-08T14:22:05-04:00" level=info msg="Waiting for control-plane node agent startup"
+I0908 14:22:05.763538   57094 controllermanager.go:593] Started "horizontalpodautoscaling"
+W0908 14:22:05.763791   57094 controllermanager.go:558] "cloud-node-lifecycle" is disabled
+I0908 14:22:05.763680   57094 horizontal.go:168] Starting HPA controller
+I0908 14:22:05.764031   57094 shared_informer.go:255] Waiting for caches to sync for HPA
+I0908 14:22:05.771720   57094 controllermanager.go:593] Started "persistentvolume-binder"
+I0908 14:22:05.771819   57094 pv_controller_base.go:311] Starting persistent volume controller
+I0908 14:22:05.772579   57094 shared_informer.go:255] Waiting for caches to sync for persistent volume
+I0908 14:22:05.779806   57094 controllermanager.go:593] Started "endpoint"
+I0908 14:22:05.780548   57094 endpoints_controller.go:178] Starting endpoint controller
+I0908 14:22:05.780628   57094 shared_informer.go:255] Waiting for caches to sync for endpoint
+I0908 14:22:05.788065   57094 controllermanager.go:593] Started "job"
+I0908 14:22:05.788494   57094 job_controller.go:184] Starting job controller
+I0908 14:22:05.788665   57094 shared_informer.go:255] Waiting for caches to sync for job
+I0908 14:22:05.795378   57094 controllermanager.go:593] Started "ttl"
+I0908 14:22:05.795947   57094 ttl_controller.go:121] Starting TTL controller
+I0908 14:22:05.796011   57094 shared_informer.go:255] Waiting for caches to sync for TTL
+I0908 14:22:05.831363   57094 shared_informer.go:262] Caches are synced for tokens
+E0908 14:22:05.871833   57094 namespaced_resources_deleter.go:161] unable to get all supported resources from server: unable to retrieve the complete list of server APIs: metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+I0908 14:22:05.872158   57094 controllermanager.go:593] Started "namespace"
+I0908 14:22:05.872492   57094 namespace_controller.go:200] Starting namespace controller
+I0908 14:22:05.872556   57094 shared_informer.go:255] Waiting for caches to sync for namespace
+I0908 14:22:05.880054   57094 controllermanager.go:593] Started "replicaset"
+W0908 14:22:05.880171   57094 controllermanager.go:558] "bootstrapsigner" is disabled
+W0908 14:22:05.880205   57094 controllermanager.go:558] "tokencleaner" is disabled
+W0908 14:22:05.880233   57094 controllermanager.go:558] "route" is disabled
+I0908 14:22:05.880521   57094 replica_set.go:205] Starting replicaset controller
+I0908 14:22:05.880691   57094 shared_informer.go:255] Waiting for caches to sync for ReplicaSet
+I0908 14:22:05.888147   57094 controllermanager.go:593] Started "attachdetach"
+I0908 14:22:05.888218   57094 attach_detach_controller.go:328] Starting attach detach controller
+I0908 14:22:05.888373   57094 shared_informer.go:255] Waiting for caches to sync for attach detach
+I0908 14:22:05.895783   57094 controllermanager.go:593] Started "deployment"
+I0908 14:22:05.896380   57094 deployment_controller.go:153] "Starting controller" controller="deployment"
+I0908 14:22:05.896440   57094 shared_informer.go:255] Waiting for caches to sync for deployment
+I0908 14:22:05.903591   57094 controllermanager.go:593] Started "serviceaccount"
+I0908 14:22:05.903669   57094 serviceaccounts_controller.go:117] Starting service account controller
+I0908 14:22:05.903986   57094 shared_informer.go:255] Waiting for caches to sync for service account
+I0908 14:22:05.913785   57094 controllermanager.go:593] Started "daemonset"
+I0908 14:22:05.913861   57094 daemon_controller.go:284] Starting daemon sets controller
+I0908 14:22:05.913999   57094 shared_informer.go:255] Waiting for caches to sync for daemon sets
+I0908 14:22:05.921152   57094 controllermanager.go:593] Started "csrcleaner"
+W0908 14:22:05.921417   57094 controllermanager.go:558] "service" is disabled
+I0908 14:22:05.921654   57094 cleaner.go:82] Starting CSR cleaner controller
+I0908 14:22:05.928953   57094 controllermanager.go:593] Started "clusterrole-aggregation"
+I0908 14:22:05.929047   57094 clusterroleaggregation_controller.go:194] Starting ClusterRoleAggregator
+I0908 14:22:05.929341   57094 shared_informer.go:255] Waiting for caches to sync for ClusterRoleAggregator
+I0908 14:22:05.936901   57094 controllermanager.go:593] Started "root-ca-cert-publisher"
+I0908 14:22:05.937612   57094 publisher.go:107] Starting root CA certificate configmap publisher
+I0908 14:22:05.937825   57094 shared_informer.go:255] Waiting for caches to sync for crt configmap
+I0908 14:22:05.944773   57094 controllermanager.go:593] Started "ephemeral-volume"
+I0908 14:22:05.945152   57094 controller.go:170] Starting ephemeral volume controller
+I0908 14:22:05.945306   57094 shared_informer.go:255] Waiting for caches to sync for ephemeral
+I0908 14:22:05.952524   57094 controllermanager.go:593] Started "replicationcontroller"
+I0908 14:22:05.953081   57094 replica_set.go:205] Starting replicationcontroller controller
+I0908 14:22:05.953145   57094 shared_informer.go:255] Waiting for caches to sync for ReplicationController
+I0908 14:22:05.967304   57094 controllermanager.go:593] Started "disruption"
+I0908 14:22:05.967808   57094 disruption.go:363] Starting disruption controller
+I0908 14:22:05.967873   57094 shared_informer.go:255] Waiting for caches to sync for disruption
+I0908 14:22:05.976811   57094 certificate_controller.go:119] Starting certificate controller "csrsigning-kubelet-serving"
+I0908 14:22:05.976920   57094 shared_informer.go:255] Waiting for caches to sync for certificate-csrsigning-kubelet-serving
+I0908 14:22:05.977028   57094 dynamic_serving_content.go:132] "Starting controller" name="csr-controller::/var/lib/rancher/k3s/server/tls/server-ca.crt::/var/lib/rancher/k3s/server/tls/server-ca.key"
+I0908 14:22:05.977827   57094 certificate_controller.go:119] Starting certificate controller "csrsigning-kubelet-client"
+I0908 14:22:05.977994   57094 shared_informer.go:255] Waiting for caches to sync for certificate-csrsigning-kubelet-client
+I0908 14:22:05.978106   57094 dynamic_serving_content.go:132] "Starting controller" name="csr-controller::/var/lib/rancher/k3s/server/tls/client-ca.crt::/var/lib/rancher/k3s/server/tls/client-ca.key"
+I0908 14:22:05.978875   57094 controllermanager.go:593] Started "csrsigning"
+I0908 14:22:05.979426   57094 certificate_controller.go:119] Starting certificate controller "csrsigning-kube-apiserver-client"
+I0908 14:22:05.979481   57094 shared_informer.go:255] Waiting for caches to sync for certificate-csrsigning-kube-apiserver-client
+I0908 14:22:05.979557   57094 certificate_controller.go:119] Starting certificate controller "csrsigning-legacy-unknown"
+I0908 14:22:05.979591   57094 shared_informer.go:255] Waiting for caches to sync for certificate-csrsigning-legacy-unknown
+I0908 14:22:05.979655   57094 dynamic_serving_content.go:132] "Starting controller" name="csr-controller::/var/lib/rancher/k3s/server/tls/client-ca.crt::/var/lib/rancher/k3s/server/tls/client-ca.key"
+I0908 14:22:05.990104   57094 dynamic_serving_content.go:132] "Starting controller" name="csr-controller::/var/lib/rancher/k3s/server/tls/server-ca.crt::/var/lib/rancher/k3s/server/tls/server-ca.key"
+I0908 14:22:06.003170   57094 controllermanager.go:593] Started "csrapproving"
+I0908 14:22:06.003513   57094 certificate_controller.go:119] Starting certificate controller "csrapproving"
+I0908 14:22:06.003580   57094 shared_informer.go:255] Waiting for caches to sync for certificate-csrapproving
+I0908 14:22:06.010807   57094 controllermanager.go:593] Started "pv-protection"
+I0908 14:22:06.010911   57094 pv_protection_controller.go:79] Starting PV protection controller
+I0908 14:22:06.011668   57094 shared_informer.go:255] Waiting for caches to sync for PV protection
+I0908 14:22:06.018812   57094 controllermanager.go:593] Started "endpointslicemirroring"
+I0908 14:22:06.019377   57094 endpointslicemirroring_controller.go:212] Starting EndpointSliceMirroring controller
+I0908 14:22:06.019435   57094 shared_informer.go:255] Waiting for caches to sync for endpoint_slice_mirroring
+I0908 14:22:06.026668   57094 controllermanager.go:593] Started "persistentvolume-expander"
+I0908 14:22:06.026737   57094 expand_controller.go:341] Starting expand controller
+I0908 14:22:06.027054   57094 shared_informer.go:255] Waiting for caches to sync for expand
+I0908 14:22:06.037088   57094 controllermanager.go:593] Started "endpointslice"
+I0908 14:22:06.037144   57094 endpointslice_controller.go:257] Starting endpoint slice controller
+I0908 14:22:06.037555   57094 shared_informer.go:255] Waiting for caches to sync for endpoint_slice
+E0908 14:22:06.113933   57094 resource_quota_controller.go:162] initial discovery check failure, continuing and counting on future sync update: unable to retrieve the complete list of server APIs: metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+I0908 14:22:06.114193   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for traefikservices.traefik.containo.us
+I0908 14:22:06.114287   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for ingresses.networking.k8s.io
+I0908 14:22:06.114359   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for csistoragecapacities.storage.k8s.io
+I0908 14:22:06.114428   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for ingressrouteudps.traefik.containo.us
+I0908 14:22:06.114524   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for limitranges
+I0908 14:22:06.114585   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for deployments.apps
+I0908 14:22:06.114659   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for middlewares.traefik.containo.us
+I0908 14:22:06.114728   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for ingressroutetcps.traefik.containo.us
+I0908 14:22:06.114801   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for middlewaretcps.traefik.containo.us
+I0908 14:22:06.114870   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for rolebindings.rbac.authorization.k8s.io
+I0908 14:22:06.114941   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for roles.rbac.authorization.k8s.io
+I0908 14:22:06.115004   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for endpointslices.discovery.k8s.io
+I0908 14:22:06.115066   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for daemonsets.apps
+I0908 14:22:06.115131   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for controllerrevisions.apps
+I0908 14:22:06.115202   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for helmchartconfigs.helm.cattle.io
+I0908 14:22:06.115271   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for addons.k3s.cattle.io
+I0908 14:22:06.115381   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for statefulsets.apps
+I0908 14:22:06.115451   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for jobs.batch
+I0908 14:22:06.115514   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for horizontalpodautoscalers.autoscaling
+I0908 14:22:06.115588   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for cronjobs.batch
+I0908 14:22:06.115657   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for leases.coordination.k8s.io
+I0908 14:22:06.115729   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for ingressroutes.traefik.containo.us
+I0908 14:22:06.115830   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for serverstransports.traefik.containo.us
+I0908 14:22:06.116014   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for serviceaccounts
+I0908 14:22:06.116093   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for events.events.k8s.io
+I0908 14:22:06.116162   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for poddisruptionbudgets.policy
+I0908 14:22:06.116298   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for helmcharts.helm.cattle.io
+I0908 14:22:06.116370   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for tlsoptions.traefik.containo.us
+I0908 14:22:06.116437   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for tlsstores.traefik.containo.us
+W0908 14:22:06.116483   57094 shared_informer.go:533] resyncPeriod 14h0m57.916297911s is smaller than resyncCheckPeriod 14h12m9.019418008s and the informer has already started. Changing it to 14h12m9.019418008s
+I0908 14:22:06.116659   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for replicasets.apps
+I0908 14:22:06.116733   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for networkpolicies.networking.k8s.io
+I0908 14:22:06.116824   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for podtemplates
+I0908 14:22:06.116890   57094 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for endpoints
+I0908 14:22:06.116962   57094 controllermanager.go:593] Started "resourcequota"
+I0908 14:22:06.117553   57094 resource_quota_controller.go:273] Starting resource quota controller
+I0908 14:22:06.117609   57094 shared_informer.go:255] Waiting for caches to sync for resource quota
+I0908 14:22:06.118114   57094 resource_quota_monitor.go:308] QuotaMonitor running
+E0908 14:22:06.144011   57094 resource_quota_controller.go:413] unable to retrieve the complete list of server APIs: metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+I0908 14:22:06.148444   57094 garbagecollector.go:149] Starting garbage collector controller
+I0908 14:22:06.148550   57094 shared_informer.go:255] Waiting for caches to sync for garbage collector
+I0908 14:22:06.148625   57094 graph_builder.go:289] GraphBuilder running
+I0908 14:22:06.152203   57094 controllermanager.go:593] Started "garbagecollector"
+I0908 14:22:06.165158   57094 controllermanager.go:593] Started "statefulset"
+I0908 14:22:06.165450   57094 stateful_set.go:147] Starting stateful set controller
+I0908 14:22:06.165498   57094 shared_informer.go:255] Waiting for caches to sync for stateful set
+I0908 14:22:06.238854   57094 controllermanager.go:593] Started "cronjob"
+I0908 14:22:06.239089   57094 cronjob_controllerv2.go:135] "Starting cronjob controller v2"
+I0908 14:22:06.239148   57094 shared_informer.go:255] Waiting for caches to sync for cronjob
+W0908 14:22:06.260534   57094 garbagecollector.go:747] failed to discover some groups: map[metrics.k8s.io/v1beta1:the server is currently unable to handle the request]
+I0908 14:22:06.288274   57094 node_ipam_controller.go:91] Sending events to api server.
+time="2022-09-08T14:22:06-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:06-04:00" level=info msg="Waiting to retrieve agent configuration; server is not ready: --docker is no longer supported; to continue using docker, install cri-dockerd and set --container-runtime-endpoint"
+E0908 14:22:07.176591   57094 controllermanager.go:463] unable to get all supported resources from server: unable to retrieve the complete list of server APIs: metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+I0908 14:22:07.177499   57094 node_controller.go:118] Sending events to api server.
+I0908 14:22:07.177748   57094 controllermanager.go:291] Started "cloud-node"
+I0908 14:22:07.178396   57094 node_lifecycle_controller.go:77] Sending events to api server
+I0908 14:22:07.178546   57094 controllermanager.go:291] Started "cloud-node-lifecycle"
+I0908 14:22:07.179861   57094 node_controller.go:157] Waiting for informer caches to sync
+time="2022-09-08T14:22:07-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:08-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:09-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:10-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:11-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:11-04:00" level=info msg="Waiting to retrieve agent configuration; server is not ready: --docker is no longer supported; to continue using docker, install cri-dockerd and set --container-runtime-endpoint"
+time="2022-09-08T14:22:12-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:13-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:14-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:15-04:00" level=info msg="Waiting for control-plane node agent startup"
+I0908 14:22:16.371494   57094 range_allocator.go:83] Sending events to api server.
+I0908 14:22:16.371898   57094 range_allocator.go:111] No Service CIDR provided. Skipping filtering out service addresses.
+I0908 14:22:16.372033   57094 range_allocator.go:117] No Secondary Service CIDR provided. Skipping filtering out secondary service addresses.
+I0908 14:22:16.372213   57094 controllermanager.go:593] Started "nodeipam"
+I0908 14:22:16.372798   57094 node_ipam_controller.go:154] Starting ipam controller
+I0908 14:22:16.372981   57094 shared_informer.go:255] Waiting for caches to sync for node
+I0908 14:22:16.379714   57094 node_lifecycle_controller.go:377] Sending events to api server.
+I0908 14:22:16.380145   57094 taint_manager.go:163] "Sending events to api server"
+I0908 14:22:16.380318   57094 node_lifecycle_controller.go:505] Controller will reconcile labels.
+I0908 14:22:16.380396   57094 controllermanager.go:593] Started "nodelifecycle"
+I0908 14:22:16.380602   57094 node_lifecycle_controller.go:539] Starting node controller
+I0908 14:22:16.380733   57094 shared_informer.go:255] Waiting for caches to sync for taint
+I0908 14:22:16.387906   57094 controllermanager.go:593] Started "pvc-protection"
+I0908 14:22:16.387998   57094 pvc_protection_controller.go:103] "Starting PVC protection controller"
+I0908 14:22:16.388050   57094 shared_informer.go:255] Waiting for caches to sync for PVC protection
+I0908 14:22:16.395292   57094 controllermanager.go:593] Started "podgc"
+I0908 14:22:16.395625   57094 gc_controller.go:92] Starting GC controller
+I0908 14:22:16.395781   57094 shared_informer.go:255] Waiting for caches to sync for GC
+I0908 14:22:16.403846   57094 controllermanager.go:593] Started "ttl-after-finished"
+I0908 14:22:16.404289   57094 ttlafterfinished_controller.go:109] Starting TTL after finished controller
+I0908 14:22:16.404344   57094 shared_informer.go:255] Waiting for caches to sync for TTL after finished
+I0908 14:22:16.414984   57094 shared_informer.go:255] Waiting for caches to sync for resource quota
+I0908 14:22:16.480472   57094 job_controller.go:498] enqueueing job kube-system/helm-install-traefik-crd
+I0908 14:22:16.480600   57094 job_controller.go:498] enqueueing job kube-system/helm-install-traefik
+I0908 14:22:16.491404   57094 shared_informer.go:262] Caches are synced for certificate-csrsigning-kubelet-client
+I0908 14:22:16.493732   57094 job_controller.go:498] enqueueing job kube-system/helm-install-traefik
+I0908 14:22:16.504296   57094 shared_informer.go:262] Caches are synced for certificate-csrapproving
+I0908 14:22:16.504687   57094 shared_informer.go:262] Caches are synced for TTL after finished
+W0908 14:22:16.505226   57094 topologycache.go:199] Can't get CPU or zone information for raspberrypi-2 node
+W0908 14:22:16.505527   57094 topologycache.go:199] Can't get CPU or zone information for raspberrypi-2 node
+W0908 14:22:16.507345   57094 actual_state_of_world.go:541] Failed to update statusUpdateNeeded field in actual state of world: Failed to set statusUpdateNeeded to needed true, because nodeName="raspberrypi-2" does not exist
+W0908 14:22:16.507691   57094 actual_state_of_world.go:541] Failed to update statusUpdateNeeded field in actual state of world: Failed to set statusUpdateNeeded to needed true, because nodeName="raspberrypi-1" does not exist
+I0908 14:22:16.526671   57094 shared_informer.go:262] Caches are synced for TTL
+I0908 14:22:16.529523   57094 shared_informer.go:262] Caches are synced for ClusterRoleAggregator
+I0908 14:22:16.540218   57094 shared_informer.go:262] Caches are synced for cronjob
+I0908 14:22:16.575627   57094 shared_informer.go:262] Caches are synced for node
+I0908 14:22:16.575965   57094 range_allocator.go:173] Starting range CIDR allocator
+I0908 14:22:16.576111   57094 shared_informer.go:255] Waiting for caches to sync for cidrallocator
+I0908 14:22:16.576239   57094 shared_informer.go:262] Caches are synced for cidrallocator
+I0908 14:22:16.576596   57094 shared_informer.go:262] Caches are synced for expand
+I0908 14:22:16.577273   57094 shared_informer.go:262] Caches are synced for certificate-csrsigning-kubelet-serving
+I0908 14:22:16.579579   57094 shared_informer.go:262] Caches are synced for certificate-csrsigning-kube-apiserver-client
+I0908 14:22:16.579764   57094 shared_informer.go:262] Caches are synced for certificate-csrsigning-legacy-unknown
+E0908 14:22:16.595298   57094 memcache.go:206] couldn't get resource list for metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+I0908 14:22:16.596846   57094 job_controller.go:498] enqueueing job kube-system/helm-install-traefik-crd
+I0908 14:22:16.600364   57094 shared_informer.go:262] Caches are synced for deployment
+I0908 14:22:16.604325   57094 shared_informer.go:262] Caches are synced for service account
+I0908 14:22:16.613034   57094 shared_informer.go:262] Caches are synced for PV protection
+I0908 14:22:16.618913   57094 shared_informer.go:262] Caches are synced for daemon sets
+E0908 14:22:16.631594   57094 memcache.go:104] couldn't get resource list for metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+I0908 14:22:16.638176   57094 shared_informer.go:262] Caches are synced for crt configmap
+I0908 14:22:16.644297   57094 shared_informer.go:255] Waiting for caches to sync for garbage collector
+I0908 14:22:16.645701   57094 shared_informer.go:262] Caches are synced for ephemeral
+I0908 14:22:16.653654   57094 shared_informer.go:262] Caches are synced for ReplicationController
+I0908 14:22:16.665605   57094 shared_informer.go:262] Caches are synced for stateful set
+I0908 14:22:16.673020   57094 shared_informer.go:262] Caches are synced for namespace
+I0908 14:22:16.673922   57094 shared_informer.go:262] Caches are synced for persistent volume
+I0908 14:22:16.674913   57094 shared_informer.go:262] Caches are synced for HPA
+I0908 14:22:16.675068   57094 shared_informer.go:262] Caches are synced for disruption
+I0908 14:22:16.675113   57094 disruption.go:371] Sending events to api server.
+I0908 14:22:16.684036   57094 shared_informer.go:262] Caches are synced for taint
+I0908 14:22:16.684259   57094 shared_informer.go:262] Caches are synced for ReplicaSet
+I0908 14:22:16.684320   57094 node_lifecycle_controller.go:1399] Initializing eviction metric for zone: 
+W0908 14:22:16.684466   57094 node_lifecycle_controller.go:1014] Missing timestamp for Node raspberrypi-2. Assuming now as a timestamp.
+W0908 14:22:16.684603   57094 node_lifecycle_controller.go:1014] Missing timestamp for Node raspberrypi-1. Assuming now as a timestamp.
+I0908 14:22:16.684700   57094 node_lifecycle_controller.go:1215] Controller detected that zone  is now in state Normal.
+I0908 14:22:16.685519   57094 taint_manager.go:187] "Starting NoExecuteTaintManager"
+I0908 14:22:16.686399   57094 event.go:294] "Event occurred" object="raspberrypi-2" fieldPath="" kind="Node" apiVersion="v1" type="Normal" reason="RegisteredNode" message="Node raspberrypi-2 event: Registered Node raspberrypi-2 in Controller"
+I0908 14:22:16.686530   57094 event.go:294] "Event occurred" object="raspberrypi-1" fieldPath="" kind="Node" apiVersion="v1" type="Normal" reason="RegisteredNode" message="Node raspberrypi-1 event: Registered Node raspberrypi-1 in Controller"
+I0908 14:22:16.688482   57094 shared_informer.go:262] Caches are synced for attach detach
+I0908 14:22:16.695993   57094 shared_informer.go:262] Caches are synced for GC
+I0908 14:22:16.699943   57094 shared_informer.go:262] Caches are synced for job
+I0908 14:22:16.700579   57094 shared_informer.go:262] Caches are synced for PVC protection
+I0908 14:22:16.719607   57094 shared_informer.go:262] Caches are synced for endpoint_slice_mirroring
+I0908 14:22:16.738291   57094 shared_informer.go:262] Caches are synced for endpoint_slice
+time="2022-09-08T14:22:16-04:00" level=info msg="Waiting for control-plane node agent startup"
+I0908 14:22:16.781270   57094 shared_informer.go:262] Caches are synced for endpoint
+I0908 14:22:16.816012   57094 shared_informer.go:262] Caches are synced for resource quota
+I0908 14:22:16.818788   57094 shared_informer.go:262] Caches are synced for resource quota
+time="2022-09-08T14:22:16-04:00" level=info msg="Waiting to retrieve agent configuration; server is not ready: --docker is no longer supported; to continue using docker, install cri-dockerd and set --container-runtime-endpoint"
+I0908 14:22:17.145664   57094 shared_informer.go:262] Caches are synced for garbage collector
+I0908 14:22:17.150033   57094 shared_informer.go:262] Caches are synced for garbage collector
+I0908 14:22:17.150119   57094 garbagecollector.go:158] Garbage collector: all resource monitors have synced. Proceeding to collect garbage
+time="2022-09-08T14:22:17-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:18-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:19-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:20-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:21-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:21-04:00" level=info msg="Waiting to retrieve agent configuration; server is not ready: --docker is no longer supported; to continue using docker, install cri-dockerd and set --container-runtime-endpoint"
+time="2022-09-08T14:22:22-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:23-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:24-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:25-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:26-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:26-04:00" level=info msg="Waiting to retrieve agent configuration; server is not ready: --docker is no longer supported; to continue using docker, install cri-dockerd and set --container-runtime-endpoint"
+time="2022-09-08T14:22:27-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:28-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:29-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:30-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:31-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:31-04:00" level=info msg="Waiting to retrieve agent configuration; server is not ready: --docker is no longer supported; to continue using docker, install cri-dockerd and set --container-runtime-endpoint"
+time="2022-09-08T14:22:32-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:33-04:00" level=info msg="Waiting for control-plane node agent startup"
+time="2022-09-08T14:22:33-04:00" level=info msg="Shutting down k3s.cattle.io/v1, Kind=Addon workers"
+I0908 14:22:33.970822   57094 controller.go:202] Shutting down kubernetes service endpoint reconciler
+time="2022-09-08T14:22:33-04:00" level=info msg="Shutting down batch/v1, Kind=Job workers"
+I0908 14:22:33.973129   57094 object_count_tracker.go:84] "StorageObjectCountTracker pruner is exiting"
+time="2022-09-08T14:22:33-04:00" level=info msg="Shutting down rbac.authorization.k8s.io/v1, Kind=ClusterRoleBinding workers"
+time="2022-09-08T14:22:33-04:00" level=info msg="Shutting down apps/v1, Kind=Deployment workers"
+time="2022-09-08T14:22:33-04:00" level=info msg="Shutting down apps/v1, Kind=DaemonSet workers"
+time="2022-09-08T14:22:33-04:00" level=info msg="Shutting down helm.cattle.io/v1, Kind=HelmChartConfig workers"
+time="2022-09-08T14:22:33-04:00" level=info msg="Shutting down helm.cattle.io/v1, Kind=HelmChart workers"
+time="2022-09-08T14:22:33-04:00" level=info msg="Shutting down /v1, Kind=Endpoints workers"
+time="2022-09-08T14:22:33-04:00" level=info msg="Shutting down /v1, Kind=Service workers"
+time="2022-09-08T14:22:33-04:00" level=info msg="Shutting down /v1, Kind=Pod workers"
+time="2022-09-08T14:22:33-04:00" level=info msg="Shutting down /v1, Kind=ServiceAccount workers"
+time="2022-09-08T14:22:33-04:00" level=info msg="Shutting down /v1, Kind=ConfigMap workers"
+time="2022-09-08T14:22:33-04:00" level=info msg="Shutting down /v1, Kind=Node workers"
+time="2022-09-08T14:22:33-04:00" level=info msg="Shutting down /v1, Kind=Secret workers"
+time="2022-09-08T14:22:34-04:00" level=info msg="Waiting for control-plane node agent startup"
