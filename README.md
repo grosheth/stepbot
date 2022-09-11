@@ -16,24 +16,24 @@ The bot loads all the cogs in the main.py file.
 
 The cogs are the ones interacting with the discord server.
 
-### games
+### Games
 
 coinflip: basic coinflip
 russian roulette: 1/6 chances to get kicked out of the voice channel when someone calls !rr. Stops whenever someone is kicked
 
-### reddit
+### Reddit
 
 You can use this bot to get random posts on subreddits.
 
 I also made some commands for specific subreddits which are all jokes.
 
-### music
+### Music
 
 You can play music from youtube with !play and the url in question. Some links dont work for some reason.
 
-### wallet
+### Wallet
 
-I made wallets for fake currency that is stocked in mongodb
+I made wallets for fake currency that is stocked in mongodb.
 
 ## Devops features
 
