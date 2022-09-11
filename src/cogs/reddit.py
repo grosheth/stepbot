@@ -50,7 +50,7 @@ class Reddit(commands.Cog):
                 await ctx.send(submission.url)
 
 
-    @commands.command(brief="!roast Send a reddit post from r/roastme")
+    @commands.command(brief="!roast Send a reddit post from r/roastme and some comments")
     async def roastme(self, ctx):
         async with ctx.channel.typing():
             if self.reddit:

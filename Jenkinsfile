@@ -27,6 +27,7 @@ pipeline {
                 }
             }
         }
+        
         stage('Deploy') {
             environment { 
                 CURRENT_VERSION= sh (returnStdout: true, script: 'cat /var/jenkins_home/workspace/discord-pipeline/src/manifest/version.txt').trim()
