@@ -45,14 +45,15 @@ Create a .env file where variables are going to be loaded in the settings.py fil
 
 
 ```
-TOKEN=OTgyNjI4NjEwMjM2MDk2NTIy.G5j7Uv.I0G7TaIYGReHPKO7fhx4-jCqzdq0_n7OcHGLTs
+TOKEN=discord-token
 TXTCHANNEL=769577020920561667
 VOICECHANNEL=969754635294343209
 
-REDDIT_ID=dBaYC5jZUmX5kAFlMnVJvA
-REDDIT_SECRET=7Dz68Q7MIHWOVP1_PBi-FEwXWKeWXg
+you have to register your reddit application wih
+REDDIT_ID=reddit-application-id
+REDDIT_SECRET=reddit-secret
 
-These are discord id's
+These are discord member id's
 FILOU=388902413358071819
 RURU=389820854311059457
 ALESS=622136882049974272
