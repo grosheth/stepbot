@@ -48,13 +48,13 @@ class Activities(commands.Cog):
                     intro = "src/intros/intro_filou.mp3"
 
                 elif member.id == int(PEPI):
-                    pass
+                    intro = "src/intros/intro_corbin.mp3"
 
                 elif member.id == int(MARTIN):
-                    pass
+                    intro = "src/intros/intro_filou.mp3"
 
                 elif member.id == int(BRIDO):
-                    pass
+                    intro = "src/intros/intro_corbin.mp3"
                 else:
                     intro = ""
 
