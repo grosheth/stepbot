@@ -79,5 +79,80 @@ class Games(commands.Cog):
         return
 
 
+    @commands.command(brief="!blackjack")
+    async def blackjack(self, ctx):
+
+        await create_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
+        
+
+        cards = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
+        x = 0
+        for value in cards:
+            if x < 39:
+                cards.append(value)
+            else:
+                break
+            x += 1
+
+        points = 0
+        dealer_points = 0
+        hand = []
+        dealer_hand = []
+
+        #await ctx.send("Here is the dealer's first card:")
+        get_card_dealer(cards, dealer_hand)
+        await ctx.send("-------------------------------------")
+        await ctx.send("Here is your hand:")
+        get_card(cards, hand)
+        points = convert(hand, points)
+        dealer_points = convert(dealer_hand, dealer_points)
+        while True:
+            await ctx.send(f"you currently have {points}")
+            await ctx.send(f"The dealer has {dealer_points}")
+            await ctx.send("1. Call.")
+            await ctx.send("2. Stay.")
+            answer = input()
+
+            if answer == "1":
+                print("Here is your hand:")
+                get_card(cards, hand)
+                points = convert(hand, points)
+                if points > 21:
+                    print("you have more than 21!")
+                    tprint("YOU LOST")
+                    #await create_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
+                    
+            elif answer == "2":
+                    print("Here is the dealer's hand")
+                    get_card_dealer(cards, dealer_hand)
+                    await ctx.send("-------------------------------------")
+                    dealer_points = convert(dealer_hand, dealer_points)
+                    time.sleep(1)
+
+                    while True:
+                        
+                        if dealer_points > 21:
+                            await ctx.send("You Won the dealer has more than 21")
+                            tprint("YOU WON")
+                            #await create_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
+
+                        if dealer_points <= 16:
+                            get_card_dealer(cards, dealer_hand)
+                            dealer_points = convert(dealer_hand, dealer_points)
+                            time.sleep(1)
+                        else:
+                            win = decision(points, dealer_points)
+
+                            if win:
+                                await ctx.send(f"You won with {points} against the dealer's {dealer_points}")
+                                tprint("YOU WON")
+                                #await create_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
+                            else:
+                                await ctx.send(f"You lost with {points} against the dealer's {dealer_points}")
+                                tprint("YOU LOST")
+                                #await create_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
+            else:
+                print("invalid answer")
+                
 def setup(bot):
     bot.add_cog(Games(bot))
