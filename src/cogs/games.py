@@ -99,7 +99,7 @@ class Games(commands.Cog):
         hand = []
         dealer_hand = []
 
-        #await ctx.send("Here is the dealer's first card:")
+        await ctx.send("Here is the dealer's first card:")
         get_card_dealer(cards, dealer_hand)
         await ctx.send("-------------------------------------")
         await ctx.send("Here is your hand:")
