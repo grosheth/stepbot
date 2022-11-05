@@ -1,28 +1,29 @@
 import json, os, random
 from pymongo import MongoClient
 from settings import *
+from random import randint
 
 
 
-def db_connection():
+def db_connection(db):
     connect = MongoClient(CONN_STRING)
-    collection = connect.discord.wallet
+    collection = connect.discord.db
     return collection
 
 
 def get_cash(member_id):
-    collection = db_connection()
+    collection = db_connection("wallet")
     current_cash = collection.find_one({'_id': member_id})['Nanane']
     return current_cash
 
 
 def lose_money(member_id, current_cash, win):
-    collection = db_connection()
+    collection = db_connection("wallet")
     collection.update_one({'_id': member_id},{'$set': {'Nanane': current_cash - win}}, upsert=False)
 
 
 def win_money(member_id, current_cash, loss):
-    collection = db_connection()
+    collection = db_connection("wallet")
     collection.update_one({'_id': member_id},{'$set': {'Nanane': current_cash + loss}}, upsert=False)
 
 
@@ -60,3 +61,60 @@ async def get_mom_joke():
     random_category = random.choice(list(jokes.keys()))
     insult = random.choice(list(jokes[random_category]))
     return insult
+
+
+
+# def pop_card(cards, hand):
+#     position = randint(0,len(cards))
+#     card = cards[position]
+#     cards.pop(position)
+#     hand.append(card)
+#     return hand
+
+# def get_card(cards, hand):
+#     if len(hand) < 2:
+#         for i in range(2):
+#             hand = pop_card(cards, hand)
+#     else:
+#         hand = pop_card(cards, hand)
+#     return hand
+
+# def get_card_dealer(cards, dealer_hand):
+#     dealer_hand = pop_card(cards, dealer_hand)
+#     return dealer_hand
+
+# def decision(points, dealer_points):
+#     if points == 21:
+#         win = True   
+#     elif points > dealer_points:
+#         win = True
+#         return win
+#     else:
+#         win = False
+#         return win
+
+# def convert(hand, points):
+#     if points > 0:
+#         if hand[-1].isdigit():
+#             c = int(hand[-1])
+#         else:
+#             if hand[-1] != "A":
+#                 c = 10
+#             elif points < 21:
+#                 c = 11
+#             else:
+#                 c = 1
+#         points += c
+#     else:
+#         for c in hand:
+#             if c.isdigit():
+#                 c = int(c)
+#             else:
+#                 if c != "A":
+#                     c = 10
+#                 elif points < 21:
+#                     c = 11
+#                 else:
+#                     c = 1
+#             points += c
+#     return points
