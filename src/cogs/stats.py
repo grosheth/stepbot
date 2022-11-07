@@ -40,10 +40,10 @@ class Stats(commands.Cog):
                 current_amount_reddit = get_amount(member.id, "Reddit")
                 current_amount_feet = get_amount(member.id, "Feet")
                 current_amount_memes = get_amount(member.id, "Memes")
-                await ctx.sendembed=discord.Embed(title="Voila coco tes stats de pedo? UwU",
+                await ctx.send(embed=discord.Embed(title="Voila coco tes stats de pedo UwU",
                                                     description=
-                                                    f"You have called the reddits: {current_amount_reddit} fois, You have been a foot pervert: {current_amount_feet} fois, You called the meme {current_amount_memes} fois",
-                                                    color=0xeeafe6)
+                                                    f"You have called the reddits: {current_amount_reddit} fois,\n You have been a foot pervert: {current_amount_feet} fois,\n You called the meme {current_amount_memes} fois",
+                                                    color=0xeeafe6))
 
 
 def setup(bot):
