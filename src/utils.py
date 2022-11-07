@@ -9,16 +9,13 @@ def db_connection_wallet():
     collection = connect.discord.wallet
     return collection
 
-def db_connection_stats():
-    connect = MongoClient(CONN_STRING)
-    collection = connect.discord.stats
-    return collection
 
 def get_cash(member_id):
     collection = db_connection_wallet()
     print(collection)
     current_cash = collection.find_one({'_id': member_id})['Nanane']
     return current_cash
+
 
 def win_money(member_id, current_cash, win):
     collection = db_connection_wallet()
@@ -30,9 +27,22 @@ def lose_money(member_id, current_cash, loss):
     collection.update_one({'_id': member_id},{'$set': {'Nanane': current_cash + loss}}, upsert=False)
 
 
+def db_connection_stats():
+    connect = MongoClient(CONN_STRING)
+    collection = connect.discord.stats
+    return collection
+
+
 def add_to_db(member_id, current_count, amount, db):
     collection = db_connection_stats()
     collection.update_one({'_id': member_id},{'$set': {db: current_count + amount}}, upsert=False)
+
+
+def get_amount(member_id, db):
+    collection = db_connection_stats()
+    print(collection)
+    current_amount = collection.find_one({'_id': member_id})[db]
+    return current_amount
 
 
 async def create_text_channel(guild, channel_name):

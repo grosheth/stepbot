@@ -9,14 +9,16 @@ class Memes(commands.Cog):
 
     @commands.command(brief="!insult @<user>")
     async def insult(self, ctx, member: discord.Member = None):
-        add_to_db(member.id, current_count, 1, "Memes")
+        current_count = get_amount(ctx.author.id, "Memes")
+        add_to_db(ctx.author.id, current_count, 1, "Memes")
         insult = await get_mom_joke()
         await ctx.send(f"{member.display_name} {insult}")
 
 
     @commands.command(brief="!quote sends a beer quote with image")
     async def quote(self, ctx):
-        add_to_db(member.id, current_count, 1, "Memes")
+        current_count = get_amount(ctx.author.id, "Memes")
+        add_to_db(ctx.author.id, current_count, 1, "Memes")
         quote = await open_file("beer.json", "beer")
         async with ctx.channel.typing():
             async with aiohttp.ClientSession() as session:

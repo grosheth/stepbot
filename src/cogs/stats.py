@@ -10,11 +10,11 @@ class Stats(commands.Cog):
         self.bot = bot
 
     @commands.command(brief="!specs_on_seggs")
-    async def specs_on_seggs(self, ctx):
-        messages = await ctx.history(limit=1).flatten()
-        print(messages)
-        
-        pass
+    async def feet_stats(self, ctx):
+        for member in ctx.guild.members:
+            if member.id == ctx.author.id:
+                current_amount = get_amount(member.id, "Feet")
+        await ctx.send(f"Toi appeller les pieds: {current_amount} fois")
 
 def setup(bot):
     bot.add_cog(Stats(bot))
