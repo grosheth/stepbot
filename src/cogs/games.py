@@ -2,6 +2,7 @@ import asyncio
 from discord.ext import commands
 from random import randint
 from utils import *
+from settings import *
 
 class Games(commands.Cog):
     def __init__(self, bot):
@@ -39,7 +40,7 @@ class Games(commands.Cog):
     @commands.command(brief="!rr Russian roulette")
     async def rr(self, ctx):
         await ctx.send("Tu gagne 1000 Nanane si tu meur pas. Tu perd 5000 Nanane si tu tfa shot.")
-        
+
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Tu decide po.")
         voice_channel = ctx.author.voice.channel

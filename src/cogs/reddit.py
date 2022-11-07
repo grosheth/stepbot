@@ -12,6 +12,7 @@ class Reddit(commands.Cog):
 
     @commands.command(brief="!reddit then specify the subreddit")
     async def reddit(self, ctx, arg):
+        add_to_db(member.id, current_count, 1, "Reddit")
         channel = arg
         async with ctx.channel.typing():
             if self.reddit:
@@ -25,6 +26,7 @@ class Reddit(commands.Cog):
 
     @commands.command(brief="!fiftyfifty Send a reddit post from r/fiftyfifty")
     async def fiftyfifty(self, ctx):
+        add_to_db(member.id, current_count, 1, "Reddit")
         await ctx.send("fiftyfifty incoming")
         async with ctx.channel.typing():
             if self.reddit:
@@ -39,6 +41,8 @@ class Reddit(commands.Cog):
 
     @commands.command(brief="!feet Send a reddit post from r/feetishh")
     async def feet(self, ctx):
+        add_to_db(member.id, current_count, 1, "Feet")
+        add_to_db(member.id, current_count, 1, "Reddit")
         async with ctx.channel.typing():
             if self.reddit:
                 submissions = self.reddit.subreddit("feetishh").hot(limit=100)
@@ -52,6 +56,7 @@ class Reddit(commands.Cog):
 
     @commands.command(brief="!roast Send a reddit post from r/roastme and some comments")
     async def roastme(self, ctx):
+        add_to_db(member.id, current_count, 1, "Reddit")
         async with ctx.channel.typing():
             if self.reddit:
                 submissions = self.reddit.subreddit("roastme").hot(limit=100)

@@ -1,6 +1,6 @@
 from discord.ext import commands
 import discord, aiohttp
-from utils import get_mom_joke, open_file
+from utils import *
 
 class Memes(commands.Cog):
     def __init__(self, bot):
@@ -9,12 +9,14 @@ class Memes(commands.Cog):
 
     @commands.command(brief="!insult @<user>")
     async def insult(self, ctx, member: discord.Member = None):
+        add_to_db(member.id, current_count, 1, "Memes")
         insult = await get_mom_joke()
         await ctx.send(f"{member.display_name} {insult}")
 
 
     @commands.command(brief="!quote sends a beer quote with image")
     async def quote(self, ctx):
+        add_to_db(member.id, current_count, 1, "Memes")
         quote = await open_file("beer.json", "beer")
         async with ctx.channel.typing():
             async with aiohttp.ClientSession() as session:

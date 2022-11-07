@@ -4,27 +4,35 @@ from settings import *
 from random import randint
 
 
-
-def db_connection(db):
+def db_connection_wallet():
     connect = MongoClient(CONN_STRING)
-    collection = connect.discord.db
+    collection = connect.discord.wallet
     return collection
 
+def db_connection_stats():
+    connect = MongoClient(CONN_STRING)
+    collection = connect.discord.stats
+    return collection
 
 def get_cash(member_id):
-    collection = db_connection("wallet")
+    collection = db_connection_wallet()
+    print(collection)
     current_cash = collection.find_one({'_id': member_id})['Nanane']
     return current_cash
 
-
-def lose_money(member_id, current_cash, win):
-    collection = db_connection("wallet")
+def win_money(member_id, current_cash, win):
+    collection = db_connection_wallet()
     collection.update_one({'_id': member_id},{'$set': {'Nanane': current_cash - win}}, upsert=False)
 
 
-def win_money(member_id, current_cash, loss):
-    collection = db_connection("wallet")
+def lose_money(member_id, current_cash, loss):
+    collection = db_connection_wallet()
     collection.update_one({'_id': member_id},{'$set': {'Nanane': current_cash + loss}}, upsert=False)
+
+
+def add_to_db(member_id, current_count, amount, db):
+    collection = db_connection_stats()
+    collection.update_one({'_id': member_id},{'$set': {db: current_count + amount}}, upsert=False)
 
 
 async def create_text_channel(guild, channel_name):

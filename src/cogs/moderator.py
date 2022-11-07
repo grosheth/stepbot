@@ -12,7 +12,7 @@ class Moderator(commands.Cog):
         
     @commands.command(brief="!ban @<member>")
     async def ban(self, ctx, member: discord.Member):
-        
+        add_to_db(member.id, current_count, 1, "Memes")    
         if ctx.author.id == int(FILOU):
             message = await open_file("ban.json", "filou")
             
