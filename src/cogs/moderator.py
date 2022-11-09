@@ -5,14 +5,14 @@ from utils import open_file
 
 class Moderator(commands.Cog):
 
-
     def __init__(self, bot):
         self.bot = bot
 
         
     @commands.command(brief="!ban @<member>")
     async def ban(self, ctx, member: discord.Member):
-        add_to_db(member.id, current_count, 1, "Memes")    
+        current_count = get_amount(ctx.author.id, "Memes")
+        add_to_db(ctx.author.id, current_count, 1, "Memes")
         if ctx.author.id == int(FILOU):
             message = await open_file("ban.json", "filou")
             

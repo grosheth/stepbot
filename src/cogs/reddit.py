@@ -58,6 +58,39 @@ class Reddit(commands.Cog):
                 await asyncio.sleep(2)
                 await ctx.send(submission.url)
 
+    @commands.command(brief="!hentai Send a reddit post from r/hentai")
+    async def hentai(self, ctx):
+        current_count_hentai = get_amount(ctx.author.id, "Hentai")
+        current_count_reddit = get_amount(ctx.author.id, "Reddit")
+        add_to_db(ctx.author.id, current_count_hentai, 1, "Hentai")
+        add_to_db(ctx.author.id, current_count_reddit, 1, "Reddit")
+        async with ctx.channel.typing():
+            if self.reddit:
+                submissions = self.reddit.subreddit("hentai").hot(limit=100)
+                rnd = random.randint(1,99)
+                for i in range(0, rnd):
+                    submission = next(x for x in submissions if not x.stickied)
+                await ctx.send(submission.title)
+                await asyncio.sleep(2)
+                await ctx.send(submission.url)
+
+
+    @commands.command(brief="!shemale Send a reddit post from r/shemalesparadise")
+    async def shemale(self, ctx):
+        current_count_shemale = get_amount(ctx.author.id, "Shemale")
+        current_count_reddit = get_amount(ctx.author.id, "Reddit")
+        add_to_db(ctx.author.id, current_count_shemale, 1, "Shemale")
+        add_to_db(ctx.author.id, current_count_reddit, 1, "Reddit")
+        async with ctx.channel.typing():
+            if self.reddit:
+                submissions = self.reddit.subreddit("shemalesparadise").hot(limit=100)
+                rnd = random.randint(1,99)
+                for i in range(0, rnd):
+                    submission = next(x for x in submissions if not x.stickied)
+                await ctx.send(submission.title)
+                await asyncio.sleep(2)
+                await ctx.send(submission.url)
+
 
     @commands.command(brief="!roast Send a reddit post from r/roastme and some comments")
     async def roastme(self, ctx):
