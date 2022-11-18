@@ -46,16 +46,6 @@ class Stats(commands.Cog):
                                                     description=
                                                     f"You called the reddits: {current_amount_reddit} fois,\n You have been a foot pervert: {current_amount_feet} fois,\n You called the memes {current_amount_memes} fois,\n You called the penis madame {current_amount_shemale} fois,\n You called the anime seggs {current_amount_hentai} fois",
                                                     color=0xeeafe6))
-    
-    #@commands.command(brief="Erribody stets !stats_all)
-    #async def stats_all(self, ctx)
-    #    for member in ctx.guild.members:
-    #       if member.bot:
-    #            continue
-    #        current_amount = get_amount(member.id, "Reddit")
-     #       print(member.id, member.name, current_amount)
-    #        embed.add_field(name=f'**{member.name}**', value=f'> **{current_amount}**',inline=False)
-     #       await ctx.send(embed=embed)
 
     @commands.command(brief="Erribody stets !stats_all")
     async def stats_all(self, ctx):
