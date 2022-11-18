@@ -47,6 +47,17 @@ class Stats(commands.Cog):
                                                     f"You called the reddits: {current_amount_reddit} fois,\n You have been a foot pervert: {current_amount_feet} fois,\n You called the memes {current_amount_memes} fois,\n You called the penis madame {current_amount_shemale} fois,\n You called the anime seggs {current_amount_hentai} fois",
                                                     color=0xeeafe6))
 
+    @commands.command(brief="Erribody stets !stats_all")
+    async def stats_all(self, ctx):
+        async with ctx.channel.typing():
+            embed = discord.Embed(title="Vla les Stats du Reddirty")
+            for member in ctx.guild.members:
+                if member.bot:
+                    continue
+                current_amount_reddit = get_amount(member.id, "Reddit")
+                print(member.id, member.name, current_amount_reddit)
+                embed.add_field(name=f'**{member.name}**', value=f'> **{current_amount_reddit}**',inline=False)
+            await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(Stats(bot))
