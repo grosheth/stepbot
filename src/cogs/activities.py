@@ -60,7 +60,7 @@ class Activities(commands.Cog):
 
                 vc = discord.utils.get(self.bot.voice_clients)
                 vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
-                await asyncio.sleep(6)
+                await asyncio.sleep(5)
                 vc.stop()
 
             if before.channel and after.channel:
