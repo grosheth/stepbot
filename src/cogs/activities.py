@@ -39,7 +39,7 @@ class Activities(commands.Cog):
                     intro = "src/intros/intro_corbin.mp3"
 
                 elif member.id == int(ALESS):
-                    intro = "src/intros/intro_filou.mp3"
+                    intro = "src/intros/intro_aless.mp3"
 
                 elif member.id == int(RURU):
                     intro = "src/intros/intro_ruel.mp3"
@@ -47,20 +47,20 @@ class Activities(commands.Cog):
                 elif member.id == int(FILOU):
                     intro = "src/intros/intro_filou.mp3"
 
-                elif member.id == int(PEPI):
-                    intro = "src/intros/intro_corbin.mp3"
+                elif member.id == int(REN):
+                    intro = "src/intros/intro_ren.mp3"
 
                 elif member.id == int(MARTIN):
-                    intro = "src/intros/intro_filou.mp3"
+                    intro = ""
 
                 elif member.id == int(BRIDO):
-                    intro = "src/intros/intro_corbin.mp3"
+                    intro = "src/intros/intro_brido.mp3"
                 else:
                     intro = ""
 
                 vc = discord.utils.get(self.bot.voice_clients)
                 vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
-                await asyncio.sleep(5)
+                await asyncio.sleep(6)
                 vc.stop()
 
             if before.channel and after.channel:

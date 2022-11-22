@@ -17,7 +17,7 @@ CORBIN = os.getenv("CORBIN")
 BRIDO = os.getenv("BRIDO")
 PEPI = os.getenv("PEPI")
 MARTIN = os.getenv("MARTIN")
-
+REN = os.getenv("REN")
 
 DB = os.getenv("DB")
 HOST = os.getenv("HOST")
