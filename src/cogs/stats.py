@@ -56,7 +56,7 @@ class Stats(commands.Cog):
                     continue
                 current_amount_reddit = get_amount(member.id, "Reddit")
                 print(member.id, member.name, current_amount_reddit)
-                embed.add_field(name=f'**{member.name}**', value=f'> **{current_amount_reddit}**',inline=False)
+                embed.add_field(name=f'**{member.name} :**', value=f'> **{current_amount_reddit}**',inline=False)
             await ctx.send(embed=embed)
 
 def setup(bot):
