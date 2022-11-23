@@ -2,6 +2,7 @@ import json, os, random
 from pymongo import MongoClient
 from settings import *
 from random import randint
+import discord
 
 
 def db_connection_wallet():
@@ -51,6 +52,12 @@ async def create_text_channel(guild, channel_name):
     return channel
 
 
+async def delete_text_channel(guild, channel_name):
+    existing_channel = discord.utils.get(guild.channels, name=channel_name)
+    await existing_channel.delete()
+    return existing_channel
+
+
 async def create_voice_channel(guild, channel_name, user_limit=1):
     await guild.create_voice_channel(channel_name, user_limit=user_limit)
     channel = get_channel_by_name(guild, channel_name)
@@ -66,20 +73,19 @@ async def get_channel_by_name(guild, channel_name):
         return channel
 
 
-async def open_file(file, category):
-    with open(os.path.join(WORDBANK_DIR, file)) as f:
-        jokes = json.load(f)
-    opening = random.choice(list(jokes[category]))
-    return opening
+# async def open_file(file, category):
+#     with open(os.path.join(WORDBANK_DIR, file)) as f:
+#         jokes = json.load(f)
+#     opening = random.choice(list(jokes[category]))
+#     return opening
 
 
-async def get_mom_joke():
-    with open(os.path.join(WORDBANK_DIR, "mama.json")) as f:
-        jokes = json.load(f)
-    random_category = random.choice(list(jokes.keys()))
-    insult = random.choice(list(jokes[random_category]))
-    return insult
-
+# async def get_mom_joke():
+#     with open(os.path.join(WORDBANK_DIR, "mama.json")) as f:
+#         jokes = json.load(f)
+#     random_category = random.choice(list(jokes.keys()))
+#     insult = random.choice(list(jokes[random_category]))
+#     return insult
 
 
 # def pop_card(cards, hand):
@@ -89,6 +95,7 @@ async def get_mom_joke():
 #     hand.append(card)
 #     return hand
 
+
 # def get_card(cards, hand):
 #     if len(hand) < 2:
 #         for i in range(2):
@@ -97,9 +104,11 @@ async def get_mom_joke():
 #         hand = pop_card(cards, hand)
 #     return hand
 
+
 # def get_card_dealer(cards, dealer_hand):
 #     dealer_hand = pop_card(cards, dealer_hand)
 #     return dealer_hand
+
 
 # def decision(points, dealer_points):
 #     if points == 21:
@@ -110,6 +119,7 @@ async def get_mom_joke():
 #     else:
 #         win = False
 #         return win
+
 
 # def convert(hand, points):
 #     if points > 0:
@@ -136,3 +146,4 @@ async def get_mom_joke():
 #                     c = 1
 #             points += c
 #     return points
+
