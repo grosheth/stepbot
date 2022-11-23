@@ -1,6 +1,6 @@
 from discord.ext import commands
 import praw, random, discord, asyncio
-from settings import REDDIT_ID, REDDIT_SECRET
+from settings import REDDIT_ID, REDDIT_SECRET, NSFW_CHANNEL
 from utils import *
 
 class Reddit(commands.Cog):
@@ -22,8 +22,11 @@ class Reddit(commands.Cog):
                 rnd = random.randint(1,99)
                 for i in range(0, rnd):
                     submission = next(x for x in submissions if not x.stickied)
-                await ctx.send(submission.title)
-                await ctx.send(submission.url)
+                if submission.over_18 == True and ctx.channel.id != int(NSFW_CHANNEL):
+                    await ctx.send("Pu de vilainerie sur ce channel mon coco")
+                else:
+                    await ctx.send(submission.title)
+                    await ctx.send(submission.url)
 
 
     @commands.command(brief="!fiftyfifty Send a reddit post from r/fiftyfifty")
@@ -37,10 +40,13 @@ class Reddit(commands.Cog):
                 rnd = random.randint(1,99)
                 for i in range(0, rnd):
                     submission = next(x for x in submissions if not x.stickied)
-                await ctx.send(submission.title)
-                await asyncio.sleep(5)
-                await ctx.send(submission.url)
-
+                if submission.over_18 == True and ctx.channel.id != int(NSFW_CHANNEL):
+                    print(ctx.channel.id)
+                    await ctx.send("Pu de vilainerie sur ce channel mon coco")
+                else:
+                    await ctx.send(submission.title)
+                    await asyncio.sleep(5)
+                    await ctx.send(submission.url)
 
     @commands.command(brief="!feet Send a reddit post from r/feetishh")
     async def feet(self, ctx):
@@ -54,9 +60,13 @@ class Reddit(commands.Cog):
                 rnd = random.randint(1,99)
                 for i in range(0, rnd):
                     submission = next(x for x in submissions if not x.stickied)
-                await ctx.send(submission.title)
-                await asyncio.sleep(2)
-                await ctx.send(submission.url)
+                if submission.over_18 == True and ctx.channel.id != int(NSFW_CHANNEL):
+                    print(ctx.channel.id)
+                    await ctx.send("Pu de vilainerie sur ce channel mon coco")
+                else:
+                    await ctx.send(submission.title)
+                    await asyncio.sleep(2)
+                    await ctx.send(submission.url)
 
     @commands.command(brief="!hentai Send a reddit post from r/hentai")
     async def hentai(self, ctx):
@@ -70,10 +80,13 @@ class Reddit(commands.Cog):
                 rnd = random.randint(1,99)
                 for i in range(0, rnd):
                     submission = next(x for x in submissions if not x.stickied)
-                await ctx.send(submission.title)
-                await asyncio.sleep(2)
-                await ctx.send(submission.url)
-
+                if submission.over_18 == True and ctx.channel.id != int(NSFW_CHANNEL):
+                    print(ctx.channel.id)
+                    await ctx.send("Pu de vilainerie sur ce channel mon coco")
+                else:
+                    await ctx.send(submission.title)
+                    await asyncio.sleep(2)
+                    await ctx.send(submission.url)
 
     @commands.command(brief="!shemale Send a reddit post from r/shemalesparadise")
     async def shemale(self, ctx):
@@ -87,10 +100,13 @@ class Reddit(commands.Cog):
                 rnd = random.randint(1,99)
                 for i in range(0, rnd):
                     submission = next(x for x in submissions if not x.stickied)
-                await ctx.send(submission.title)
-                await asyncio.sleep(2)
-                await ctx.send(submission.url)
-
+                if submission.over_18 == True and ctx.channel.id != int(NSFW_CHANNEL):
+                    print(ctx.channel.id)
+                    await ctx.send("Pu de vilainerie sur ce channel mon coco")
+                else:
+                    await ctx.send(submission.title)
+                    await asyncio.sleep(2)
+                    await ctx.send(submission.url)
 
     @commands.command(brief="!roast Send a reddit post from r/roastme and some comments")
     async def roastme(self, ctx):

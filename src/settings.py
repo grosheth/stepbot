@@ -10,6 +10,8 @@ TOKEN = os.getenv("TOKEN")
 REDDIT_ID = os.getenv("REDDIT_ID")
 REDDIT_SECRET = os.getenv("REDDIT_SECRET")
 
+NSFW_CHANNEL=os.getenv("NSFW_CHANNEL")
+
 FILOU = os.getenv("FILOU")
 RURU = os.getenv("RURU")
 ALESS = os.getenv("ALESS")
