@@ -27,7 +27,19 @@ class Memes(commands.Cog):
                     embed.set_image(url=r._real_url)
                     await ctx.send(embed=embed)
 
-                    
+
+    @commands.command(brief="!ban @<member>")
+    async def ban(self, ctx, member: discord.Member):
+        current_count = get_amount(ctx.author.id, "Memes")
+        add_to_db(ctx.author.id, current_count, 1, "Memes")
+        if ctx.author.id == int(FILOU):
+            message = await open_file("ban.json", "filou")
+            
+            await ctx.send(message)
+        else:
+            await ctx.send(f"Motherland says no to you {ctx.author.name}")
+
+
     @commands.command(brief="!whoyou Stepbot se présente")
     async def whoyou(self, ctx):
         await ctx.send(embed=discord.Embed(title="What are you doing stepbot?? UwU",
