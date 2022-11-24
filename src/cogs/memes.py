@@ -2,6 +2,7 @@ from discord.ext import commands
 import discord, aiohttp
 from utils import *
 from random import randint
+import os
 
 class Memes(commands.Cog):
     def __init__(self, bot):
@@ -41,15 +42,18 @@ class Memes(commands.Cog):
             await ctx.send(f"Motherland says no to you {ctx.author.name}")
 
 
-    @commands.command(brief="!creme @<member>")
+    @commands.command(brief="!creme Envoie un extrait de creme dans le voice channel")
     async def creme(self, ctx):
 
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Ta pas de creme.")
 
+        cremes = os.listdir("src/creme/")
+        print(cremes)
         voice_channel = ctx.author.voice.channel
         voice_client = ctx.voice_client
-        intro = f"src/intros/creme{randint(1,13)}.mp3"
+        intro = f"src/creme/{cremes[randint(1,len(cremes))]}"
+        print(intro)
 
         try:
             await voice_channel.connect()
