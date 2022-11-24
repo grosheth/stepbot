@@ -39,7 +39,7 @@ class Activities(commands.Cog):
                     intro = "src/intros/intro_corbin.mp3"
 
                 elif member.id == int(ALESS):
-                    intro = "src/intros/intro_aless.mp3"
+                    intro = "src/intros/bouchon_dieu.mp3"
 
                 elif member.id == int(RURU):
                     intro = "src/intros/intro_ruel.mp3"
@@ -51,7 +51,7 @@ class Activities(commands.Cog):
                     intro = "src/intros/intro_ren.mp3"
 
                 elif member.id == int(MARTIN):
-                    intro = ""
+                    intro = "src/intros/intro_aless.mp3"
 
                 elif member.id == int(BRIDO):
                     intro = "src/intros/intro_brido.mp3"
