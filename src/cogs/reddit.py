@@ -23,7 +23,7 @@ class Reddit(commands.Cog):
                 for i in range(0, rnd):
                     submission = next(x for x in submissions if not x.stickied)
                 if submission.over_18 == True and ctx.channel.id != int(NSFW_CHANNEL):
-                    await ctx.send("Pu de vilainerie sur ce channel mon coco")
+                    await ctx.send("Oh mon vilain, pas très gentil pour les amis au travail ça. (ou dans l'autobus)")
                 else:
                     await ctx.send(submission.title)
                     await ctx.send(submission.url)
@@ -42,7 +42,7 @@ class Reddit(commands.Cog):
                     submission = next(x for x in submissions if not x.stickied)
                 if submission.over_18 == True and ctx.channel.id != int(NSFW_CHANNEL):
                     print(ctx.channel.id)
-                    await ctx.send("Pu de vilainerie sur ce channel mon coco")
+                    await ctx.send("C'est pas très approprié comme message ça.")
                 else:
                     await ctx.send(submission.title)
                     await asyncio.sleep(5)
@@ -82,7 +82,7 @@ class Reddit(commands.Cog):
                     submission = next(x for x in submissions if not x.stickied)
                 if submission.over_18 == True and ctx.channel.id != int(NSFW_CHANNEL):
                     print(ctx.channel.id)
-                    await ctx.send("Pu de vilainerie sur ce channel mon coco")
+                    await ctx.send("Oh mon dieu, ces images sont plutôt perturbante.")
                 else:
                     await ctx.send(submission.title)
                     await asyncio.sleep(2)
@@ -102,7 +102,7 @@ class Reddit(commands.Cog):
                     submission = next(x for x in submissions if not x.stickied)
                 if submission.over_18 == True and ctx.channel.id != int(NSFW_CHANNEL):
                     print(ctx.channel.id)
-                    await ctx.send("Pu de vilainerie sur ce channel mon coco")
+                    await ctx.send("Désolé, les penis madame sont pas admise dans ce channel.")
                 else:
                     await ctx.send(submission.title)
                     await asyncio.sleep(2)
