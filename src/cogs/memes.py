@@ -36,7 +36,6 @@ class Memes(commands.Cog):
         add_to_db(ctx.author.id, current_count, 1, "Memes")
         if ctx.author.id == int(FILOU):
             message = await open_file("ban.json", "filou")
-            
             await ctx.send(message)
         else:
             await ctx.send(f"Motherland says no to you {ctx.author.name}")
@@ -59,7 +58,7 @@ class Memes(commands.Cog):
             await voice_channel.connect()
         except:
             await ctx.voice_client.move_to(voice_channel)
-        
+
         vc = discord.utils.get(self.bot.voice_clients)
         await vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
         await asyncio.sleep(10)
