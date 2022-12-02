@@ -73,19 +73,19 @@ async def get_channel_by_name(guild, channel_name):
         return channel
 
 
-# async def open_file(file, category):
-#     with open(os.path.join(WORDBANK_DIR, file)) as f:
-#         jokes = json.load(f)
-#     opening = random.choice(list(jokes[category]))
-#     return opening
+async def open_file(file, category):
+    with open(os.path.join(WORDBANK_DIR, file)) as f:
+        jokes = json.load(f)
+    opening = random.choice(list(jokes[category]))
+    return opening
 
 
-# async def get_mom_joke():
-#     with open(os.path.join(WORDBANK_DIR, "mama.json")) as f:
-#         jokes = json.load(f)
-#     random_category = random.choice(list(jokes.keys()))
-#     insult = random.choice(list(jokes[random_category]))
-#     return insult
+async def get_mom_joke():
+    with open(os.path.join(WORDBANK_DIR, "mama.json")) as f:
+        jokes = json.load(f)
+    random_category = random.choice(list(jokes.keys()))
+    insult = random.choice(list(jokes[random_category]))
+    return insult
 
 
 # def pop_card(cards, hand):
