@@ -48,11 +48,9 @@ class Memes(commands.Cog):
             await ctx.send("T po dans l'channel, Ta pas de creme.")
 
         cremes = os.listdir("src/creme/")
-        print(cremes)
         voice_channel = ctx.author.voice.channel
         voice_client = ctx.voice_client
         intro = f"src/creme/{cremes[randint(1,len(cremes))]}"
-        print(intro)
 
         try:
             await voice_channel.connect()
@@ -71,9 +69,10 @@ class Memes(commands.Cog):
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Toé sucela.")
 
+        sucelas = os.listdir("src/sucela/")
         voice_channel = ctx.author.voice.channel
         voice_client = ctx.voice_client
-        intro = f"src/intros/sucela"
+        intro = f"src/sucela/{sucelas[randint(1,len(sucelas))]}"
 
         try:
             await voice_channel.connect()
@@ -93,7 +92,7 @@ class Memes(commands.Cog):
 
         voice_channel = ctx.author.voice.channel
         voice_client = ctx.voice_client
-        intro = f"src/sucela/tibizou"
+        intro = f"src/intros/tibizou.mp3"
 
         try:
             await voice_channel.connect()
