@@ -80,81 +80,81 @@ class Games(commands.Cog):
         return
 
 
-    # @commands.command(brief="!bleckjeck")
-    # async def bj(self, ctx):
+#     @commands.command(brief="!bleckjeck")
+#     async def bj(self, ctx):
 
-    #     points = 0
-    #     dealer_points = 0
-    #     hand = []
-    #     dealer_hand = []
-    #     cards = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
-    #     x = 0
-    #     for value in cards:
-    #         if x < 39:
-    #             cards.append(value)
-    #         else:
-    #             break
-    #         x += 1
+#         points = 0
+#         dealer_points = 0
+#         hand = []
+#         dealer_hand = []
+#         cards = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
+#         x = 0
+#         for value in cards:
+#             if x < 39:
+#                 cards.append(value)
+#             else:
+#                 break
+#             x += 1
 
-    #     await create_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
-    #     await asyncio.sleep(2)
-    #     new_channel = get_channel_by_name(ctx.author.guild, f"{ctx.author.name}-blackjack")
+#         await create_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
+#         await asyncio.sleep(2)
+#         new_channel = get_channel_by_name(ctx.author.guild, f"{ctx.author.name}-blackjack")
         
-    #     await new_channel.send("Here is the dealer's first card:")
-    #     get_card_dealer(cards, dealer_hand)
-    #     await new_channel.send("-------------------------------------")
-    #     await new_channel.send("Here is your hand:")
-    #     get_card(cards, hand)
-    #     points = convert(hand, points)
-    #     dealer_points = convert(dealer_hand, dealer_points)
-    #     while True:
-    #         await new_channel.send(f"you currently have {points}")
-    #         await new_channel.send(f"The dealer has {dealer_points}")
-    #         await new_channel.send("1. Call.")
-    #         await new_channel.send("2. Stay.")
+#         await new_channel.send("Here is the dealer's first card:")
+#         get_card_dealer(cards, dealer_hand)
+#         await new_channel.send("-------------------------------------")
+#         await new_channel.send("Here is your hand:")
+#         get_card(cards, hand)
+#         points = convert(hand, points)
+#         dealer_points = convert(dealer_hand, dealer_points)
+#         while True:
+#             await new_channel.send(f"you currently have {points}")
+#             await new_channel.send(f"The dealer has {dealer_points}")
+#             await new_channel.send("1. Call.")
+#             await new_channel.send("2. Stay.")
 
-    #         msg = await client.wait_for("message", check=check)
+#             msg = await client.wait_for("message", check=check)
 
-    #         if answer == "1":
-    #             await new_channel.send("Here is your hand:")
-    #             get_card(cards, hand)
-    #             points = convert(hand, points)
-    #             if points > 21:
-    #                 await new_channel.send("you have more than 21!")
-    #                 await new_channel.send("YOU LOST")
-    #                 await asyncio.sleep(10)
-    #                 await delete_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
+#             if answer == "1":
+#                 await new_channel.send("Here is your hand:")
+#                 get_card(cards, hand)
+#                 points = convert(hand, points)
+#                 if points > 21:
+#                     await new_channel.send("you have more than 21!")
+#                     await new_channel.send("YOU LOST")
+#                     await asyncio.sleep(10)
+#                     await delete_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
                     
-    #         elif answer == "2":
-    #                 get_card_dealer(cards, dealer_hand)
-    #                 await new_channel.send("-------------------------------------")
-    #                 dealer_points = convert(dealer_hand, dealer_points)
-    #                 await asyncio.sleep(1)
+#             elif answer == "2":
+#                     get_card_dealer(cards, dealer_hand)
+#                     await new_channel.send("-------------------------------------")
+#                     dealer_points = convert(dealer_hand, dealer_points)
+#                     await asyncio.sleep(1)
 
-    #                 while True:
+#                     while True:
                         
-    #                     if dealer_points > 21:
-    #                         await new_channel.send("You Won the dealer has more than 21")
-    #                         await new_channel.send("YOU WON")
-    #                         await delete_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
+#                         if dealer_points > 21:
+#                             await new_channel.send("You Won the dealer has more than 21")
+#                             await new_channel.send("YOU WON")
+#                             await delete_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
 
-    #                     if dealer_points <= 16:
-    #                         get_card_dealer(cards, dealer_hand)
-    #                         dealer_points = convert(dealer_hand, dealer_points)
-    #                         await asyncio.sleep(1)
-    #                     else:
-    #                         win = decision(points, dealer_points)
+#                         if dealer_points <= 16:
+#                             get_card_dealer(cards, dealer_hand)
+#                             dealer_points = convert(dealer_hand, dealer_points)
+#                             await asyncio.sleep(1)
+#                         else:
+#                             win = decision(points, dealer_points)
 
-    #                         if win:
-    #                             await new_channel.send(f"You won with {points} against the dealer's {dealer_points}")
-    #                             await new_channel.send("YOU WON")
-    #                             await delete_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
-    #                         else:
-    #                             await new_channel.send(f"You lost with {points} against the dealer's {dealer_points}")
-    #                             await new_channel.send("YOU LOST")
-    #                             await delete_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
-    #         else:
-    #             await new_channel.send("invalid answer")
+#                             if win:
+#                                 await new_channel.send(f"You won with {points} against the dealer's {dealer_points}")
+#                                 await new_channel.send("YOU WON")
+#                                 await delete_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
+#                             else:
+#                                 await new_channel.send(f"You lost with {points} against the dealer's {dealer_points}")
+#                                 await new_channel.send("YOU LOST")
+#                                 await delete_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
+#             else:
+#                 await new_channel.send("invalid answer")
 
 def setup(bot):
     bot.add_cog(Games(bot))
