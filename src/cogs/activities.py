@@ -3,7 +3,7 @@ from sys import executable
 from discord.ext import commands
 from utils import *
 from settings import *
-import youtube_dl, discord
+import discord
 
 class Activities(commands.Cog):
     def __init__(self, bot):
