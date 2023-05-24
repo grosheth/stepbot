@@ -9,6 +9,7 @@ class Stats(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+
     @commands.command(brief="!Number of time you called !feet")
     async def feet_stats(self, ctx):
         for member in ctx.guild.members:
@@ -46,6 +47,7 @@ class Stats(commands.Cog):
                                                     description=
                                                     f"You called the reddits: {current_amount_reddit} fois,\n You have been a foot pervert: {current_amount_feet} fois,\n You called the memes {current_amount_memes} fois,\n You called the penis madame {current_amount_shemale} fois,\n You called the anime seggs {current_amount_hentai} fois",
                                                     color=0xeeafe6))
+
 
     @commands.command(brief="Erribody stets !stats_all")
     async def stats_all(self, ctx):

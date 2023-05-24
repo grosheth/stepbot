@@ -24,8 +24,8 @@ class Activities(commands.Cog):
         try:
             await voice_channel.connect()
         except:
-            vc = discord.utils.get(self.bot.voice_clients)
-            vc.stop()
+            bot_voice_channel = discord.utils.get(self.bot.voice_clients)
+            bot_voice_channel.stop()
         
         if member.bot:
             if not before.channel:
@@ -58,10 +58,11 @@ class Activities(commands.Cog):
                 else:
                     intro = ""
 
-                vc = discord.utils.get(self.bot.voice_clients)
-                vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
-                await asyncio.sleep(5)
-                vc.stop()
+                bot_voice_channel = discord.utils.get(self.bot.voice_clients)
+                if vc != None:
+                    bot_voice_channel.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
+                    await asyncio.sleep(5)
+                    bot_voice_channel.stop()
 
             if before.channel and after.channel:
                 if before.channel.id != after.channel.id:
