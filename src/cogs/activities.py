@@ -22,7 +22,7 @@ class Activities(commands.Cog):
         voice_channel = member.voice.channel
 
         try:
-            await voice_channel.connect()
+            bot_voice_channel = await voice_channel.connect()
         except:
             bot_voice_channel = discord.utils.get(self.bot.voice_clients)
             bot_voice_channel.stop()
