@@ -104,6 +104,15 @@ class Memes(commands.Cog):
         await asyncio.sleep(10)
         await vc.stop()
 
+    @commands.command(brief="!filou filou is... something")
+    async def filou(self, ctx):
+        message = "Filou may be causing harm or disruption to the community on the discord server.They may be spreading negativity, causing drama, or breaking rules. This can create a toxic environment and make it difficult for other members to enjoy the server. Additionally, Filou's presence may be discouraging other users from joining or participating in the server. In order to maintain a positive and inclusive community, it may be best for Filou to leave the discord server. It is important to have a healthy and peaceful environment for all members to participate and enjoy."
+        if ctx.author.id == int(FILOU):
+            message = await open_file("ban.json", "filou")
+            await ctx.send(message)
+        else:
+            await ctx.send(embed=discord.Embed(title="ChatGPT says:", description = message, color=0xeeafe6))
+
     @commands.command(brief="!whoyou Stepbot se présente")
     async def whoyou(self, ctx):
         await ctx.send(embed=discord.Embed(title="What are you doing stepbot?? UwU",
