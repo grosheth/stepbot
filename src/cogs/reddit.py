@@ -1,5 +1,5 @@
 from discord.ext import commands
-import praw, random, discord, asyncio
+import praw, random, asyncio
 from settings import REDDIT_ID, REDDIT_SECRET, NSFW_CHANNEL
 from utils import *
 
