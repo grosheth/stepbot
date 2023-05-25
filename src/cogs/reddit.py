@@ -48,6 +48,7 @@ class Reddit(commands.Cog):
                     await asyncio.sleep(5)
                     await ctx.send(submission.url)
 
+
     @commands.command(brief="!feet Send a reddit post from r/feetishh")
     async def feet(self, ctx):
         current_count_feet = get_amount(ctx.author.id, "Feet")
@@ -67,6 +68,7 @@ class Reddit(commands.Cog):
                     await ctx.send(submission.title)
                     await asyncio.sleep(2)
                     await ctx.send(submission.url)
+
 
     @commands.command(brief="!hentai Send a reddit post from r/hentai")
     async def hentai(self, ctx):
@@ -88,6 +90,7 @@ class Reddit(commands.Cog):
                     await asyncio.sleep(2)
                     await ctx.send(submission.url)
 
+
     @commands.command(brief="!shemale Send a reddit post from r/shemalesparadise")
     async def shemale(self, ctx):
         current_count_shemale = get_amount(ctx.author.id, "Shemale")
@@ -107,6 +110,7 @@ class Reddit(commands.Cog):
                     await ctx.send(submission.title)
                     await asyncio.sleep(2)
                     await ctx.send(submission.url)
+
 
     @commands.command(brief="!roast Send a reddit post from r/roastme and some comments")
     async def roastme(self, ctx):
