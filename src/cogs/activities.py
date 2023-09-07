@@ -20,6 +20,8 @@ class Activities(commands.Cog):
     @commands.Cog.listener()
     async def on_voice_state_update(self,member,before,after):
         voice_channel = member.voice.channel
+        print(f"self: {self}")
+        print(f"member: {member}")
 
         try:
             bot_voice_channel = await voice_channel.connect()
@@ -59,6 +61,7 @@ class Activities(commands.Cog):
                     intro = ""
 
                 bot_voice_channel = discord.utils.get(self.bot.voice_clients)
+                print(f"bot_voice_channel {bot_voice_channel}")
                 if bot_voice_channel != None:
                     bot_voice_channel.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
                     await asyncio.sleep(5)
@@ -77,5 +80,5 @@ class Activities(commands.Cog):
                         print("User deafened")
                         return
 
-def setup(bot):
-    bot.add_cog(Activities(bot))
+async def setup(bot):
+    await bot.add_cog(Activities(bot))

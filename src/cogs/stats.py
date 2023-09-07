@@ -61,5 +61,5 @@ class Stats(commands.Cog):
                 embed.add_field(name=f'**{member.name} :**', value=f'> **{current_amount_reddit}**',inline=False)
             await ctx.send(embed=embed)
 
-def setup(bot):
-    bot.add_cog(Stats(bot))
+async def setup(bot):
+    await bot.add_cog(Stats(bot))

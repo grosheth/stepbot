@@ -133,5 +133,5 @@ class Reddit(commands.Cog):
                         return
                     await ctx.send(f"{x}: {top_level_comment.body}")
 
-def setup(bot):
-    bot.add_cog(Reddit(bot))
+async def setup(bot):
+   await bot.add_cog(Reddit(bot))
