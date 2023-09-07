@@ -1,10 +1,6 @@
-FROM debian:11.7-slim
+FROM python:3.11-rc-buster
 WORKDIR /bot
 COPY . .
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev -y
-RUN apt-get install python3 -y
-RUN apt-get install python3-pip -y
-RUN apt-get install ffmpeg -y
+RUN apt-get update && apt-get install ffmpeg -y
 RUN pip install -r requirements.txt
-ENTRYPOINT ["python3", "src/main.py"]
+ENTRYPOINT ["python", "src/main.py"]
