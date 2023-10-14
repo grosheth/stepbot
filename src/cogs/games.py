@@ -68,7 +68,7 @@ class Games(commands.Cog):
                 return
             else:
                 if member.id == int(FILOU):
-                    lose_money(member.id, current_cash, 500)            
+                    lose_money(member.id, current_cash, 500)     
                 else:
                     win_money(member.id, current_cash, 1000)
                 await ctx.send(f"click...")
