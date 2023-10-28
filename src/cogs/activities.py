@@ -19,12 +19,16 @@ class Activities(commands.Cog):
 
     @commands.Cog.listener()
     async def on_voice_state_update(self,member,before,after):
-        voice_channel = member.voice.channel
+        # voice_channel = member.voice.channel
         print(f"self: {self}")
         print(f"member: {member}")
 
         # retry with try catch on PI
-
+        try:
+            voice_channel = member.voice.channel
+        except:
+            print(f'{member.name} Quitted {after.channel.name}')
+        
         try:
             bot_voice_channel = await voice_channel.connect()
         except:
