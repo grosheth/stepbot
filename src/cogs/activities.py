@@ -23,11 +23,12 @@ class Activities(commands.Cog):
         print(f"self: {self}")
         print(f"member: {member}")
 
-        # retry with try catch on PI
+        
         try:
             voice_channel = member.voice.channel
         except:
-            print(f'{member.name} Quitted')
+            print(f'{member.name} Quitted the voice channel')
+            intro = "src/intros/tibizou.mp3"
         
         try:
             bot_voice_channel = await voice_channel.connect()
