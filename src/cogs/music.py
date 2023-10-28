@@ -37,7 +37,7 @@ class Music(commands.Cog):
             await ctx.voice_client.move_to(voice_channel)
         
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
-        YDL_OPTIONS = {'format':"bestaudio",}
+        YDL_OPTIONS = {'format':"best",}
         vc = ctx.voice_client
 
 

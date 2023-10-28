@@ -79,6 +79,8 @@ class Games(commands.Cog):
         await ctx.send(f"Parsonne est mort")
         return
 
+
+
 # Create a Text channel for each person who wants to play blackjack
 # Give player input options
 # Delete text channel afterwards
