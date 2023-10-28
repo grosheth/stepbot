@@ -27,7 +27,7 @@ class Activities(commands.Cog):
         try:
             voice_channel = member.voice.channel
         except:
-            print(f'{member.name} Quitted {after.channel.name}')
+            print(f'{member.name} Quitted')
         
         try:
             bot_voice_channel = await voice_channel.connect()
