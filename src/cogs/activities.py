@@ -23,16 +23,17 @@ class Activities(commands.Cog):
         print(f"self: {self}")
         print(f"member: {member}")
 
+        # retry with try catch on PI
+
         try:
             bot_voice_channel = await voice_channel.connect()
         except:
             bot_voice_channel = discord.utils.get(self.bot.voice_clients)
             bot_voice_channel.stop()
-        
+
         if member.bot:
             if not before.channel:
                 print(f'Bot {member.name} joined {after.channel.name}')
-
         else:
             if not before.channel:
                 print(f'{member.name} joined {after.channel.name}')
