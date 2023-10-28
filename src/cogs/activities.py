@@ -69,8 +69,10 @@ class Activities(commands.Cog):
                 bot_voice_channel = discord.utils.get(self.bot.voice_clients)
                 print(f"bot_voice_channel {bot_voice_channel}")
                 if bot_voice_channel != None:
+                    print(f'Starting to play {intro}')
                     bot_voice_channel.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
                     await asyncio.sleep(5)
+                    print(f'Stopping to play {intro}')
                     bot_voice_channel.stop()
 
             if before.channel and after.channel:
