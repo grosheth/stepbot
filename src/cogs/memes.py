@@ -120,5 +120,12 @@ class Memes(commands.Cog):
                                                     "Feet adorer, womanizer, Short longsword, can do the drapeau, gets stuck in washing machine and windows(I use Arch btw). Nemesis: Nick Gingras.",
                                                     color=0xeeafe6))
 
+    @commands.command(brief="!vachier va chier")
+    async def vachier(self, ctx):
+        await ctx.send(embed=discord.Embed(title="va chier",
+                                                    description=
+                                                    "va chier.",
+                                                    color=0xeeafe6))
+
 async def setup(bot):
     await bot.add_cog(Memes(bot))

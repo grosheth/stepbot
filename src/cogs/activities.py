@@ -22,7 +22,6 @@ class Activities(commands.Cog):
         # voice_channel = member.voice.channel
         print(f"self: {self}")
         print(f"member: {member}")
-
         
         try:
             voice_channel = member.voice.channel
@@ -40,6 +39,7 @@ class Activities(commands.Cog):
             if not before.channel:
                 print(f'Bot {member.name} joined {after.channel.name}')
         else:
+            # Check this condition
             if not before.channel:
                 print(f'{member.name} joined {after.channel.name}')
 
@@ -63,8 +63,6 @@ class Activities(commands.Cog):
 
                 elif member.id == int(BRIDO):
                     intro = "src/intros/intro_brido.mp3"
-                elif quit == True:
-                    intro = "src/intros/tibizou.mp3"
                 else:
                     intro = ""
 
