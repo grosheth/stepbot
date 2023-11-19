@@ -40,6 +40,9 @@ class Memes(commands.Cog):
         else:
             await ctx.send(f"Motherland says no to you {ctx.author.name}")
 
+# Should make common functions for sending clips into voice channel
+# Also find a way to add new clips easily (web page + container build?)
+
 
     @commands.command(brief="!creme Envoie un extrait de creme dans le voice channel")
     async def creme(self, ctx):
