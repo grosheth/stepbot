@@ -65,7 +65,7 @@ class Memes(commands.Cog):
         await asyncio.sleep(10)
         await vc.stop()
 
-    @commands.command(brief="!sb ")
+    @commands.command(brief="!sb Send random audioclip to voice channel")
     async def sb(self, ctx):
 
         if ctx.author.voice is None:
