@@ -43,8 +43,6 @@ class Memes(commands.Cog):
 # Should make common functions for sending clips into voice channel
 # Also find a way to add new clips easily (web page + container build?)
 # Be able to call clips by their name
-
-
     @commands.command(brief="!creme Envoie un extrait de creme dans le voice channel")
     async def creme(self, ctx):
 
