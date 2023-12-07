@@ -65,35 +65,20 @@ class Memes(commands.Cog):
         await vc.pla        await vc.stop()
 
     @commands.command(brief="!sb ")
-    async def sb(self, ctx):
-
+    async def sb(self, ctx, sound = None):
+        
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Ta pas de soundboard")
 
-        # Random
+        if sound is None:
+            intro = f"src/soundboard/{random[randint(1,len(random))]}"
+        else:
+            intro = f"src/soundboard/{sound}.mp3"
+
         random = os.listdir("src/soundboard/")
         voice_channel = ctx.author.voice.channel
         voice_client = ctx.voice_client
-        intro = f"src/soundboard/{random[randint(1,len(random))]}"
 
-        try:
-            await voice_channel.connect()
-        except:
-            await ctx.voice_client.move_to(voice_channel)
-
-        vc = discord.utils.get(self.bot.voice_clients)
-        await vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
-        await asyncio.sleep(10)
-        await vc.stop()elf, ctx):
-
-        if ctx.author.voice is None:
-            await ctx.send("T po dans l'channel, Ta pas de soundboard")
-
-        # Random
-        random = os.listdir("src/soundboard/")
-        voice_channel = ctx.author.voice.channel
-        voice_client = ctx.voice_client
-        intro = f"src/soundboard/{random[randint(1,len(random))]}"
 
         try:
             await voice_channel.connect()
