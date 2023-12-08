@@ -65,10 +65,13 @@ class Memes(commands.Cog):
 
     @commands.command(brief="!sb ")
     async def sb(self, ctx, sound = None):
+        try:
+            path = "/home/bot/discord-bot/src/soundboard"
+            random = os.listdir(f"{path}")
+        except:
+            path = "src/soundboard/"
+            random = os.listdir(f"{path}")
         
-        path = "src/soundboard/"
-        random = os.listdir(f"{path}")
-
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Ta pas de soundboard")
 
