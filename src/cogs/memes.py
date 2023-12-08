@@ -66,19 +66,19 @@ class Memes(commands.Cog):
     @commands.command(brief="!sb ")
     async def sb(self, ctx, sound = None):
 
-        path = "/home/pi/test/"
-        # path = "src/soundboard/"
+        # path = "/home/pi/test/"
+        path = "src/soundboard/"
 
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Ta pas de soundboard")
 
         if sound is None:
-            intro = f"{path}{random[randint(1,len(random))]}"
+            intro = f"src/soundboard/{random[randint(1,len(random))]}"
         else:
-            intro = f"{path}{sound}.mp3"
+            intro = f"src/soundboard/{sound}.mp3"
 
         # random = os.listdir("src/soundboard/")
-        random = os.listdir(f"{path}")
+        random = os.listdir(f"src/soundboard/")
         voice_channel = ctx.author.voice.channel
         voice_client = ctx.voice_client
 
