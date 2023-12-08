@@ -9,3 +9,5 @@ services:
 volumes:
     sb_share:
         external: false
+        driver_opts:
+          device: /home/pi/test/
