@@ -67,7 +67,7 @@ class Memes(commands.Cog):
     async def sb(self, ctx, sound = None):
         try:
             # Searching path for volume inside container files
-            path = "/mnt/sb"
+            path = "/mnt/sb/"
             random = os.listdir(f"{path}")
         except:
             # Searching for local files
