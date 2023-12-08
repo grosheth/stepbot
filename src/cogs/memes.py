@@ -74,8 +74,7 @@ class Memes(commands.Cog):
         else:
             intro = f"src/soundboard/{sound}.mp3"
 
-        # random = os.listdir("src/soundboard/")
-        random = os.listdir(f"src/soundboard/")
+        random = os.listdir("src/soundboard/")
         voice_channel = ctx.author.voice.channel
         voice_client = ctx.voice_client
 
