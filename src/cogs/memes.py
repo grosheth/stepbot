@@ -65,7 +65,7 @@ class Memes(commands.Cog):
 
     @commands.command(brief="!sb ")
     async def sb(self, ctx, sound = None):
-
+        
         path = "src/soundboard/"
         random = os.listdir(f"{path}")
 
@@ -74,9 +74,12 @@ class Memes(commands.Cog):
 
         if sound is None:
             intro = f"{path}{random[randint(1,len(random))]}"
+            print(f"Trying to play {intro}")
         else:
             intro = f"{path}{sound}.mp3"
+            print(f"Trying to play {intro}")
 
+        # Connect to voice channels
         voice_channel = ctx.author.voice.channel
         voice_client = ctx.voice_client
 
@@ -85,6 +88,7 @@ class Memes(commands.Cog):
         except:
             await ctx.voice_client.move_to(voice_channel)
 
+        # Playing Audio
         vc = discord.utils.get(self.bot.voice_clients)
         await vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
         await asyncio.sleep(10)
