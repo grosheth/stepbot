@@ -60,12 +60,12 @@ class Memes(commands.Cog):
             await ctx.voice_client.move_to(voice_channel)
 
         vc = discord.utils.get(self.bot.voice_clients)
-        await vc.pla        
+        await vc.play()
         await vc.stop()
 
     @commands.command(brief="!sb ")
     async def sb(self, ctx, sound = None):
-        
+
         path = "/home/pi/test/"
         # path = "src/soundboard/"
 
@@ -78,6 +78,7 @@ class Memes(commands.Cog):
             intro = f"{path}{sound}.mp3"
 
         # random = os.listdir("src/soundboard/")
+        random = os.listdir(f"{path}")
         voice_channel = ctx.author.voice.channel
         voice_client = ctx.voice_client
 
