@@ -66,9 +66,6 @@ class Memes(commands.Cog):
     @commands.command(brief="!sb ")
     async def sb(self, ctx, sound = None):
 
-        # path = "/home/pi/test/"
-        path = "src/soundboard/"
-
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Ta pas de soundboard")
 
