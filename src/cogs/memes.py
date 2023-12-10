@@ -74,30 +74,33 @@ class Memes(commands.Cog):
             path = "src/soundboard/"
             random = os.listdir(f"{path}")
         
-        if ctx.author.voice is None:
-            await ctx.send("T po dans l'channel, Ta pas de soundboard")
-
-        if sound is None:
-            intro = f"{path}{random[randint(1,len(random))]}"
-            print(f"Trying to play {intro}")
+        if sound == 'list':
+            await ctx.send(f"{random}")
         else:
-            intro = f"{path}{sound}.mp3"
-            print(f"Trying to play {intro}")
+            if ctx.author.voice is None:
+                await ctx.send("T po dans l'channel, Ta pas de soundboard")
 
-        # Connect to voice channels
-        voice_channel = ctx.author.voice.channel
-        voice_client = ctx.voice_client
+            if sound is None:
+                intro = f"{path}{random[randint(1,len(random))]}"
+                print(f"Trying to play {intro}")
+            else:
+                intro = f"{path}{sound}.mp3"
+                print(f"Trying to play {intro}")
 
-        try:
-            await voice_channel.connect()
-        except:
-            await ctx.voice_client.move_to(voice_channel)
+            # Connect to voice channels
+            voice_channel = ctx.author.voice.channel
+            voice_client = ctx.voice_client
 
-        # Playing Audio
-        vc = discord.utils.get(self.bot.voice_clients)
-        await vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
-        await asyncio.sleep(10)
-        await vc.stop()
+            try:
+                await voice_channel.connect()
+            except:
+                await ctx.voice_client.move_to(voice_channel)
+
+            # Playing Audio
+            vc = discord.utils.get(self.bot.voice_clients)
+            await vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
+            await asyncio.sleep(10)
+            await vc.stop()
 
     @commands.command(brief="!sucela SUCELA")
     async def sucela(self, ctx):
