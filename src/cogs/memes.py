@@ -77,7 +77,7 @@ class Memes(commands.Cog):
         
         if sound == 'list':
             random = '\n'.join(random)
-            await ctx.send(embed=discord.Embed(title="Soundboard List", description=f"{random}", color=0xeeafe6))
+            await ctx.send(embed=discord.Embed(title="Soundboard List", description=f"{random} {path}", color=0xeeafe6))
         else:
             if ctx.author.voice is None:
                 await ctx.send("T po dans l'channel, Ta pas de soundboard")
