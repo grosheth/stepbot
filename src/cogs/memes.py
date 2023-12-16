@@ -74,6 +74,7 @@ class Memes(commands.Cog):
             path = "src/soundboard/"
             random = os.listdir(f"{path}")
         
+        
         if sound == 'list':
             await ctx.send(f"{random}")
         else:
