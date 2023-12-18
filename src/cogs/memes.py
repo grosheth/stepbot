@@ -74,7 +74,6 @@ class Memes(commands.Cog):
             path = "src/soundboard/"
             random = os.listdir(f"{path}")
         
-        
         if sound == 'list':
             random = '\n'.join(random)
             await ctx.send(embed=discord.Embed(title="Soundboard List", description=f"{random}", color=0xeeafe6, type='rich', url='https://www.youtube.com/watch?v=xm3YgoEiEDc'))
