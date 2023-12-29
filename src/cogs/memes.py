@@ -62,7 +62,7 @@ class Memes(commands.Cog):
         vc = discord.utils.get(self.bot.voice_clients)
         await vc.play()
         await vc.stop()
-
+ 
     @commands.command(brief="!sb ")
     async def sb(self, ctx, sound = None):
         try:
