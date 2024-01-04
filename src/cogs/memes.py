@@ -60,7 +60,7 @@ class Memes(commands.Cog):
             await ctx.voice_client.move_to(voice_channel)
 
         vc = discord.utils.get(self.bot.voice_clients)
-        await vc.play()asyncio
+        await vc.play()
         await vc.stop()
  
     @commands.command(brief="!sb ")
