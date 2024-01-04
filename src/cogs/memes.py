@@ -99,7 +99,7 @@ class Memes(commands.Cog):
 
             # Playing Audio
             vc = discord.utils.get(self.bot.voice_clients)
-            await vc.play(discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
+            await vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
             await asyncio.sleep(10)
             await vc.stop()
 
@@ -113,6 +113,7 @@ class Memes(commands.Cog):
         voice_channel = ctx.author.voice.channel
         voice_client = ctx.voice_client
         intro = f"src/sucela/{sucelas[randint(1,len(sucelas))]}"
+        print(f"Now playing : {intro}")
 
         try:
             await voice_channel.connect()
@@ -120,7 +121,7 @@ class Memes(commands.Cog):
             await ctx.voice_client.move_to(voice_channel)
 
         vc = discord.utils.get(self.bot.voice_clients)
-        await vc.play(discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
+        await vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
         await asyncio.sleep(10)
         await vc.stop()
 
