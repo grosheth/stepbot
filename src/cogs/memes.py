@@ -99,7 +99,7 @@ class Memes(commands.Cog):
 
             # Playing Audio
             vc = discord.utils.get(self.bot.voice_clients)
-            await vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
+            await vc.play(discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
             await asyncio.sleep(10)
             await vc.stop()
 
