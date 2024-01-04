@@ -17,14 +17,15 @@ class Audio(commands.Cog):
         cremes = os.listdir("src/creme/")
         voice_channel = ctx.author.voice.channel
         audio = f"src/creme/{cremes[randint(1,len(cremes))]}"
+        print(f"Now playing : {audio}")
 
         try:
             await voice_channel.connect()
         except:
             await ctx.voice_client.move_to(voice_channel)
 
-        vc = discord.utils.get(self.bot.voice_clients)
-        await get_mp3(vc, audio)
+        voice_channel = discord.utils.get(self.bot.voice_clients)
+        await play_mp3(voice_channel, audio)
  
 
     @commands.command(brief="!sb CYKA BLYET")
@@ -61,8 +62,8 @@ class Audio(commands.Cog):
                 await ctx.voice_client.move_to(voice_channel)
 
             # Playing Audio
-            vc = discord.utils.get(self.bot.voice_clients)
-            await get_mp3(vc, audio)
+            voice_channel = discord.utils.get(self.bot.voice_clients)
+            await play_mp3(voice_channel, audio)
 
 
     @commands.command(brief="!sucela SUCELA")
@@ -72,17 +73,17 @@ class Audio(commands.Cog):
             await ctx.send("T po dans l'channel, Toé sucela.")
 
         path = os.listdir("src/sucela/")
-        voice_channel = ctx.author.voice.channel
         audio = f"src/sucela/{path[randint(1,len(path))]}"
+        bot_channel = ctx.author.voice.channel
         print(f"Now playing : {audio}")
 
         try:
-            await voice_channel.connect()
+            await bot_channel.connect()
         except:
-            await ctx.voice_client.move_to(voice_channel)
+            await ctx.voice_client.move_to(bot_channel)
 
-        vc = discord.utils.get(self.bot.voice_clients)
-        await get_mp3(vc, audio, 10)
+        voice_channel = discord.utils.get(self.bot.voice_clients)
+        await play_mp3(voice_channel, audio)
 
 
     @commands.command(brief="!tibizou Bonne nuit")
@@ -100,8 +101,8 @@ class Audio(commands.Cog):
         except:
             await ctx.voice_client.move_to(voice_channel)
 
-        vc = discord.utils.get(self.bot.voice_clients)
-        await get_mp3(vc, audio, 10)
+        voice_channel = discord.utils.get(self.bot.voice_clients)
+        await play_mp3(voice_channel, audio, 10)
 
 
 async def setup(bot):

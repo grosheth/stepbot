@@ -88,13 +88,13 @@ async def get_mom_joke():
     return insult
 
 
-async def get_mp3(vc, audio, sleep=0):
-    await vc.play(await discord.FFmpegOpusAudio.from_probe(audio, executable="ffmpeg"))
-    await asyncio.sleep(sleep)
-    await vc.stop()
-
-
-
+async def play_mp3(voice_channel, audio, sleep=0):
+    voice_channel.stop()
+    source = await discord.FFmpegOpusAudio.from_probe(audio, executable="ffmpeg")
+    voice_channel.play(source)
+    if not voice_channel.is_playing():
+        voice_channel.stop()
+    
 # def pop_card(cards, hand):
 #     position = randint(0,len(cards))
 #     card = cards[position]
