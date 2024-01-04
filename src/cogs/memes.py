@@ -40,111 +40,6 @@ class Memes(commands.Cog):
         else:
             await ctx.send(f"Motherland says no to you {ctx.author.name}")
 
-# Should make common functions for sending clips into voice channel
-# Also find a way to add new clips easily (web page + container build?)
-# Be able to call clips by their name
-    @commands.command(brief="!creme Envoie un extrait de creme dans le voice channel")
-    async def creme(self, ctx):
-
-        if ctx.author.voice is None:
-            await ctx.send("T po dans l'channel, Ta pas de creme.")
-
-        cremes = os.listdir("src/creme/")
-        voice_channel = ctx.author.voice.channel
-        voice_client = ctx.voice_client
-        intro = f"src/creme/{cremes[randint(1,len(cremes))]}"
-
-        try:
-            await voice_channel.connect()
-        except:
-            await ctx.voice_client.move_to(voice_channel)
-
-        vc = discord.utils.get(self.bot.voice_clients)
-        await vc.play()
-        await vc.stop()
- 
-    @commands.command(brief="!sb ")
-    async def sb(self, ctx, sound = None):
-        try:
-            # Searching path for volume inside container files
-            path = "/mnt/sb/"
-            random = os.listdir(f"{path}")
-        except:
-            # Searching for local files
-            path = "src/soundboard/"
-            random = os.listdir(f"{path}")
-        
-        if sound == 'list':
-            random = '\n'.join(random)
-            await ctx.send(embed=discord.Embed(title="Soundboard List", description=f"{random}", color=0xeeafe6, type='rich', url='https://www.youtube.com/watch?v=xm3YgoEiEDc'))
-        else:
-            if ctx.author.voice is None:
-                await ctx.send("T po dans l'channel, Ta pas de soundboard")
-
-            if sound is None:
-                intro = f"{path}{random[randint(1,len(random))]}"
-                print(f"Trying to play {intro}")
-            else:
-                intro = f"{path}{sound}.mp3"
-                print(f"Trying to play {intro}")
-
-            # Connect to voice channels
-            voice_channel = ctx.author.voice.channel
-            voice_client = ctx.voice_client
-
-            try:
-                await voice_channel.connect()
-            except:
-                await ctx.voice_client.move_to(voice_channel)
-
-            # Playing Audio
-            vc = discord.utils.get(self.bot.voice_clients)
-            print(discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
-            await vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
-            await asyncio.sleep(10)
-            await vc.stop()
-
-    @commands.command(brief="!sucela SUCELA")
-    async def sucela(self, ctx):
-
-        if ctx.author.voice is None:
-            await ctx.send("T po dans l'channel, Toé sucela.")
-
-        sucelas = os.listdir("src/sucela/")
-        voice_channel = ctx.author.voice.channel
-        voice_client = ctx.voice_client
-        intro = f"src/sucela/{sucelas[randint(1,len(sucelas))]}"
-        print(f"Now playing : {intro}")
-
-        try:
-            await voice_channel.connect()
-        except:
-            await ctx.voice_client.move_to(voice_channel)
-
-        vc = discord.utils.get(self.bot.voice_clients)
-        await vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
-        await asyncio.sleep(10)
-        await vc.stop()
-
-    @commands.command(brief="!tibizou Bonne nuit")
-    async def tibizou(self, ctx):
-
-        if ctx.author.voice is None:
-            await ctx.send("T po dans l'channel, Pas de bonne nuit.")
-
-        voice_channel = ctx.author.voice.channel
-        voice_client = ctx.voice_client
-        intro = f"src/intros/tibizou.mp3"
-
-        try:
-            await voice_channel.connect()
-        except:
-            await ctx.voice_client.move_to(voice_channel)
-
-        vc = discord.utils.get(self.bot.voice_clients)
-        await vc.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
-        await asyncio.sleep(10)
-        await vc.stop()
 
     @commands.command(brief="!filou filou is... something")
     async def filou(self, ctx):
@@ -155,12 +50,14 @@ class Memes(commands.Cog):
         else:
             await ctx.send(embed=discord.Embed(title="ChatGPT says:", description = message, color=0xeeafe6))
 
+
     @commands.command(brief="!whoyou Stepbot se présente")
     async def whoyou(self, ctx):
         await ctx.send(embed=discord.Embed(title="What are you doing stepbot?? UwU",
                                                     description=
                                                     "Feet adorer, womanizer, Short longsword, can do the drapeau, gets stuck in washing machine and windows(I use Arch btw). Nemesis: Nick Gingras.",
                                                     color=0xeeafe6))
+
 
     @commands.command(brief="!vachier va chier")
     async def vachier(self, ctx):

@@ -9,13 +9,11 @@ class Activities(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-
     @commands.Cog.listener()
     async def on_ready(self):
         print('---------')
         print(f" Chu pra")
         print('---------')
-
 
     @commands.Cog.listener()
     async def on_voice_state_update(self,member,before,after):
@@ -27,7 +25,6 @@ class Activities(commands.Cog):
             voice_channel = member.voice.channel
         except:
             print(f'{member.name} Quitted the voice channel')
-            quit = True
 
         try:
             bot_voice_channel = await voice_channel.connect()
@@ -74,22 +71,18 @@ class Activities(commands.Cog):
                     await asyncio.sleep(5)
                     print(f'Stopping to play {intro}')
                     bot_voice_channel.stop()
-                    quit == False
 
             if before.channel and after.channel:
                 if before.channel.id != after.channel.id:
                     print("switched channel")
-                    quit == False
                     return
                 else:
                     print("somethin else happened")
                     if member.voice.self_stream:
                         print(f"{member.name} started streaming")
-                        quit == False
                         return
                     if member.voice.self_deaf:
                         print("User deafened")
-                        quit == False
                         return
 
 async def setup(bot):

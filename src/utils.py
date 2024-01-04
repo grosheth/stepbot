@@ -2,7 +2,7 @@ import json, os, random
 from pymongo import MongoClient
 from settings import *
 from random import randint
-import discord
+import discord, asyncio
 
 
 def db_connection_wallet():
@@ -86,6 +86,13 @@ async def get_mom_joke():
     random_category = random.choice(list(jokes.keys()))
     insult = random.choice(list(jokes[random_category]))
     return insult
+
+
+async def get_mp3(vc, audio, sleep=0):
+    await vc.play(await discord.FFmpegOpusAudio.from_probe(audio, executable="ffmpeg"))
+    await asyncio.sleep(sleep)
+    await vc.stop()
+
 
 
 # def pop_card(cards, hand):
