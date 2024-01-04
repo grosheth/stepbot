@@ -1,5 +1,5 @@
 from discord.ext import commands
-import discord, aiohttp
+import discord, aiohttp, asyncio
 from utils import *
 from random import randint
 import os
@@ -60,7 +60,7 @@ class Memes(commands.Cog):
             await ctx.voice_client.move_to(voice_channel)
 
         vc = discord.utils.get(self.bot.voice_clients)
-        await vc.play()
+        await vc.play()asyncio
         await vc.stop()
  
     @commands.command(brief="!sb ")
