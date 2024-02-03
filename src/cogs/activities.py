@@ -5,26 +5,27 @@ from utils import *
 from settings import *
 import discord
 
+
 class Activities(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print('---------')
+        print("---------")
         print(f" Chu pra")
-        print('---------')
+        print("---------")
 
     @commands.Cog.listener()
-    async def on_voice_state_update(self,member,before,after):
+    async def on_voice_state_update(self, member, before, after):
         # voice_channel = member.voice.channel
         print(f"self: {self}")
         print(f"member: {member}")
-        
+
         try:
             voice_channel = member.voice.channel
         except:
-            print(f'{member.name} Quitted the voice channel')
+            print(f"{member.name} Quitted the voice channel")
 
         try:
             bot_voice_channel = await voice_channel.connect()
@@ -34,11 +35,11 @@ class Activities(commands.Cog):
 
         if member.bot:
             if not before.channel:
-                print(f'Bot {member.name} joined {after.channel.name}')
+                print(f"Bot {member.name} joined {after.channel.name}")
         else:
             # Check this condition
             if not before.channel:
-                print(f'{member.name} joined {after.channel.name}')
+                print(f"{member.name} joined {after.channel.name}")
 
                 if member.id == int(CORBIN):
                     intro = "src/intros/intro_corbin.mp3"
@@ -56,7 +57,7 @@ class Activities(commands.Cog):
                     intro = "src/intros/intro_ren.mp3"
 
                 elif member.id == int(MARTIN):
-                    intro = "src/intros/rdoute.mp3"
+                    intro = "src/intros/intro_martin.mp3"
 
                 elif member.id == int(BRIDO):
                     intro = "src/intros/intro_brido.mp3"
@@ -66,10 +67,14 @@ class Activities(commands.Cog):
                 bot_voice_channel = discord.utils.get(self.bot.voice_clients)
                 print(f"bot_voice_channel {bot_voice_channel}")
                 if bot_voice_channel != None:
-                    print(f'Starting to play {intro}')
-                    bot_voice_channel.play(await discord.FFmpegOpusAudio.from_probe(intro , executable="ffmpeg"))
+                    print(f"Starting to play {intro}")
+                    bot_voice_channel.play(
+                        await discord.FFmpegOpusAudio.from_probe(
+                            intro, executable="ffmpeg"
+                        )
+                    )
                     await asyncio.sleep(5)
-                    print(f'Stopping to play {intro}')
+                    print(f"Stopping to play {intro}")
                     bot_voice_channel.stop()
 
             if before.channel and after.channel:
@@ -84,6 +89,7 @@ class Activities(commands.Cog):
                     if member.voice.self_deaf:
                         print("User deafened")
                         return
+
 
 async def setup(bot):
     await bot.add_cog(Activities(bot))
