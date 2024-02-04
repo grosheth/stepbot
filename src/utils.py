@@ -5,45 +5,45 @@ from random import randint
 import discord, asyncio
 
 
-def db_connection_wallet():
-    connect = MongoClient(CONN_STRING)
-    collection = connect.discord.wallet
-    return collection
+# def db_connection_wallet():
+#    connect = MongoClient(CONN_STRING)
+#    collection = connect.discord.wallet
+#    return collection
 
 
-def get_cash(member_id):
-    collection = db_connection_wallet()
-    print(collection)
-    current_cash = collection.find_one({'_id': member_id})['Nanane']
-    return current_cash
+# def get_cash(member_id):
+#    collection = db_connection_wallet()
+#    print(collection)
+#    current_cash = collection.find_one({'_id': member_id})['Nanane']
+#    return current_cash
 
 
-def win_money(member_id, current_cash, win):
-    collection = db_connection_wallet()
-    collection.update_one({'_id': member_id},{'$set': {'Nanane': current_cash - win}}, upsert=False)
+# def win_money(member_id, current_cash, win):
+#    collection = db_connection_wallet()
+#    collection.update_one({'_id': member_id},{'$set': {'Nanane': current_cash - win}}, upsert=False)
 
 
-def lose_money(member_id, current_cash, loss):
-    collection = db_connection_wallet()
-    collection.update_one({'_id': member_id},{'$set': {'Nanane': current_cash + loss}}, upsert=False)
+# def lose_money(member_id, current_cash, loss):
+#    collection = db_connection_wallet()
+#    collection.update_one({'_id': member_id},{'$set': {'Nanane': current_cash + loss}}, upsert=False)
 
 
-def db_connection_stats():
-    connect = MongoClient(CONN_STRING)
-    collection = connect.discord.stats
-    return collection
+# def db_connection_stats():
+#    connect = MongoClient(CONN_STRING)
+#    collection = connect.discord.stats
+#    return collection
 
 
-def add_to_db(member_id, current_count, amount, db):
-    collection = db_connection_stats()
-    collection.update_one({'_id': member_id},{'$set': {db: current_count + amount}}, upsert=False)
+# def add_to_db(member_id, current_count, amount, db):
+#    collection = db_connection_stats()
+#    collection.update_one({'_id': member_id},{'$set': {db: current_count + amount}}, upsert=False)
 
 
-def get_amount(member_id, db):
-    collection = db_connection_stats()
-    print(collection)
-    current_amount = collection.find_one({'_id': member_id})[db]
-    return current_amount
+# def get_amount(member_id, db):
+#    collection = db_connection_stats()
+#    print(collection)
+#    current_amount = collection.find_one({'_id': member_id})[db]
+#   return current_amount
 
 
 async def create_text_channel(guild, channel_name):
@@ -94,7 +94,8 @@ async def play_mp3(voice_channel, audio, sleep=0):
     voice_channel.play(source)
     if not voice_channel.is_playing():
         voice_channel.stop()
-    
+
+
 # def pop_card(cards, hand):
 #     position = randint(0,len(cards))
 #     card = cards[position]
@@ -119,7 +120,7 @@ async def play_mp3(voice_channel, audio, sleep=0):
 
 # def decision(points, dealer_points):
 #     if points == 21:
-#         win = True   
+#         win = True
 #     elif points > dealer_points:
 #         win = True
 #         return win
@@ -155,4 +156,3 @@ async def play_mp3(voice_channel, audio, sleep=0):
 #     return points
 
 #
-

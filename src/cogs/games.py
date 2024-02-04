@@ -4,10 +4,10 @@ from random import randint
 from utils import *
 from settings import *
 
+
 class Games(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
 
     @commands.command(brief="!coinflip <pile> <face>")
     async def coinflip(self, ctx, arg):
@@ -15,16 +15,13 @@ class Games(commands.Cog):
         if arg != "pile" and arg != "face":
             await ctx.send(f"{arg} n'est pas un choix à Pile ou face. Monsieur soleil")
             return
-        
-        guesses = {
-            1:"pile",
-            2:"face"
-        }
-        guess = randint(1,2)
+
+        guesses = {1: "pile", 2: "face"}
+        guess = randint(1, 2)
         await asyncio.sleep(1)
         await ctx.send("...La tension monte...")
         await asyncio.sleep(2)
-        
+
         if ctx.author.id == int(FILOU):
             await ctx.send("...pas comme la molle a Filou...")
         await ctx.send(guesses[guess])
@@ -36,10 +33,11 @@ class Games(commands.Cog):
             await asyncio.sleep(1)
             await ctx.send("CACHING MUFAKA")
 
-
     @commands.command(brief="!rr Russian roulette")
     async def rr(self, ctx):
-        await ctx.send("Tu gagne 1000 Nanane si tu meur pas. Tu perd 5000 Nanane si tu tfa shot.")
+        # await ctx.send(
+        #    "Tu gagne 1000 Nanane si tu meur pas. Tu perd 5000 Nanane si tu tfa shot."
+        # )
 
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Tu decide po.")
@@ -53,24 +51,27 @@ class Games(commands.Cog):
         await ctx.send("Roulette Russe")
         await asyncio.sleep(1)
         for member in voice_channel.members:
+            # current_cash = get_cash(member.id)
+            shot = randint(1, 6)
 
-            current_cash = get_cash(member.id)
-            shot = randint(1,6)
-
-            await ctx.send(f'{member.name} {await open_file("russianroulette.json","opening")}')
+            await ctx.send(
+                f'{member.name} {await open_file("russianroulette.json","opening")}'
+            )
             await asyncio.sleep(1)
             if shot == 1:
-                lose_money(member.id, current_cash, 5000)
-                await ctx.send(f'{member.name} {await open_file("russianroulette.json","dead")}')
-                await ctx.send(f'{member.name} Ta pardu tes Nanane sti de laid')
+                # lose_money(member.id, current_cash, 5000)
+                await ctx.send(
+                    f'{member.name} {await open_file("russianroulette.json","dead")}'
+                )
+                await ctx.send(f"{member.name} Ta pardu tes Nanane sti de laid")
                 await asyncio.sleep(1)
                 await member.move_to(None)
                 return
             else:
-                if member.id == int(FILOU):
-                    lose_money(member.id, current_cash, 500)     
-                else:
-                    win_money(member.id, current_cash, 1000)
+                # if member.id == int(FILOU):
+                #    lose_money(member.id, current_cash, 500)
+                # else:
+                #    win_money(member.id, current_cash, 1000)
                 await ctx.send(f"click...")
                 await asyncio.sleep(1)
                 await ctx.send(f'{await open_file("russianroulette.json","alive")}')
@@ -78,7 +79,6 @@ class Games(commands.Cog):
         await asyncio.sleep(1)
         await ctx.send(f"Parsonne est mort")
         return
-
 
 
 # Create a Text channel for each person who wants to play blackjack
@@ -105,7 +105,7 @@ class Games(commands.Cog):
 #         await create_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
 #         await asyncio.sleep(2)
 #         new_channel = get_channel_by_name(ctx.author.guild, f"{ctx.author.name}-blackjack")
-        
+
 #         await new_channel.send("Here is the dealer's first card:")
 #         get_card_dealer(cards, dealer_hand)
 #         await new_channel.send("-------------------------------------")
@@ -130,7 +130,7 @@ class Games(commands.Cog):
 #                     await new_channel.send("YOU LOST")
 #                     await asyncio.sleep(10)
 #                     await delete_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
-                    
+
 #             elif answer == "2":
 #                     get_card_dealer(cards, dealer_hand)
 #                     await new_channel.send("-------------------------------------")
@@ -138,7 +138,7 @@ class Games(commands.Cog):
 #                     await asyncio.sleep(1)
 
 #                     while True:
-                        
+
 #                         if dealer_points > 21:
 #                             await new_channel.send("You Won the dealer has more than 21")
 #                             await new_channel.send("YOU WON")
@@ -161,6 +161,7 @@ class Games(commands.Cog):
 #                                 await delete_text_channel(ctx.author.guild, f"{ctx.author.name}-blackjack")
 #             else:
 #                 await new_channel.send("invalid answer")
+
 
 async def setup(bot):
     await bot.add_cog(Games(bot))
