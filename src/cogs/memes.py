@@ -4,7 +4,6 @@ from utils import *
 from random import randint
 import os
 
-
 class Memes(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
