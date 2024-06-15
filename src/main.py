@@ -1,8 +1,8 @@
 import os, discord, dotenv, asyncio
 from discord.ext import commands
 from settings import *
-from mongoengine import *
-from pymongo import MongoClient
+# from mongoengine import *
+# from pymongo import MongoClient
 
 dotenv.load_dotenv()
 
