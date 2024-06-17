@@ -19,11 +19,11 @@ class Spotify():
     async def sp_play(self, ctx, arg):
         await check_enabled()
 
-    @commands.command(brief="!sp to play spotify music")
+    @commands.command(brief="!sp_add to add a song in queue.")
     async def sp_add(self, ctx, arg):
         await check_enabled()
 
-    @commands.command(brief="!sp to play spotify music")
-    async def sp_(self, ctx, arg):
+    @commands.command(brief="!sp_next to play next song in queue")
+    async def sp_next(self, ctx, arg):
         await check_enabled()
 

@@ -49,6 +49,8 @@ async def play_mp3(voice_channel, audio, sleep=0):
     if not voice_channel.is_playing():
         voice_channel.stop()
 
-async def check_enabled(status):
-    
+async def check_enabled():
+    status = "test"
     return status
+
+
