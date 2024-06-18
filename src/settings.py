@@ -28,3 +28,9 @@ PORT = os.getenv("PORT")
 DBUSER = os.getenv("DBUSER")
 DBPASS = os.getenv("DBPASS")
 CONN_STRING = os.getenv("CONN_STRING")
+
+
+
+
+# Spotify function enabled
+SP_ENABLE = False

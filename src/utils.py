@@ -42,15 +42,11 @@ async def get_mom_joke():
     return insult
 
 
-async def play_mp3(voice_channel, audio, sleep=0):
+async def play_mp3(voice_channel, audio):
     voice_channel.stop()
     source = await discord.FFmpegOpusAudio.from_probe(audio, executable="ffmpeg")
     voice_channel.play(source)
     if not voice_channel.is_playing():
         voice_channel.stop()
-
-async def check_enabled():
-    status = "test"
-    return status
 
 
