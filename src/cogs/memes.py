@@ -1,5 +1,6 @@
 from discord.ext import commands
 import discord, aiohttp, asyncio
+import datetime
 from utils import *
 from random import randint
 import os
@@ -68,6 +69,22 @@ class Memes(commands.Cog):
             )
         )
 
+    async def barbade(self, ctx):
+        now = datetime.datetime.now()
+        byebye = datetime.datetime(2024, 7, 30, 12)
+        time_left = datetime.datetime(2024, 7, 30, 12) - now
+        if now < byebye:
+            await ctx.send(
+                embed=discord.Embed(
+                    title="La Barbada", description="RuruAurevoir dans: f{time_left}", color=0xEEAFE6
+                )
+            )
+        else:
+            await ctx.send(
+                embed=discord.Embed(
+                    title="La Barbada", description="Ruru already byebye :(", color=0xEEAFE6
+                )
+            )
 
 async def setup(bot):
     await bot.add_cog(Memes(bot))
