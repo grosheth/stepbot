@@ -1,5 +1,4 @@
-#! /usr/bin/env nix-shell
-###! nix-shell -i bash -p bash
+#! /usr/bin/bash
 
 if [[ $1 == 'a' || $1 == 'all' ]]; then
 	podman build -t stepbot-os -f dockerfile-os
