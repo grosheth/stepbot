@@ -75,11 +75,7 @@ class Memes(commands.Cog):
         byebye = datetime.datetime(2024, 7, 30, 12)
         time_left = datetime.datetime(2024, 7, 30, 12) - now
         if now < byebye:
-            await ctx.send(
-                embed=discord.Embed(
-                    title="La Barbada", description="RuruAurevoir dans: f{time_left}", color=0xEEAFE6
-                )
-            )
+            await ctx.send(f"Ruru bebye dans: {time_left}")
         else:
             await ctx.send(
                 embed=discord.Embed(
