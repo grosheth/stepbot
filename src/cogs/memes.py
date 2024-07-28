@@ -69,6 +69,7 @@ class Memes(commands.Cog):
             )
         )
 
+    @commands.command(brief="!barbade RURU Senvo")
     async def barbade(self, ctx):
         now = datetime.datetime.now()
         byebye = datetime.datetime(2024, 7, 30, 12)
