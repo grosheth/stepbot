@@ -107,8 +107,16 @@ class Memes(commands.Cog):
             await asyncio.sleep(2)
             await ctx.send(f":)")
             await asyncio.sleep(2)
-            await bot.kick(RURU)
-
+            try:
+                await bot.kick(RURU)
+            except:
+                try:
+                    await bot.kick("Dora")
+                except:
+                    try:
+                        await bot.kick("frozencheerios")
+                    except:
+                        await ctx.send(f"Kick failed :D")
 
 
 async def setup(bot):
