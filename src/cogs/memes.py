@@ -85,7 +85,7 @@ class Memes(commands.Cog):
             )
 
     @commands.command(brief="!byebyebarbadais")
-    async def byebyebarbadais(self, ctx, bot):
+    async def byebyebarbadais(self, ctx):
         if ctx.author.id == int(MARTIN):
             await ctx.send("T pas Papa tu peut pas bannir un Barbadais.")
         else:
@@ -108,13 +108,13 @@ class Memes(commands.Cog):
             await ctx.send(f":)")
             await asyncio.sleep(2)
             try:
-                await bot.kick(RURU)
+                await self.bot.kick(RURU)
             except:
                 try:
-                    await bot.kick("Dora")
+                    await self.bot.kick("Dora")
                 except:
                     try:
-                        await bot.kick("frozencheerios")
+                        await self.bot.kick("frozencheerios")
                     except:
                         await ctx.send(f"Kick failed :D")
 
