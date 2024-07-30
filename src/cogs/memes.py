@@ -110,13 +110,7 @@ class Memes(commands.Cog):
             try:
                 await self.bot.kick(int(RURU))
             except:
-                try:
-                    await self.bot.kick("Dora")
-                except:
-                    try:
-                        await self.bot.kick("frozencheerios")
-                    except:
-                        await ctx.send(f"Kick failed :D")
+                await ctx.send(f"Kick failed :D")
 
 
 async def setup(bot):
