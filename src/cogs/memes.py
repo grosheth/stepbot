@@ -86,7 +86,7 @@ class Memes(commands.Cog):
 
     @commands.command(brief="!byebyebarbadais")
     async def byebyebarbadais(self, ctx):
-        if ctx.author.id == int(MARTIN):
+        if ctx.author.id != int(MARTIN):
             await ctx.send("T pas Papa tu peut pas bannir un Barbadais.")
         else:
             await ctx.send(
