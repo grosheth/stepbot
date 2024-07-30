@@ -1,3 +1,4 @@
+from asyncio.tasks import sleep
 from discord.ext import commands
 import discord, aiohttp, asyncio
 import datetime
@@ -82,6 +83,33 @@ class Memes(commands.Cog):
                     title="La Barbada", description="Ruru already byebye :(", color=0xEEAFE6
                 )
             )
+
+    @commands.command(brief="!tokebecicitte")
+    async def ciao_le_barbadais(self, ctx, bot):
+        if ctx.author.id == int(MARTIN):
+            await ctx.send("T pas Papa tu peut pas bannir un Barbadais.")
+        else:
+            await ctx.send(
+                embed=discord.Embed(
+                    title="It's the final countdown", description="Tanana nanana nanana nananana", color=0xEEAFE6
+                )
+            )
+            await ctx.send(f"Tanana nanana nanana nanananan")
+            await ctx.send(f"5")
+            await asyncio.sleep(2)
+            await ctx.send(f"4")
+            await asyncio.sleep(2)
+            await ctx.send(f"3")
+            await asyncio.sleep(2)
+            await ctx.send(f"2")
+            await asyncio.sleep(2)
+            await ctx.send(f"1")
+            await asyncio.sleep(2)
+            await ctx.send(f":)")
+            await asyncio.sleep(2)
+            await bot.kick(RURU)
+
+
 
 async def setup(bot):
     await bot.add_cog(Memes(bot))
