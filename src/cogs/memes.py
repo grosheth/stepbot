@@ -108,7 +108,7 @@ class Memes(commands.Cog):
             await ctx.send(f":)")
             await asyncio.sleep(2)
             try:
-                await self.bot.kick(RURU)
+                await self.bot.kick(int(RURU))
             except:
                 try:
                     await self.bot.kick("Dora")
