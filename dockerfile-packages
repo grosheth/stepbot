@@ -1,4 +1,4 @@
-FROM localhost/stepbot-os:latest
+FROM stepbot-os:latest
 WORKDIR /bot
 RUN apt-get update && apt-get install ffmpeg -y
 CMD watch ps -aux
