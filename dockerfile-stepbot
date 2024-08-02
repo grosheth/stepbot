@@ -1,5 +1,7 @@
-FROM stepbot-packages:latest
+# rebuild when changing python code or requirements
+FROM stepbot-os:latest
 WORKDIR /bot
+COPY . .
 RUN ls -la
 RUN pip install -r requirements.txt
 ENTRYPOINT ["python", "src/main.py"]

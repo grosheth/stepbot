@@ -1,4 +1,5 @@
+# Rebuild when changing container level stuff
 FROM python:3.11-rc-buster
 WORKDIR /bot
-COPY . .
+RUN apt-get update && apt-get install ffmpeg -y
 CMD watch ps -aux
