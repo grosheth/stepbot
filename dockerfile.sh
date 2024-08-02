@@ -10,9 +10,9 @@ if [[ $1 == 'os' ]]; then
 fi
 
 if [[ $1 == 'p' ]]; then
-	docker build -t stepbot -f dockerfile-packages .
+	docker build -t stepbot -f dockerfile-stebot .
 fi
 
 if [[ -z $1 ]]; then
-	docker build -t stepbot -f dockerfile-packages .
+	docker build -t stepbot -f dockerfile-stepbot .
 fi
