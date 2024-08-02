@@ -2,8 +2,7 @@
 
 if [[ $1 == 'a' || $1 == 'all' ]]; then
 	docker build -t stepbot-os -f dockerfile-os .
-	docker build -t stepbot-packages -f dockerfile-packages .
-	docker build -t stepbot -f dockerfile-requirements .
+	docker build -t stepbot -f dockerfile-stepbot .
 fi
 
 if [[ $1 == 'os' ]]; then
@@ -11,9 +10,9 @@ if [[ $1 == 'os' ]]; then
 fi
 
 if [[ $1 == 'p' ]]; then
-	docker build -t stepbot-packages -f dockerfile-packages .
+	docker build -t stepbot -f dockerfile-packages .
 fi
 
-if [[ $1 == 'pip' || $1 == 'python' ]]; then
-	docker build -t stepbot -f dockerfile-requirements .
+if [[ -z $1 ]]; then
+	docker build -t stepbot -f dockerfile-packages .
 fi
