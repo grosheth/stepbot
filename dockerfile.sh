@@ -1,9 +1,9 @@
 #! /usr/bin/bash
 
 if [[ $1 == 'a' || $1 == 'all' ]]; then
-	docker build -t stepbot-os -f dockerfile-os
-	docker build -t stepbot-packages -f dockerfile-packages
-	docker build -t stepbot -f dockerfile-requirements
+	docker build -t stepbot-os -f dockerfile-os .
+	docker build -t stepbot-packages -f dockerfile-packages .
+	docker build -t stepbot -f dockerfile-requirements .
 fi
 
 if [[ $1 == 'os' ]]; then
