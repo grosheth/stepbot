@@ -88,6 +88,8 @@ class Memes(commands.Cog):
     async def byebyebarbadais(self, ctx):
         if ctx.author.id != int(MARTIN):
             await ctx.send("T pas Papa tu peut pas bannir un Barbadais.")
+        elif ctx.author.id == int(ALESS):
+            await ctx.send(f"CHU PAS PAPA MAIS C MON BOT STI")
         else:
             await ctx.send(
                 embed=discord.Embed(
@@ -107,11 +109,7 @@ class Memes(commands.Cog):
             await asyncio.sleep(2)
             await ctx.send(f":)")
             await asyncio.sleep(2)
-            try:
-                await self.bot.kick(int(RURU))
-            except:
-                await ctx.send(f"Kick failed :D")
-
+            await ctx.send(f"Va chier")
 
 async def setup(bot):
     await bot.add_cog(Memes(bot))
