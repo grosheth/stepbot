@@ -294,22 +294,6 @@ self: super: {
       self."six"
     ];
   };
-  "mongoengine" = super.buildPythonPackage rec {
-    pname = "mongoengine";
-    version = "0.24.1";
-    src = fetchurl {
-      url = "https://files.pythonhosted.org/packages/f8/70/b8446e7c3bba35b363edfb79a60b97b1b5d6076528ac1d5065e9d753e994/mongoengine-0.24.1-py3-none-any.whl";
-      sha256 = "1b2gshfhib92wqkm0lj6bzdiq5l0l6022d54rgmisxdkpijqp1v8";
-    };
-    format = "wheel";
-    doCheck = false;
-    buildInputs = [];
-    checkInputs = [];
-    nativeBuildInputs = [];
-    propagatedBuildInputs = [
-      self."pymongo"
-    ];
-  };
   "multidict" = super.buildPythonPackage rec {
     pname = "multidict";
     version = "6.0.2";

@@ -35,10 +35,6 @@ class Games(commands.Cog):
 
     @commands.command(brief="!rr Russian roulette")
     async def rr(self, ctx):
-        # await ctx.send(
-        #    "Tu gagne 1000 Nanane si tu meur pas. Tu perd 5000 Nanane si tu tfa shot."
-        # )
-
         if ctx.author.voice is None:
             await ctx.send("T po dans l'channel, Tu decide po.")
         voice_channel = ctx.author.voice.channel
@@ -51,7 +47,6 @@ class Games(commands.Cog):
         await ctx.send("Roulette Russe")
         await asyncio.sleep(1)
         for member in voice_channel.members:
-            # current_cash = get_cash(member.id)
             shot = randint(1, 6)
 
             await ctx.send(
@@ -59,7 +54,6 @@ class Games(commands.Cog):
             )
             await asyncio.sleep(1)
             if shot == 1:
-                # lose_money(member.id, current_cash, 5000)
                 await ctx.send(
                     f'{member.name} {await open_file("russianroulette.json","dead")}'
                 )
@@ -68,10 +62,6 @@ class Games(commands.Cog):
                 await member.move_to(None)
                 return
             else:
-                # if member.id == int(FILOU):
-                #    lose_money(member.id, current_cash, 500)
-                # else:
-                #    win_money(member.id, current_cash, 1000)
                 await ctx.send(f"click...")
                 await asyncio.sleep(1)
                 await ctx.send(f'{await open_file("russianroulette.json","alive")}')
