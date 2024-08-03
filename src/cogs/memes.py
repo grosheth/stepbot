@@ -86,11 +86,10 @@ class Memes(commands.Cog):
 
     @commands.command(brief="!byebyebarbadais")
     async def byebyebarbadais(self, ctx):
-        if ctx.author.id != int(MARTIN):
-            await ctx.send("T pas Papa tu peut pas bannir un Barbadais.")
-        elif ctx.author.id == int(ALESS):
-            await ctx.send(f"CHU PAS PAPA MAIS C MON BOT STI")
-        else:
+        if ctx.author.id == int(MARTIN) or ctx.author.id == int(ALESS): 
+            if ctx.author.id == int(ALESS): 
+                await ctx.send(f"CHU PAS PAPA MAIS C MON BOT STI")
+
             await ctx.send(
                 embed=discord.Embed(
                     title="It's the final countdown", description="Tanana nanana nanana nananana", color=0xEEAFE6
@@ -110,6 +109,9 @@ class Memes(commands.Cog):
             await ctx.send(f":)")
             await asyncio.sleep(2)
             await ctx.send(f"Va chier")
+
+        else:
+            await ctx.send("T pas Papa tu peut pas bannir un Barbadais.")
 
 async def setup(bot):
     await bot.add_cog(Memes(bot))
