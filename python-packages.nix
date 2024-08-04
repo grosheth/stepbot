@@ -389,20 +389,6 @@ self: super: {
     nativeBuildInputs = [];
     propagatedBuildInputs = [];
   };
-  "pymongo" = super.buildPythonPackage rec {
-    pname = "pymongo";
-    version = "4.1.1";
-    src = fetchurl {
-      url = "https://files.pythonhosted.org/packages/19/5c/ef2753159dfb4e5879e2b091412186f66faae01ce8151761617138c28c91/pymongo-4.1.1.tar.gz";
-      sha256 = "1m9hc2a4kgg10xy3g5x00z4a7rrk9s0rbf5qfypwnhq0kdfg5f6p";
-    };
-    format = "setuptools";
-    doCheck = false;
-    buildInputs = [];
-    checkInputs = [];
-    nativeBuildInputs = [];
-    propagatedBuildInputs = [];
-  };
   "pyrsistent" = super.buildPythonPackage rec {
     pname = "pyrsistent";
     version = "0.18.1";

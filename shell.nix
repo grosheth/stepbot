@@ -28,7 +28,7 @@ in pkgs.mkShell {
       python-pkgs.praw
       python-pkgs.prawcore
       python-pkgs.pycparser
-      python-pkgs.pymongo
+      # python-pkgs.pymongo
       python-pkgs.pyrsistent
       python-pkgs.python-dotenv
       python-pkgs.requests

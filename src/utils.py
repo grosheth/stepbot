@@ -1,5 +1,5 @@
 import json, os, random
-from pymongo import MongoClient
+# from pymongo import MongoClient
 from settings import *
 from random import randint
 import discord, asyncio
