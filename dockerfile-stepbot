@@ -1,9 +1,9 @@
 # rebuild when changing python code or requirements
 FROM stepbot-os:latest
 
-ENV VIRTUAL_ENV=/bot/venv
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+ENV PATH="/bot/venv/bin:$PATH"
 
 WORKDIR /bot
 COPY . .
-ENTRYPOINT ["/bot/venv/bin/python", "src/main.py"]
+pip install -r requirements.txt
+ENTRYPOINT ["python", "src/main.py"]
