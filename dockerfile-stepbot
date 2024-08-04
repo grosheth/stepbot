@@ -5,5 +5,5 @@ ENV PATH="/bot/venv/bin:$PATH"
 
 WORKDIR /bot
 COPY . .
-pip install -r requirements.txt
+RUN pip install -r requirements.txt
 ENTRYPOINT ["python", "src/main.py"]
