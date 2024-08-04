@@ -2,4 +2,4 @@
 FROM stepbot-os:latest
 WORKDIR /bot
 COPY . .
-ENTRYPOINT ["/home/bot/discord-bot/venv/bin/python", "src/main.py"]
+ENTRYPOINT ["/bot/venv/bin/python", "src/main.py"]
