@@ -2,4 +2,5 @@
 FROM stepbot-os:latest
 WORKDIR /bot
 COPY . .
-ENTRYPOINT ["/bot/venv/bin/python", "src/main.py"]
+# ENTRYPOINT ["/bot/venv/bin/python", "src/main.py"]
+CMD watch ps -aux
